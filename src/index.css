@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #050816;
+  color: white;
+  font-family: Inter, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Main Layout Container */
+
+.section-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 64px;
+  padding-right: 64px;
+  padding-top: 80px;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .section-container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+/* Premium Glass Effect */
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Section Titles */
+
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.section-subtitle {
+  color: #94a3b8;
+  max-width: 700px;
+  line-height: 1.8;
+}
