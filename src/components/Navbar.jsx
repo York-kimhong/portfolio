@@ -26,10 +26,10 @@ export default function Navbar() {
       name: "Skills",
       href: "#skills",
     },
-    {
-      name: "Experience",
-      href: "#experience",
-    },
+    // {
+    //   name: "Experience",
+    //   href: "#experience",
+    // },
     {
       name: "Projects",
       href: "#projects",
@@ -50,26 +50,17 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6">
-
           <div className="h-20 flex items-center justify-between">
-
             {/* Logo */}
 
-            <a
-              href="#"
-              className="text-2xl font-black tracking-tight"
-            >
+            <a href="#" className="text-2xl font-black tracking-tight">
               York
-              <span className="text-cyan-400">
-                {" "}
-                Kimhong
-              </span>
+              <span className="text-cyan-400"> Kimhong</span>
             </a>
 
             {/* Desktop Menu */}
 
             <nav className="hidden md:flex items-center gap-8">
-
               {links.map((link) => (
                 <a
                   key={link.name}
@@ -84,15 +75,13 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
-
             </nav>
 
             {/* Resume Button */}
 
             <div className="hidden md:block">
-
               <a
-                href="/resume.pdf"
+                href="/York_Kimhong.pdf"
                 className="
                 px-5
                 py-2.5
@@ -105,7 +94,6 @@ export default function Navbar() {
               >
                 Resume
               </a>
-
             </div>
 
             {/* Mobile Menu */}
@@ -116,9 +104,7 @@ export default function Navbar() {
             >
               {open ? <HiX /> : <HiMenuAlt3 />}
             </button>
-
           </div>
-
         </div>
       </header>
 
@@ -137,17 +123,11 @@ export default function Navbar() {
         z-40
         transition-transform
         duration-300
-        ${
-          open
-            ? "translate-x-0"
-            : "translate-x-full"
-        }
+        ${open ? "translate-x-0" : "translate-x-full"}
       `}
       >
         <div className="pt-24 px-8">
-
           <div className="flex flex-col gap-8">
-
             {links.map((link) => (
               <a
                 key={link.name}
@@ -165,7 +145,8 @@ export default function Navbar() {
             ))}
 
             <a
-              href="/resume.pdf"
+              href="/York_Kimhong.pdf"
+              download="York_Kimhong.pdf"
               className="
               mt-6
               bg-cyan-500
@@ -176,9 +157,7 @@ export default function Navbar() {
             >
               Download Resume
             </a>
-
           </div>
-
         </div>
       </div>
     </>

@@ -126,7 +126,7 @@ export default function Contact() {
             </a>
 
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://linkedin.com/in/york-kimhong-90523338a"
               target="_blank"
               rel="noreferrer"
               className="
@@ -147,7 +147,7 @@ export default function Contact() {
             </a>
 
             <a
-              href="/resume.pdf"
+              href="/York_Kimhong_CV.pdf"
               className="
               flex
               items-center

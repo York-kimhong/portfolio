@@ -1,12 +1,13 @@
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Experience from "./components/Experience";
-import Projects from "./components/Projects";
-import Certifications from "./components/Certifications";
-import Contact from "./components/Contact";
+import Hero from "./components/Hero/Hero";
+import About from "./components/About/About";
+import Skills from "./components/Skills/Skills";
+// import Experience from "./components/Experience";
+import Projects from "./components/Projects/Projects";
+// import Certifications from "./components/Certifications";
+import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer";
+import CursorGlow from "./components/CursorGlow";
 
 function App() {
   return (
@@ -22,22 +23,27 @@ function App() {
 
       </div>
 
+      
+
+
       {/* Main Layout */}
       <Navbar />
 
       <main>
 
+        <CursorGlow />
+        
         <Hero />
 
         <About />
 
         <Skills />
 
-        <Experience />
+        {/* <Experience /> */}
 
         <Projects />
 
-        <Certifications />
+        {/* <Certifications /> */}
 
         <Contact />
 

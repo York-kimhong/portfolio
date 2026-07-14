@@ -1,104 +1,154 @@
 import { motion } from "framer-motion";
+
 import {
-  FaJava,
   FaReact,
-  FaPhp,
+  FaHtml5,
+  FaCss3Alt,
+  FaJsSquare,
   FaGitAlt,
   FaGithub,
-  FaLinux,
+  FaFigma,
   FaNodeJs,
 } from "react-icons/fa";
 
 import {
-  SiLaravel,
-  SiMysql,
-  SiJavascript,
-  SiCisco,
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
   SiPostman,
+  SiMysql,
+  SiLaravel,
 } from "react-icons/si";
 
 export default function Skills() {
   const categories = [
     {
-      title: "Software Development",
+      title: "Frontend Development",
+
+      description:
+        "Creating responsive and modern web applications with scalable UI components.",
+
       skills: [
         {
-          name: "Java",
-          icon: <FaJava />,
+          name: "React.js",
+          level: 90,
+          icon: <FaReact />,
         },
+
         {
-          name: "PHP",
-          icon: <FaPhp />,
+          name: "Next.js",
+          level: 75,
+          icon: <SiNextdotjs />,
         },
+
         {
           name: "JavaScript",
-          icon: <SiJavascript />,
+          level: 85,
+          icon: <FaJsSquare />,
         },
+
         {
-          name: "Node.js",
+          name: "TypeScript",
+          level: 55,
+          icon: <SiTypescript />,
+        },
+
+        {
+          name: "Tailwind CSS",
+          level: 85,
+          icon: <SiTailwindcss />,
+        },
+
+        {
+          name: "HTML / CSS",
+          level: 95,
+          icon: <FaHtml5 />,
+        },
+      ],
+    },
+
+    {
+      title: "UI / UX Design",
+
+      description:
+        "Designing clean interfaces focused on usability and user experience.",
+
+      skills: [
+        {
+          name: "Figma",
+          level: 75,
+          icon: <FaFigma />,
+        },
+
+        {
+          name: "Responsive Design",
+          level: 90,
+          icon: <FaCss3Alt />,
+        },
+
+        {
+          name: "Component Design",
+          level: 75,
+          icon: <FaFigma />,
+        },
+      ],
+    },
+
+    {
+      title: "Development Workflow",
+
+      description:
+        "Using modern tools and practices for efficient development.",
+
+      skills: [
+        {
+          name: "Git",
+          level: 80,
+          icon: <FaGitAlt />,
+        },
+
+        {
+          name: "GitHub",
+          level: 80,
+          icon: <FaGithub />,
+        },
+
+        {
+          name: "Postman",
+          level: 60,
+          icon: <SiPostman />,
+        },
+
+        {
+          name: "REST API",
+          level: 60,
           icon: <FaNodeJs />,
         },
       ],
     },
 
     {
-      title: "Web Technologies",
+      title: "Backend Fundamentals",
+
+      description: "Supporting knowledge for building complete applications.",
+
       skills: [
         {
-          name: "React",
-          icon: <FaReact />,
+          name: "Node.js",
+          level: 55,
+          icon: <FaNodeJs />,
         },
+
         {
           name: "Laravel",
+          level: 55,
           icon: <SiLaravel />,
         },
+
         {
           name: "MySQL",
+          level: 75,
           icon: <SiMysql />,
-        },
-      ],
-    },
-
-    {
-      title: "Networking",
-      skills: [
-        {
-          name: "Cisco",
-          icon: <SiCisco />,
-        },
-        {
-          name: "Routing",
-          icon: "🌐",
-        },
-        {
-          name: "VLAN",
-          icon: "🔗",
-        },
-        {
-          name: "ACL",
-          icon: "🛡️",
-        },
-      ],
-    },
-
-    {
-      title: "Tools & Platforms",
-      skills: [
-        {
-          name: "Git",
-          icon: <FaGitAlt />,
-        },
-        {
-          name: "GitHub",
-          icon: <FaGithub />,
-        },
-        {
-          name: "Linux",
-          icon: <FaLinux />,
-        },
-        {
-          name: "Postman",
-          icon: <SiPostman />,
         },
       ],
     },
@@ -107,47 +157,174 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="py-32"
+      className="
+relative
+py-24
+overflow-hidden
+"
     >
-      <div className="section-container">
+      {/* BACKGROUND LIGHT */}
 
-        {/* Header */}
+      <motion.div
+        animate={{
+          x: [0, 80, -40, 0],
+
+          y: [0, -50, 30, 0],
+        }}
+        transition={{
+          duration: 20,
+
+          repeat: Infinity,
+
+          ease: "easeInOut",
+        }}
+        className="
+absolute
+top-20
+left-10
+w-96
+h-96
+bg-cyan-500/10
+rounded-full
+blur-[140px]
+"
+      />
+
+      <motion.div
+        animate={{
+          x: [0, -60, 40, 0],
+
+          y: [0, 40, -30, 0],
+        }}
+        transition={{
+          duration: 22,
+
+          repeat: Infinity,
+
+          ease: "easeInOut",
+        }}
+        className="
+absolute
+bottom-10
+right-10
+w-[420px]
+h-[420px]
+bg-violet-500/10
+rounded-full
+blur-[150px]
+"
+      />
+
+      <div
+        className="
+max-w-7xl
+mx-auto
+px-6
+lg:px-10
+relative
+z-10
+"
+      >
+        {/* HEADER */}
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-20"
+          initial={{
+            opacity: 0,
+
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+
+            y: 0,
+          }}
+          transition={{
+            duration: 0.7,
+          }}
+          viewport={{
+            once: true,
+          }}
+          className="
+text-center
+mb-14
+"
         >
-          <p className="text-cyan-400 uppercase tracking-widest font-semibold">
-            Technical Expertise
+          <p
+            className="
+text-cyan-400
+text-xs
+tracking-[0.35em]
+uppercase
+font-semibold
+"
+          >
+            TECHNICAL STACK
           </p>
 
-          <h2 className="section-title mt-4">
-            Skills & Technologies
-          </h2>
+          <motion.h2
+            animate={{
+              backgroundPosition: ["0% center", "100% center"],
+            }}
+            transition={{
+              duration: 4,
 
-          <p className="section-subtitle mx-auto">
-            Technologies and tools I use to build
-            software solutions, web applications,
-            and enterprise network infrastructures.
+              repeat: Infinity,
+
+              ease: "linear",
+            }}
+            className="
+mt-4
+text-3xl
+md:text-4xl
+font-bold
+bg-gradient-to-r
+from-white
+via-cyan-300
+to-violet-400
+bg-[length:200%_auto]
+bg-clip-text
+text-transparent
+"
+          >
+            Frontend Engineering Toolkit
+          </motion.h2>
+
+          <p
+            className="
+text-slate-400
+max-w-xl
+mx-auto
+mt-4
+text-sm
+leading-relaxed
+"
+          >
+            Technologies and tools I use to build responsive, modern, and
+            user-focused digital experiences.
           </p>
         </motion.div>
 
-        {/* Categories */}
+        {/* SKILL CARDS */}
 
-        <div className="space-y-12">
-
-          {categories.map((category, categoryIndex) => (
+        <div
+          className="
+grid
+md:grid-cols-2
+lg:grid-cols-3
+gap-6
+"
+        >
+          {categories.map((category, index) => (
             <motion.div
               key={category.title}
               initial={{
                 opacity: 0,
+
                 y: 30,
               }}
               whileInView={{
                 opacity: 1,
+
                 y: 0,
               }}
               viewport={{
@@ -155,66 +332,152 @@ export default function Skills() {
               }}
               transition={{
                 duration: 0.6,
-                delay: categoryIndex * 0.1,
+
+                delay: index * 0.1,
               }}
+              whileHover={{
+                y: -6,
+              }}
+              className="
+
+group
+
+rounded-[24px]
+
+p-6
+
+bg-white/5
+
+border
+
+border-white/10
+
+backdrop-blur-xl
+
+hover:border-cyan-400/30
+
+transition-all
+
+duration-300
+
+"
             >
               <h3
                 className="
-                text-2xl
-                font-bold
-                mb-6
-                "
+
+text-lg
+
+font-bold
+
+mb-2
+
+"
               >
                 {category.title}
               </h3>
 
+              <p
+                className="
+
+text-xs
+
+text-slate-400
+
+mb-6
+
+leading-relaxed
+
+"
+              >
+                {category.description}
+              </p>
+
               <div
                 className="
-                grid
-                sm:grid-cols-2
-                md:grid-cols-3
-                lg:grid-cols-4
-                gap-6
-                "
+space-y-4
+"
               >
                 {category.skills.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="
-                    glass
-                    rounded-3xl
-                    p-8
-                    hover:-translate-y-2
-                    transition-all
-                    duration-300
-                    "
-                  >
+                  <div key={skill.name}>
                     <div
                       className="
-                      text-5xl
-                      text-cyan-400
-                      mb-5
-                      "
+flex
+items-center
+justify-between
+mb-2
+"
                     >
-                      {skill.icon}
+                      <div
+                        className="
+flex
+items-center
+gap-2
+"
+                      >
+                        <span
+                          className="
+text-lg
+text-cyan-400
+"
+                        >
+                          {skill.icon}
+                        </span>
+
+                        <span
+                          className="
+text-sm
+font-medium
+"
+                        >
+                          {skill.name}
+                        </span>
+                      </div>
                     </div>
 
-                    <h4
+                    <div
                       className="
-                      text-xl
-                      font-semibold
-                      "
+h-1.5
+rounded-full
+bg-white/10
+overflow-hidden
+"
                     >
-                      {skill.name}
-                    </h4>
+                      <motion.div
+                        initial={{
+                          width: 0,
+                        }}
+                        whileInView={{
+                          width: `${skill.level}%`,
+                        }}
+                        viewport={{
+                          once: true,
+                        }}
+                        transition={{
+                          duration: 1,
+
+                          delay: 0.2,
+                        }}
+                        className="
+
+h-full
+
+rounded-full
+
+bg-gradient-to-r
+
+from-cyan-400
+
+to-violet-400
+
+"
+                      ></motion.div>
+                    </div>
                   </div>
                 ))}
               </div>
             </motion.div>
           ))}
-
         </div>
-
       </div>
     </section>
   );
