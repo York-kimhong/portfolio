@@ -2,134 +2,118 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 
-export default function CursorGlow(){
+export default function CursorGlow() {
 
-const [points,setPoints] = useState([]);
+  const [points, setPoints] = useState([]);
 
 
-useEffect(()=>{
+  useEffect(() => {
 
+    const handleMouseMove = (event) => {
 
-const move = (e)=>{
+      setPoints((prev) => [
 
+        {
+          x: event.clientX,
+          y: event.clientY,
+          id: Date.now(),
+        },
 
-setPoints((prev)=>[
+        ...prev,
 
-{
-x:e.clientX,
-y:e.clientY,
-id:Date.now()
-},
+      ].slice(0, 25));
 
-...prev
+    };
 
-].slice(0,50));
 
+    window.addEventListener(
+      "mousemove",
+      handleMouseMove
+    );
 
-};
 
+    return () => {
 
+      window.removeEventListener(
+        "mousemove",
+        handleMouseMove
+      );
 
-window.addEventListener(
-"mousemove",
-move
-);
+    };
 
 
-return ()=>{
+  }, []);
 
-window.removeEventListener(
-"mousemove",
-move
 
-);
 
-};
+  return (
 
+    <>
 
-},[]);
+      {points.map((point, index) => (
 
+        <motion.div
 
+          key={point.id}
 
+          initial={{
+            opacity: 0.6,
+            scale: 1,
+          }}
 
+          animate={{
+            opacity: 0,
+            scale: 0,
+          }}
 
-return (
+          transition={{
+            duration: 1,
+            ease: "easeOut",
+          }}
 
-<>
 
-{
+          className="
+            fixed
+            pointer-events-none
+            z-[999]
 
-points.map((point,index)=>(
+            rounded-full
 
+            bg-cyan-400
 
-<motion.div
+            blur-xl
 
-key={point.id}
+            hidden
+            md:block
+          "
 
-initial={{
 
-opacity:0.5,
+          style={{
 
-scale:1
+            left: point.x - 15,
 
-}}
+            top: point.y - 15,
 
-animate={{
 
-opacity:0,
+            width: `${Math.max(
+              10,
+              45 - index * 2
+            )}px`,
 
-scale:0.2
 
-}}
+            height: `${Math.max(
+              10,
+              45 - index * 2
+            )}px`,
 
-transition={{
+          }}
 
-duration:1.2,
+        />
 
-ease:"easeOut"
+      ))}
 
-}}
+    </>
 
-className="
-
-fixed
-
-pointer-events-none
-
-z-[999]
-
-rounded-full
-
-bg-cyan-400
-
-blur-xl
-
-"
-
-style={{
-
-left:point.x-20,
-
-top:point.y-20,
-
-width:`${50-index*4}px`,
-
-height:`${50-index*4}px`
-
-}}
-
-/>
-
-
-))
-
-
-}
-
-
-
-</>
-
-);
+  );
 
 }

@@ -1,38 +1,144 @@
+import { motion } from "framer-motion";
+
 export default function Footer() {
   return (
     <footer
       className="
+      relative
+      mt-20
+      overflow-hidden
       border-t
-      border-white/10
-      py-10
+      border-black/10
+      dark:border-white/10
       "
     >
+      {/* BACKGROUND GLOW */}
+
+      <div
+        className="
+        absolute
+        left-1/2
+        -translate-x-1/2
+        -top-20
+
+        w-[500px]
+        h-[200px]
+
+        bg-emerald-500/20
+
+        blur-3xl
+
+        rounded-full
+
+        pointer-events-none
+        "
+      />
+
       <div
         className="
         section-container
+
+        relative
+        z-10
+
+        py-10
+
+
         flex
+
         flex-col
+
         md:flex-row
+
+
         justify-between
+
+
         items-center
-        gap-4
+
+
+        gap-6
         "
       >
-        <h3 className="font-bold text-xl">
+        {/* LOGO */}
+
+        <motion.h3
+          whileHover={{
+            scale: 1.05,
+          }}
+          className="
+          text-xl
+
+          font-black
+
+          text-slate-900
+
+          dark:text-white
+
+          "
+        >
           York
-          <span className="text-cyan-400">
-            {" "}Kimhong
+          <span
+            className="
+            text-emerald-500
+
+            dark:text-emerald-400
+            "
+          >
+            {" "}
+            Kimhong
           </span>
-        </h3>
+        </motion.h3>
 
-        <p className="text-slate-500 text-sm">
+        {/* COPYRIGHT */}
+
+        <p
+          className="
+          text-sm
+
+          text-slate-500
+
+          dark:text-slate-400
+
+          text-center
+          "
+        >
           © 2026 York Kimhong.
-          All Rights Reserved.
+          <br className="md:hidden" /> All Rights Reserved.
         </p>
 
-        <p className="text-slate-500 text-sm">
-          Designed & Developed with React
-        </p>
+        {/* TECH */}
+
+        <motion.p
+          whileHover={{
+            y: -3,
+          }}
+          className="
+          text-sm
+
+
+          text-slate-500
+
+
+          dark:text-slate-400
+
+
+          "
+        >
+          Designed & Developed with
+          <span
+            className="
+            mx-1
+
+            text-emerald-500
+
+            font-semibold
+            "
+          >
+            React
+          </span>
+          
+        </motion.p>
       </div>
     </footer>
   );

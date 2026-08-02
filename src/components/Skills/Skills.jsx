@@ -8,156 +8,248 @@ export default function Skills() {
     <section
       id="skills"
       className="
-relative
-py-28
-overflow-hidden
-"
+      relative
+
+      py-32
+
+      overflow-hidden
+      "
     >
-      {/* BACKGROUND LIGHT */}
+      {/* PREMIUM GREEN AMBIENT LIGHT */}
 
-      <motion.div
-        animate={{
-          x: [0, 80, -40, 0],
-          y: [0, -50, 30, 0],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      <div
         className="
-absolute
-top-20
-left-10
-w-96
-h-96
-bg-cyan-500/10
-rounded-full
-blur-[140px]
-"
-      />
+        absolute
 
-      <motion.div
-        animate={{
-          x: [0, -60, 40, 0],
-          y: [0, 40, -30, 0],
-        }}
-        transition={{
-          duration: 22,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-absolute
-bottom-10
-right-10
-w-[420px]
-h-[420px]
-bg-purple-500/10
-rounded-full
-blur-[150px]
-"
+
+        top-20
+
+
+        left-1/2
+
+
+        -translate-x-1/2
+
+
+
+        w-[650px]
+
+
+        h-[320px]
+
+
+
+        rounded-full
+
+
+
+        bg-emerald-500/15
+
+
+
+        dark:bg-emerald-400/10
+
+
+
+        blur-[150px]
+
+
+
+        pointer-events-none
+        "
       />
 
       <div
         className="
-max-w-7xl
-mx-auto
-px-6
-lg:px-10
-relative
-z-10
-"
+        max-w-7xl
+
+        mx-auto
+
+
+        px-6
+
+        lg:px-10
+
+
+
+        relative
+
+        z-10
+        "
       >
         {/* HEADER */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: 30,
+            y: 40,
           }}
           whileInView={{
             opacity: 1,
             y: 0,
           }}
-          transition={{
-            duration: 0.7,
-          }}
           viewport={{
             once: true,
           }}
+          transition={{
+            duration: 0.7,
+          }}
           className="
-text-center
-mb-16
-"
+        text-center
+
+        mb-20
+        "
         >
           <p
             className="
-text-cyan-400
-text-xs
-tracking-[0.35em]
-uppercase
-font-semibold
-"
+          text-xs
+
+
+          tracking-[0.4em]
+
+
+          uppercase
+
+
+          font-bold
+
+
+
+          text-emerald-700
+
+
+
+          dark:text-emerald-400
+          "
           >
             MY SKILLS
           </p>
 
-          <motion.h2
-            animate={{
-              backgroundPosition: ["0% center", "200% center"],
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "linear",
-            }}
+          <h2
             className="
-mt-4
-text-4xl
-md:text-5xl
-font-black
-bg-gradient-to-r
-from-white
-via-cyan-200
-to-purple-300
-bg-[length:300%_auto]
-bg-clip-text
-text-transparent
-"
+          mt-5
+
+
+          text-4xl
+
+
+          md:text-6xl
+
+
+          font-black
+
+
+
+
+
+
+          bg-gradient-to-r
+
+
+
+          from-emerald-800
+
+
+
+          via-emerald-600
+
+
+
+          to-green-700
+
+
+
+
+
+          dark:from-white
+
+
+
+          dark:via-emerald-200
+
+
+
+          dark:to-green-300
+
+
+
+
+          bg-clip-text
+
+
+          text-transparent
+          "
           >
             Technologies & Tools I Work With
-          </motion.h2>
+          </h2>
 
           <p
             className="
-max-w-xl
-mx-auto
-mt-5
-text-slate-400
-leading-relaxed
-"
+          max-w-2xl
+
+
+          mx-auto
+
+
+          mt-6
+
+
+
+          text-lg
+
+
+
+          leading-relaxed
+
+
+
+          text-slate-600
+
+
+
+          dark:text-slate-400
+          "
           >
             Technologies and tools I have learned and applied through academic
-            and personal projects while continuously improving my development
-            skills.
+            and personal projects while continuously improving my frontend
+            development skills.
           </p>
         </motion.div>
 
         {/* SKILL GRID */}
 
-        <div
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 40,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 0.8,
+          }}
           className="
-grid
-md:grid-cols-2
-lg:grid-cols-3
-gap-6
-"
+        grid
+
+
+        md:grid-cols-2
+
+
+        lg:grid-cols-3
+
+
+        gap-8
+        "
         >
           {skillCategories.map((category, index) => (
             <SkillCard key={category.title} category={category} index={index} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

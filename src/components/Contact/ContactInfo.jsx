@@ -38,176 +38,488 @@ export default function ContactInfo() {
   return (
     <div
       className="
-      glass
+      relative
+
+      overflow-hidden
+
+
+
       rounded-[32px]
-      p-8
+
+
+
+      p-6
+
+      sm:p-8
+
+
+
+
+
+      bg-white/40
+
+
+
+      dark:bg-white/[0.06]
+
+
+
+
+
+      border
+
+
+
+      border-black/10
+
+
+
+      dark:border-white/10
+
+
+
+
+
+      backdrop-blur-2xl
+
+
+
+
+
+      shadow-[0_20px_60px_rgba(16,185,129,0.12)]
+
       "
     >
-      <h3
-        className="
-        text-2xl
-        font-bold
-        mb-8
-        "
-      >
-        Let's Connect
-      </h3>
-
-      <div className="space-y-6">
-        <div>
-          <p className="text-slate-400 text-sm">Email</p>
-
-          <p className="mt-1 font-semibold">kimhong4446@gmail.com</p>
-        </div>
-
-        <div>
-          <p className="text-slate-400 text-sm">Location</p>
-
-          <p className="mt-1 font-semibold">Phnom Penh, Cambodia</p>
-        </div>
-
-        <div>
-          <p className="text-slate-400 text-sm">Availability</p>
-
-          <p className="mt-1 font-semibold">
-            Open to Frontend Internship Opportunities
-          </p>
-        </div>
-      </div>
-
-      {/* SOCIAL ICON BUTTONS */}
+      {/* GREEN GLASS FLOOD */}
 
       <div
         className="
-        flex
-        items-center
-        gap-3
-        mt-10
+        absolute
+
+
+        bottom-0
+
+
+        left-0
+
+
+        w-full
+
+
+        h-40
+
+
+
+
+        bg-gradient-to-t
+
+
+
+        from-emerald-500/20
+
+
+
+        to-transparent
+
+
+
+
+
+        blur-3xl
+
+
+
+        opacity-70
+
+
+
+        pointer-events-none
+        "
+      />
+
+      <div
+        className="
+        relative
+
+        z-10
         "
       >
-        {socials.map((item, index) => (
-          <motion.a
-            key={index}
-            href={item.link}
-            target="_blank"
-            rel="noreferrer"
-            initial="rest"
-            whileHover="hover"
-            variants={{
-              rest: {
-                width: 48,
-              },
+        <h3
+          className="
+        text-xl
 
-              hover: {
-                width: 125,
-              },
-            }}
-            transition={{
-              duration: 0.25,
-              ease: "easeOut",
-            }}
-            className="
-            relative
-            h-12
-            flex
-            items-center
-            justify-center
-            rounded-xl
-            overflow-hidden
-            bg-white/5
-            border
-            border-white/10
-            text-slate-300
-            hover:text-white
-            hover:border-cyan-400/50
-            hover:bg-white/10
-            transition-colors
-            duration-200
+        sm:text-2xl
+
+
+        font-black
+
+
+        mb-8
+
+
+
+        text-slate-900
+
+
+
+        dark:text-white
+        "
+        >
+          Let's Connect
+        </h3>
+
+        <div
+          className="
+        space-y-6
+        "
+        >
+          <div>
+            <p
+              className="
+            text-sm
+
+            text-slate-500
+
+            dark:text-slate-400
             "
-          >
-            {/* ICON */}
+            >
+              Email
+            </p>
 
-            <motion.span
+            <p
+              className="
+            mt-1
+
+            font-semibold
+
+            text-slate-900
+
+            dark:text-white
+
+            break-all
+            "
+            >
+              kimhong4446@gmail.com
+            </p>
+          </div>
+
+          <div>
+            <p
+              className="
+            text-sm
+
+            text-slate-500
+
+            dark:text-slate-400
+            "
+            >
+              Location
+            </p>
+
+            <p
+              className="
+            mt-1
+
+            font-semibold
+
+            text-slate-900
+
+            dark:text-white
+            "
+            >
+              Phnom Penh, Cambodia
+            </p>
+          </div>
+
+          <div>
+            <p
+              className="
+            text-sm
+
+            text-slate-500
+
+            dark:text-slate-400
+            "
+            >
+              Availability
+            </p>
+
+            <p
+              className="
+            mt-1
+
+            font-semibold
+
+            text-slate-900
+
+            dark:text-white
+            "
+            >
+              Open to Frontend Internship Opportunities
+            </p>
+          </div>
+        </div>
+
+        {/* SOCIAL BUTTONS */}
+
+        <div
+          className="
+        flex
+
+        flex-wrap
+
+        items-center
+
+
+        gap-3
+
+
+        mt-10
+        "
+        >
+          {socials.map((item, index) => (
+            <motion.a
+              key={index}
+              href={item.link}
+              target="_blank"
+              rel="noreferrer"
+              initial="rest"
+              whileHover="hover"
               variants={{
                 rest: {
-                  x: 0,
+                  width: 48,
                 },
 
                 hover: {
-                  x: -35,
+                  width: 125,
                 },
               }}
               transition={{
                 duration: 0.25,
+
                 ease: "easeOut",
               }}
               className="
+            relative
+
+            h-12
+
+            flex
+
+            items-center
+
+            justify-center
+
+
+
+            rounded-xl
+
+
+
+
+
+            bg-black/5
+
+
+
+            dark:bg-white/5
+
+
+
+
+
+            border
+
+
+
+            border-black/10
+
+
+
+            dark:border-white/10
+
+
+
+
+
+            text-slate-600
+
+
+
+            dark:text-slate-300
+
+
+
+
+
+            hover:text-emerald-600
+
+
+
+            dark:hover:text-emerald-300
+
+
+
+
+
+            hover:border-emerald-400/50
+
+
+
+
+
+            overflow-hidden
+
+
+
+            transition-colors
+            "
+            >
+              <motion.span
+                variants={{
+                  rest: {
+                    x: 0,
+                  },
+
+                  hover: {
+                    x: -35,
+                  },
+                }}
+                transition={{
+                  duration: 0.25,
+                }}
+                className="
               absolute
+
+
               left-1/2
+
+
               -translate-x-1/2
+
+
               text-lg
               "
-            >
-              {item.icon}
-            </motion.span>
+              >
+                {item.icon}
+              </motion.span>
 
-            {/* NAME */}
+              <motion.span
+                variants={{
+                  rest: {
+                    opacity: 0,
+                    x: 20,
+                  },
 
-            <motion.span
-              variants={{
-                rest: {
-                  opacity: 0,
-                  x: 20,
-                },
-
-                hover: {
-                  opacity: 1,
-                  x: 10,
-                },
-              }}
-              transition={{
-                duration: 0.25,
-              }}
-              className="
+                  hover: {
+                    opacity: 1,
+                    x: 10,
+                  },
+                }}
+                transition={{
+                  duration: 0.25,
+                }}
+                className="
               text-sm
-              font-medium
+
+              font-semibold
+
               whitespace-nowrap
               "
-            >
-              {item.name}
-            </motion.span>
+              >
+                {item.name}
+              </motion.span>
+            </motion.a>
+          ))}
+
+          {/* RESUME */}
+
+          <motion.a
+            href="/York_Kimhong.pdf"
+            download="York_Kimhong.pdf"
+            whileHover={{
+              scale: 1.05,
+            }}
+            whileTap={{
+              scale: 0.95,
+            }}
+            className="
+        h-12
+
+
+        px-5
+
+
+
+        flex
+
+
+        items-center
+
+
+        gap-2
+
+
+
+
+        rounded-xl
+
+
+
+
+
+        bg-gradient-to-r
+
+
+
+        from-emerald-600
+
+
+
+        to-green-500
+
+
+
+
+
+        text-white
+
+
+
+
+
+        text-sm
+
+
+        font-semibold
+
+
+
+
+
+        shadow-[0_10px_30px_rgba(16,185,129,0.35)]
+
+
+
+
+
+        hover:from-emerald-500
+
+
+
+        hover:to-green-400
+
+
+
+
+
+        transition-all
+        "
+          >
+            <FaDownload />
+            Resume
           </motion.a>
-        ))}
-
-        {/* RESUME DOWNLOAD BUTTON */}
-
-        <motion.a
-          href="/York_Kimhong.pdf"
-          download="York_Kimhong.pdf"
-          whileHover={{
-            scale: 1.05,
-          }}
-          whileTap={{
-            scale: 0.95,
-          }}
-          className="
-          h-12
-          px-5
-          flex
-          items-center
-          gap-2
-          rounded-xl
-          bg-gradient-to-r
-          from-cyan-500
-          to-purple-500
-          text-white
-          text-sm
-          font-semibold
-          "
-        >
-          <FaDownload />
-          Resume
-        </motion.a>
+        </div>
       </div>
     </div>
   );

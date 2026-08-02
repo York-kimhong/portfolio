@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact",
+    "resume": "Resume"
+  },
+
+  "hero": {
+    "title": "Frontend Developer",
+    "description": "Building modern and responsive web experiences."
+  }
+}

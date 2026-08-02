@@ -17,62 +17,257 @@ export default function AboutIntro() {
       viewport={{
         once: true,
       }}
+      whileHover={{
+        y: -8,
+        rotateX: 3,
+        rotateY: 3,
+        scale: 1.02,
+      }}
+      style={{
+        transformStyle: "preserve-3d",
+      }}
       className="
-lg:col-span-2
+      relative
 
-rounded-[32px]
+      group
 
-p-8
+      overflow-hidden
 
-bg-white/5
 
-border
 
-border-white/10
+      lg:col-span-2
 
-backdrop-blur-xl
-"
+
+
+      rounded-[32px]
+
+
+
+      p-8
+
+
+
+
+
+      bg-white/30
+
+
+      dark:bg-white/[0.06]
+
+
+
+
+
+
+      border
+
+
+      border-white/50
+
+
+      dark:border-white/10
+
+
+
+
+
+      backdrop-blur-2xl
+
+
+
+
+
+      shadow-[0_20px_60px_rgba(16,185,129,0.12)]
+
+
+
+      hover:shadow-[0_30px_90px_rgba(16,185,129,0.25)]
+
+
+
+
+      transition-all
+
+
+      duration-500
+      "
     >
-      <h3
+      {/* GLASS REFLECTION */}
+
+      <div
         className="
-text-2xl
+        absolute
 
-font-bold
 
-mb-5
-"
-      >
-        Who I Am
-      </h3>
+        inset-0
 
-      <p
+
+
+        bg-gradient-to-br
+
+
+        from-white/50
+
+
+        via-transparent
+
+
+        to-transparent
+
+
+
+        dark:from-white/20
+
+
+
+        pointer-events-none
+        "
+      />
+
+      {/* GREEN AMBIENT FLOOD */}
+
+      <motion.div
+        animate={{
+          y: ["120%", "-20%", "120%"],
+        }}
+        transition={{
+          duration: 10,
+
+          repeat: Infinity,
+
+          ease: "easeInOut",
+        }}
         className="
-text-slate-300
+        absolute
 
-leading-relaxed
 
-text-sm
-"
-      >
-        I am a third-year Information Technology Engineering student at Royal
-        University of Phnom Penh with an interest in frontend development and UI
-        design.
-      </p>
+        bottom-0
 
-      <p
+
+        left-0
+
+
+
+        w-full
+
+
+        h-[60%]
+
+
+
+
+        bg-gradient-to-t
+
+
+
+        from-emerald-600/25
+
+
+
+        via-emerald-400/10
+
+
+
+        to-transparent
+
+
+
+
+
+
+        blur-3xl
+
+
+
+
+        opacity-0
+
+
+
+        group-hover:opacity-100
+
+
+
+        transition-opacity
+
+
+        duration-700
+        "
+      />
+
+      {/* CONTENT */}
+
+      <div
         className="
-mt-5
+        relative
 
-text-slate-400
-
-leading-relaxed
-
-text-sm
-"
+        z-10
+        "
       >
-        I enjoy creating clean interfaces, learning new development approaches,
-        and improving my skills through academic and personal projects.
-      </p>
+        <h3
+          className="
+        text-2xl
+
+
+        font-black
+
+
+        mb-5
+
+
+
+        text-slate-900
+
+
+        dark:text-white
+        "
+        >
+          Who I Am
+        </h3>
+
+        <p
+          className="
+        text-sm
+
+
+        leading-relaxed
+
+
+
+        text-slate-600
+
+
+        dark:text-slate-300
+        "
+        >
+          I am a third-year Information Technology Engineering student at Royal
+          University of Phnom Penh with an interest in frontend development and
+          UI design.
+        </p>
+
+        <p
+          className="
+        mt-5
+
+
+        text-sm
+
+
+        leading-relaxed
+
+
+
+        text-slate-500
+
+
+        dark:text-slate-400
+        "
+        >
+          I enjoy creating clean interfaces, learning new development
+          approaches, and improving my skills through academic and personal
+          projects.
+        </p>
+      </div>
     </motion.div>
   );
 }

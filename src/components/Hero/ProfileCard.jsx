@@ -4,17 +4,19 @@ export default function ProfileCard() {
   return (
     <motion.div
       animate={{
-        y: [0, -12, 0],
-        rotateZ: [0, -1.5, 0],
+        y: [-10, 10, -10],
+        rotateX: [3, -3, 3],
+        rotateY: [-4, 4, -4],
+        rotateZ: [-1, 1, -1],
       }}
       whileHover={{
-        scale: 1.05,
-        rotateY: -8,
-        rotateX: 4,
-        y: -18,
+        scale: 1.07,
+        rotateY: -10,
+        rotateX: 8,
+        y: -22,
       }}
       transition={{
-        duration: 4,
+        duration: 8,
         repeat: Infinity,
         ease: "easeInOut",
       }}
@@ -34,66 +36,201 @@ export default function ProfileCard() {
       overflow-hidden
 
       border
-      border-white/15
 
-      bg-white/5
+      border-emerald-700/20
 
-      shadow-[0_0_50px_rgba(34,211,238,0.18)]
+      dark:border-white/15
 
-      hover:border-cyan-400/50
+
+      bg-white/40
+
+      dark:bg-white/5
+
+
+      backdrop-blur-xl
+
+
+      shadow-[0_40px_100px_rgba(5,150,105,0.18)]
+
+      dark:shadow-[0_40px_100px_rgba(16,185,129,0.18)]
+
+
+      hover:border-emerald-500/60
+
+
+      hover:shadow-[0_50px_120px_rgba(16,185,129,0.35)]
+
 
       transition-all
-      duration-300
 
+      duration-700
       "
     >
-      {/* HOVER GLOW */}
+      {/* PREMIUM GREEN FLOOD HOVER */}
 
-      <div
+      <motion.div
+        animate={{
+          backgroundPosition: ["50% 100%", "50% 0%", "50% 100%"],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "linear",
+        }}
         className="
         absolute
-        -inset-1
 
-        rounded-[90px_35px_90px_35px]
+        -inset-24
 
-        bg-gradient-to-r
 
-        from-cyan-400/20
+        z-0
 
-        via-purple-400/20
-
-        to-cyan-400/20
-
-        blur-xl
 
         opacity-0
 
+
         group-hover:opacity-100
+
+
+
+        bg-[length:200%_200%]
+
+
+
+        bg-gradient-to-t
+
+
+        from-emerald-700/80
+
+
+        via-emerald-400/40
+
+
+        to-transparent
+
+
+
+        blur-[90px]
+
+
 
         transition-opacity
 
-        duration-500
 
+        duration-700
         "
       />
 
-      {/* GLASS LAYER */}
+      {/* SECOND SOFT FLOOD LAYER */}
+
+      <motion.div
+        animate={{
+          y: [40, -40, 40],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="
+        absolute
+
+        bottom-[-80px]
+
+
+        left-0
+
+
+        w-full
+
+
+        h-[60%]
+
+
+        bg-gradient-to-t
+
+
+        from-green-500/30
+
+
+        to-transparent
+
+
+
+        blur-3xl
+
+
+
+        opacity-0
+
+
+        group-hover:opacity-100
+
+
+
+        transition-opacity
+
+
+        duration-700
+        "
+      />
+
+      {/* GLASS BORDER */}
 
       <div
         className="
         absolute
+
         inset-0
+
+
+        rounded-[90px_35px_90px_35px]
+
+
+        border
+
+        border-emerald-400/30
+
+
+        dark:border-emerald-400/20
+
+
+        z-10
+        "
+      />
+
+      {/* GLASS SURFACE */}
+
+      <div
+        className="
+        absolute
+
+        inset-0
+
 
         bg-gradient-to-br
 
-        from-white/20
+
+        from-white/30
+
 
         via-white/10
 
+
         to-transparent
+
+
+
+        dark:from-white/15
+
+
+        dark:via-white/5
+
 
         backdrop-blur-xl
 
+
+        z-10
         "
       />
 
@@ -104,132 +241,218 @@ export default function ProfileCard() {
         alt="York Kimhong"
         className="
         absolute
+
         inset-0
 
+
         w-full
+
         h-full
+
 
         object-cover
 
+
         object-top
+
+
+        z-20
+
 
         transition-transform
 
-        duration-500
+
+        duration-700
+
 
         group-hover:scale-110
-
         "
       />
 
-      {/* DARK FADE */}
+      {/* DARK IMAGE FADE */}
 
       <div
         className="
         absolute
+
         inset-0
+
 
         bg-gradient-to-t
 
-        from-slate-950/70
+
+        from-black/75
+
 
         via-transparent
 
+
         to-transparent
 
+
+        z-30
         "
       />
 
-      {/* NAME GLASS PANEL */}
+      {/* PREMIUM NAME PANEL */}
 
       <motion.div
         animate={{
-          y: [0, -4, 0],
+          y: [-3, 3, -3],
         }}
         transition={{
-          duration: 4,
-
+          duration: 5,
           repeat: Infinity,
-
           ease: "easeInOut",
         }}
         className="
         absolute
 
+
         bottom-6
+
 
         left-1/2
 
+
         -translate-x-1/2
 
-        z-30
 
 
-        px-7
+        z-50
 
-        py-3
+
+
+        px-8
+
+
+        py-3.5
+
 
 
         rounded-2xl
 
 
-        bg-black/40
+
+        bg-white/70
+
+
+        dark:bg-black/60
+
 
 
         border
 
-        border-white/10
+
+        border-black/10
 
 
-        backdrop-blur-xl
+        dark:border-white/20
 
 
-        shadow-[0_0_30px_rgba(34,211,238,0.15)]
 
+        backdrop-blur-2xl
+
+
+
+        shadow-[0_15px_40px_rgba(16,185,129,0.25)]
+
+
+
+        overflow-hidden
+
+
+
+        transition-all
+
+
+        duration-500
+
+
+
+        group-hover:border-emerald-500/60
+
+
+        dark:group-hover:border-emerald-400/60
         "
       >
-        <motion.p
+        {/* NAME INNER GLOW */}
+
+        <motion.div
           animate={{
-            backgroundPosition: ["0% center", "200% center"],
+            backgroundPosition: ["50% 100%", "50% 0%", "50% 100%"],
           }}
           transition={{
-            duration: 8,
-
+            duration: 6,
             repeat: Infinity,
-
             ease: "linear",
           }}
           className="
+          absolute
+
+          inset-0
+
+
+          bg-[length:200%_200%]
+
+
+          bg-gradient-to-t
+
+
+          from-emerald-500/40
+
+
+          via-transparent
+
+
+          to-transparent
+
+
+
+          opacity-0
+
+
+          group-hover:opacity-100
+
+
+
+          blur-xl
+          "
+        />
+
+        {/* NAME */}
+
+        <p
+          className="
+          relative
+
+
           text-xl
 
+
           font-black
+
 
           tracking-wide
 
 
-          bg-gradient-to-r
 
-          from-white
-
-          via-cyan-200
-
-          to-purple-100
+          text-emerald-800
 
 
-          bg-[length:300%_auto]
+          dark:text-white
 
 
-          bg-clip-text
 
-          text-transparent
+          drop-shadow-[0_0_12px_rgba(16,185,129,0.45)]
+
 
 
           whitespace-nowrap
-
           "
         >
           York Kimhong
-        </motion.p>
+        </p>
       </motion.div>
     </motion.div>
   );

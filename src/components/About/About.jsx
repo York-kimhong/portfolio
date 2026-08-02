@@ -11,23 +11,23 @@ export default function About() {
       id="about"
       className="
       relative
+
       py-28
+
       overflow-hidden
       "
     >
-      {/* BACKGROUND LIGHT */}
+      {/* BACKGROUND GLOW */}
 
       <motion.div
         animate={{
-          x: [0, 80, -40, 0],
-
-          y: [0, -50, 30, 0],
+          x: [-80, 80, -80],
+          y: [0, 40, 0],
+          scale: [1, 1.15, 1],
         }}
         transition={{
-          duration: 20,
-
+          duration: 14,
           repeat: Infinity,
-
           ease: "easeInOut",
         }}
         className="
@@ -35,49 +35,29 @@ export default function About() {
 
         top-20
 
-        left-10
+        left-1/2
 
-        w-96
+        -translate-x-1/2
 
-        h-96
 
-        bg-cyan-500/10
+        w-[500px]
 
-        rounded-full
+        h-[300px]
 
-        blur-[140px]
-        "
-      />
-
-      <motion.div
-        animate={{
-          x: [0, -60, 40, 0],
-
-          y: [0, 40, -30, 0],
-        }}
-        transition={{
-          duration: 22,
-
-          repeat: Infinity,
-
-          ease: "easeInOut",
-        }}
-        className="
-        absolute
-
-        bottom-10
-
-        right-10
-
-        w-[420px]
-
-        h-[420px]
-
-        bg-purple-500/10
 
         rounded-full
 
-        blur-[150px]
+
+        bg-emerald-500/20
+
+
+        dark:bg-emerald-400/15
+
+
+        blur-[120px]
+
+
+        pointer-events-none
         "
       />
 
@@ -101,65 +81,109 @@ export default function About() {
         <motion.div
           {...fadeUp}
           className="
-          text-center
+        text-center
 
-          mb-16
-          "
+        mb-16
+        "
         >
-          <p
+          <motion.p
+            animate={{
+              letterSpacing: ["0.35em", "0.45em", "0.35em"],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
             className="
-            text-cyan-400
+          text-emerald-700
 
-            text-sm
+          dark:text-emerald-400
 
-            tracking-[0.35em]
 
-            uppercase
+          text-sm
 
-            font-semibold
-            "
+
+          tracking-[0.35em]
+
+
+          uppercase
+
+
+          font-bold
+          "
           >
             ABOUT ME
-          </p>
+          </motion.p>
 
           <h2
             className="
-            mt-4
+          mt-4
 
-            text-4xl
 
-            md:text-5xl
+          text-4xl
 
-            font-black
 
-            bg-gradient-to-r
+          md:text-5xl
 
-            from-white
 
-            via-cyan-200
+          font-black
 
-            to-purple-200
 
-            bg-clip-text
 
-            text-transparent
-            "
+
+          bg-gradient-to-r
+
+
+          from-emerald-800
+
+
+          via-emerald-500
+
+
+          to-green-600
+
+
+
+          dark:from-white
+
+
+          dark:via-emerald-200
+
+
+          dark:to-green-300
+
+
+
+          bg-clip-text
+
+
+          text-transparent
+          "
           >
             My Journey Into Frontend Development
           </h2>
 
           <p
             className="
-            mt-5
+          mt-5
 
-            max-w-xl
 
-            mx-auto
+          max-w-xl
 
-            text-slate-400
 
-            leading-relaxed
-            "
+          mx-auto
+
+
+          leading-relaxed
+
+
+
+          text-slate-600
+
+
+          dark:text-slate-400
+          "
           >
             Information Technology Engineering student exploring frontend
             development and UI design through continuous learning and practical
@@ -171,14 +195,17 @@ export default function About() {
 
         <div
           className="
-          grid
+        grid
 
-          lg:grid-cols-5
 
-          gap-10
+        lg:grid-cols-5
 
-          items-start
-          "
+
+        gap-10
+
+
+        items-start
+        "
         >
           <AboutIntro />
 

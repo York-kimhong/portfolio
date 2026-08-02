@@ -9,68 +9,64 @@ export default function Contact() {
       id="contact"
       className="
       relative
+
       py-32
+
       overflow-hidden
       "
     >
-      {/* BACKGROUND GLOW */}
+      {/* PREMIUM GREEN AMBIENT LIGHT */}
 
-      <motion.div
-        animate={{
-          x: [0, 80, -40, 0],
-          y: [0, -50, 30, 0],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      <div
         className="
         absolute
+
+
         top-20
-        left-10
 
-        w-96
-        h-96
 
-        bg-cyan-500/10
+        left-1/2
 
-        rounded-full
 
-        blur-[140px]
-        "
-      />
+        -translate-x-1/2
 
-      <motion.div
-        animate={{
-          x: [0, -60, 40, 0],
-          y: [0, 40, -30, 0],
-        }}
-        transition={{
-          duration: 22,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-        absolute
-        bottom-10
-        right-10
 
-        w-[420px]
-        h-[420px]
 
-        bg-purple-500/10
+        w-[650px]
+
+
+        h-[350px]
+
+
 
         rounded-full
+
+
+
+        bg-emerald-500/15
+
+
+
+        dark:bg-emerald-400/10
+
+
 
         blur-[150px]
+
+
+
+        pointer-events-none
         "
       />
 
       <div
         className="
         section-container
+
+
         relative
+
+
         z-10
         "
       >
@@ -92,59 +88,121 @@ export default function Contact() {
             duration: 0.7,
           }}
           className="
-          text-center
-          mb-16
-          "
+        text-center
+
+
+        mb-20
+        "
         >
           <p
             className="
-            text-cyan-400
-            uppercase
-            tracking-[0.35em]
-            text-sm
-            font-semibold
-            "
+          text-xs
+
+
+          uppercase
+
+
+          tracking-[0.4em]
+
+
+          font-bold
+
+
+
+          text-emerald-700
+
+
+
+          dark:text-emerald-400
+          "
           >
             CONTACT
           </p>
 
           <h2
             className="
-            mt-5
+          mt-5
 
-            text-4xl
-            md:text-5xl
 
-            font-black
+          text-4xl
 
-            bg-gradient-to-r
 
-            from-white
+          md:text-6xl
 
-            via-cyan-300
 
-            to-purple-400
+          font-black
 
-            bg-clip-text
 
-            text-transparent
-            "
+
+
+
+          bg-gradient-to-r
+
+
+
+          from-emerald-800
+
+
+
+          via-emerald-600
+
+
+
+          to-green-700
+
+
+
+
+
+          dark:from-white
+
+
+
+          dark:via-emerald-200
+
+
+
+          dark:to-green-300
+
+
+
+
+
+          bg-clip-text
+
+
+          text-transparent
+          "
           >
             Open to Frontend Opportunities
           </h2>
 
           <p
             className="
-            mt-5
+          mt-6
 
-            max-w-2xl
 
-            mx-auto
+          max-w-2xl
 
-            text-slate-400
 
-            leading-relaxed
-            "
+          mx-auto
+
+
+
+          text-lg
+
+
+          leading-relaxed
+
+
+
+
+          text-slate-600
+
+
+
+          dark:text-slate-400
+          "
           >
             I am currently looking for frontend internship opportunities where I
             can contribute my skills, collaborate with a team, and continue
@@ -154,19 +212,38 @@ export default function Contact() {
 
         {/* CONTENT */}
 
-        <div
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 40,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 0.8,
+          }}
           className="
-          grid
+        grid
 
-          lg:grid-cols-2
 
-          gap-10
-          "
+        lg:grid-cols-2
+
+
+        gap-10
+
+
+        items-start
+        "
         >
           <ContactInfo />
 
           <ContactForm />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

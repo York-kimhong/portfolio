@@ -32,93 +32,18 @@ export default function Hero() {
       id="home"
       className="
       min-h-screen
-
       flex
-
       items-center
-
       relative
-
       overflow-hidden
-
-      bg-gradient-to-br
-
-      from-[#020617]
-
-      via-[#030712]
-
-      to-[#020617]
       "
     >
-      {/* BACKGROUND GLOW */}
-
-      <motion.div
-        animate={{
-          x: [0, 70, 0],
-          y: [0, -40, 0],
-        }}
-        transition={{
-          duration: 16,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-        absolute
-
-        top-20
-
-        left-20
-
-        w-[420px]
-
-        h-[420px]
-
-        bg-cyan-500/10
-
-        rounded-full
-
-        blur-[150px]
-        "
-      />
-
-      <motion.div
-        animate={{
-          x: [0, -60, 0],
-          y: [0, 50, 0],
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-        absolute
-
-        bottom-20
-
-        right-20
-
-        w-[420px]
-
-        h-[420px]
-
-        bg-purple-500/10
-
-        rounded-full
-
-        blur-[160px]
-        "
-      />
-
       <div className="section-container">
         <div
           className="
           grid
-
           lg:grid-cols-[1.3fr_1fr]
-
           gap-14
-
           items-center
           "
         >
@@ -141,22 +66,18 @@ export default function Hero() {
               }}
               className="
               inline-flex
-
               items-center
-
               gap-3
 
               px-5
-
               py-2
 
               rounded-full
 
-              bg-cyan-400/10
+              bg-emerald-500/10
 
               border
-
-              border-cyan-400/20
+              border-emerald-500/20
 
               backdrop-blur-xl
 
@@ -166,14 +87,13 @@ export default function Hero() {
               <span
                 className="
                 w-2.5
-
                 h-2.5
 
                 rounded-full
 
-                bg-cyan-400
+                bg-emerald-500
 
-                shadow-[0_0_15px_#22d3ee]
+                shadow-[0_0_20px_#34d399]
                 "
               />
 
@@ -181,7 +101,9 @@ export default function Hero() {
                 className="
                 text-sm
 
-                text-cyan-300
+                text-emerald-700
+
+                dark:text-emerald-300
                 "
               >
                 Open to Frontend Internship Opportunities
@@ -193,9 +115,7 @@ export default function Hero() {
             <h1
               className="
               text-5xl
-
               md:text-6xl
-
               xl:text-7xl
 
               font-black
@@ -209,19 +129,25 @@ export default function Hero() {
                 }}
                 transition={{
                   duration: 8,
-
                   repeat: Infinity,
-
                   ease: "linear",
                 }}
                 className="
                 bg-gradient-to-r
 
-                from-white
+                from-slate-900
 
-                via-cyan-200
+                via-emerald-600
 
-                to-purple-200
+                to-green-700
+
+
+                dark:from-white
+
+                dark:via-emerald-200
+
+                dark:to-green-300
+
 
                 bg-[length:300%_auto]
 
@@ -235,7 +161,9 @@ export default function Hero() {
 
               <span
                 className="
-                text-cyan-400
+                text-emerald-600
+
+                dark:text-emerald-400
 
                 animate-pulse
                 "
@@ -256,13 +184,16 @@ export default function Hero() {
 
               leading-relaxed
 
-              text-slate-300
+
+              text-slate-600
+
+              dark:text-slate-300
               "
             >
               Information Technology Engineering student passionate about
-              frontend development and UI design. I enjoy learning and building
-              projects to improve my skills in creating clean and user-friendly
-              interfaces.
+              frontend development and UI design. I enjoy creating modern, clean
+              and user-friendly digital experiences while continuously improving
+              my skills.
             </p>
 
             {/* BUTTONS */}
@@ -278,6 +209,8 @@ export default function Hero() {
               gap-4
               "
             >
+              {/* PRIMARY */}
+
               <a
                 href="#projects"
                 className="
@@ -289,6 +222,7 @@ export default function Hero() {
 
                 gap-2
 
+
                 px-8
 
                 py-4
@@ -299,17 +233,18 @@ export default function Hero() {
 
                 bg-gradient-to-r
 
-                from-cyan-400
+                from-emerald-500
 
-                to-cyan-500
-
-
-                hover:from-cyan-300
-
-                hover:to-cyan-400
+                to-green-600
 
 
-                text-slate-950
+                hover:from-emerald-400
+
+                hover:to-green-500
+
+
+                text-white
+
 
                 font-semibold
 
@@ -317,7 +252,7 @@ export default function Hero() {
                 transition
 
 
-                shadow-[0_0_35px_rgba(34,211,238,0.35)]
+                shadow-[0_0_35px_rgba(52,211,153,0.35)]
                 "
               >
                 View Projects
@@ -330,6 +265,8 @@ export default function Hero() {
                 />
               </a>
 
+              {/* SECONDARY */}
+
               <a
                 href="/resume.pdf"
                 className="
@@ -337,24 +274,38 @@ export default function Hero() {
 
                 py-4
 
+
                 rounded-xl
 
 
-                bg-white/5
+                bg-slate-900/5
+
+
+                dark:bg-white/5
+
 
 
                 border
 
-                border-white/10
+                border-slate-900/10
+
+
+                dark:border-white/10
+
 
 
                 backdrop-blur-xl
 
 
-                text-white
+
+                text-slate-900
 
 
-                hover:border-cyan-400/40
+                dark:text-white
+
+
+
+                hover:border-emerald-500/40
 
 
                 transition

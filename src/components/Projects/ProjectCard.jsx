@@ -25,59 +25,137 @@ export default function ProjectCard({ project, index }) {
         ease: [0.22, 1, 0.36, 1],
       }}
       whileHover={{
-        y: -8,
-        scale: 1.02,
-        rotateX: 1,
-        rotateY: -1,
+        y: -10,
+        scale: 1.03,
+        rotateX: 3,
+        rotateY: -3,
       }}
       style={{
         transformStyle: "preserve-3d",
       }}
       className="
       group
+
       relative
-      rounded-[26px]
+
       overflow-hidden
 
-      bg-white/[0.04]
+
+
+      rounded-[28px]
+
+
+
+      bg-white/40
+
+
+      dark:bg-white/[0.05]
+
+
 
       border
-      border-white/10
 
-      backdrop-blur-xl
+
+      border-black/10
+
+
+      dark:border-white/10
+
+
+
+      backdrop-blur-2xl
+
+
 
       hover:border-cyan-400/40
 
-      transition-all
-      duration-300
-      ease-out
 
-      hover:shadow-[0_15px_45px_rgba(34,211,238,0.15)]
+
+      shadow-[0_20px_60px_rgba(16,185,129,0.12)]
+
+
+
+      hover:shadow-[0_25px_70px_rgba(34,211,238,0.2)]
+
+
+
+      transition-all
+
+      duration-500
       "
     >
-      {/* Hover Glow */}
+      {/* OLD PREMIUM HOVER GLOW */}
 
       <div
         className="
         absolute
+
         inset-0
 
+
+
         bg-gradient-to-br
-        from-cyan-400/10
+
+
+        from-cyan-400/15
+
+
         via-transparent
-        to-purple-500/10
+
+
+        to-purple-500/15
+
+
+
 
         opacity-0
+
+
+
         group-hover:opacity-100
 
+
+
         transition-opacity
-        duration-300
+
+
+
+        duration-500
+        "
+      />
+
+      {/* GLASS LIGHT */}
+
+      <div
+        className="
+        absolute
+
+
+        inset-0
+
+
+
+        bg-gradient-to-br
+
+
+        from-white/40
+
+
+        via-transparent
+
+
+        to-transparent
+
+
+
+        dark:from-white/10
         "
       />
 
       <div
         className="
         relative
+
         z-10
         "
       >
@@ -85,38 +163,51 @@ export default function ProjectCard({ project, index }) {
 
         <div
           className="
-          relative
-          overflow-hidden
-          h-44
-          "
+        relative
+
+        overflow-hidden
+
+        h-44
+        "
         >
           <motion.img
             src={project.image}
             alt={project.title}
             whileHover={{
-              scale: 1.06,
+              scale: 1.08,
             }}
             transition={{
-              duration: 0.35,
-              ease: "easeOut",
+              duration: 0.5,
             }}
             className="
-            w-full
-            h-full
-            object-cover
-            "
+          w-full
+
+          h-full
+
+          object-cover
+          "
           />
 
           <div
             className="
-            absolute
-            inset-0
+          absolute
 
-            bg-gradient-to-t
-            from-slate-950/70
-            via-transparent
-            to-transparent
-            "
+
+          inset-0
+
+
+
+          bg-gradient-to-t
+
+
+          from-black/70
+
+
+          via-transparent
+
+
+          to-transparent
+          "
           />
         </div>
 
@@ -124,120 +215,172 @@ export default function ProjectCard({ project, index }) {
 
         <div
           className="
-          p-5
-          "
+        p-6
+        "
         >
           <p
             className="
-            text-cyan-300
-            text-[11px]
+        text-[11px]
 
-            tracking-[0.3em]
 
-            uppercase
+        uppercase
 
-            font-semibold
-            "
+
+        tracking-[0.3em]
+
+
+        font-bold
+
+
+
+        text-cyan-600
+
+
+
+        dark:text-cyan-300
+        "
           >
             {project.category}
           </p>
 
-          <motion.h3
+          <h3
             className="
-            mt-3
+        mt-3
 
-            text-xl
 
-            font-black
+        text-xl
 
-            bg-gradient-to-r
 
-            from-white
+        font-black
 
-            via-cyan-200
 
-            to-purple-300
 
-            bg-[length:200%_auto]
+        bg-gradient-to-r
 
-            bg-clip-text
 
-            text-transparent
+        from-slate-900
 
-            "
+
+        via-emerald-600
+
+
+        to-green-600
+
+
+
+        dark:from-white
+
+
+        dark:via-cyan-200
+
+
+        dark:to-purple-300
+
+
+
+        bg-clip-text
+
+
+        text-transparent
+        "
           >
             {project.title}
-          </motion.h3>
+          </h3>
 
           <p
             className="
-            mt-3
+        mt-3
 
-            text-xs
 
-            text-slate-400
+        text-sm
 
-            leading-relaxed
 
-            group-hover:text-slate-200
+        leading-relaxed
 
-            transition-colors
 
-            duration-300
-            "
+
+        text-slate-600
+
+
+
+        dark:text-slate-400
+
+
+
+        group-hover:text-slate-900
+
+
+
+        dark:group-hover:text-slate-200
+
+
+
+        transition-colors
+        "
           >
             {project.description}
           </p>
 
-          {/* TECH STACK */}
+          {/* TECH */}
 
           <div
             className="
-            flex
-            flex-wrap
+        flex
 
-            gap-2
+        flex-wrap
 
-            mt-5
-            "
+        gap-2
+
+        mt-5
+        "
           >
             {project.tech.map((tech) => (
-              <motion.span
+              <span
                 key={tech}
-                whileHover={{
-                  y: -2,
-                  scale: 1.05,
-                }}
-                transition={{
-                  duration: 0.15,
-                }}
                 className="
-                  px-2.5
-                  py-1
+            px-3
 
-                  rounded-full
+            py-1
 
-                  text-[11px]
 
-                  bg-white/5
+            rounded-full
 
-                  border
 
-                  border-white/10
 
-                  text-slate-300
+            text-[11px]
 
-                  hover:text-white
 
-                  hover:border-cyan-400/40
 
-                  transition
+            bg-white/40
 
-                  duration-200
-                  "
+
+
+            dark:bg-white/5
+
+
+
+            border
+
+
+
+            border-black/10
+
+
+
+            dark:border-white/10
+
+
+
+
+            text-slate-700
+
+
+
+            dark:text-slate-300
+            "
               >
                 {tech}
-              </motion.span>
+              </span>
             ))}
           </div>
 
@@ -245,11 +388,12 @@ export default function ProjectCard({ project, index }) {
 
           <div
             className="
-            flex
-            gap-3
+        flex
 
-            mt-5
-            "
+        gap-3
+
+        mt-6
+        "
           >
             <motion.a
               href={project.github}
@@ -260,37 +404,61 @@ export default function ProjectCard({ project, index }) {
                 scale: 0.95,
               }}
               className="
-              flex
-              items-center
+          flex
 
-              gap-2
+          items-center
 
-              px-4
-              py-2
+          gap-2
 
-              rounded-xl
 
-              bg-white/5
 
-              border
+          px-4
 
-              border-white/10
+          py-2
 
-              text-xs
 
-              text-slate-300
 
-              hover:text-white
+          rounded-xl
 
-              hover:border-cyan-400/40
 
-              transition
-              duration-200
-              "
+
+          bg-white/40
+
+
+
+          dark:bg-white/5
+
+
+
+          border
+
+
+
+          border-black/10
+
+
+
+          dark:border-white/10
+
+
+
+
+          text-xs
+
+
+
+          text-slate-700
+
+
+
+          dark:text-slate-300
+          "
             >
               <FaGithub />
               Code
             </motion.a>
+
+            {/* DEMO BUTTON */}
 
             <motion.a
               href={project.demo}
@@ -301,28 +469,57 @@ export default function ProjectCard({ project, index }) {
                 scale: 0.95,
               }}
               className="
-              flex
-              items-center
+  flex
 
-              gap-2
+  items-center
 
-              px-4
-              py-2
+  gap-2
 
-              rounded-xl
 
-              bg-gradient-to-r
+  px-4
 
-              from-cyan-500
+  py-2
 
-              to-purple-500
 
-              text-xs
+  rounded-xl
 
-              font-semibold
 
-              shadow-[0_0_20px_rgba(34,211,238,0.25)]
-              "
+  bg-gradient-to-r
+
+
+  from-emerald-600
+
+
+  to-green-500
+
+
+
+  text-white
+
+
+  text-xs
+
+
+  font-semibold
+
+
+
+  shadow-[0_0_25px_rgba(16,185,129,0.35)]
+
+
+
+  hover:from-emerald-500
+
+
+  hover:to-green-400
+
+
+
+  transition-all
+
+
+  duration-300
+  "
             >
               <FaExternalLinkAlt />
               Demo
