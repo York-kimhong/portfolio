@@ -2,11 +2,13 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 export default function ProjectGallery({ project }) {
+  const images = project?.gallery || [];
+
+  const [activeImage, setActiveImage] = useState(
+    images[0] || project?.image || "",
+  );
+
   if (!project) return null;
-
-  const images = project.gallery || [];
-
-  const [activeImage, setActiveImage] = useState(images[0] || project.image);
 
   if (images.length === 0) {
     return null;
@@ -42,13 +44,9 @@ export default function ProjectGallery({ project }) {
         <p
           className="
           uppercase
-
           tracking-[0.35em]
-
           text-xs
-
           font-bold
-
           text-emerald-500
           "
         >
@@ -58,15 +56,10 @@ export default function ProjectGallery({ project }) {
         <h2
           className="
           mt-4
-
           text-4xl
-
           md:text-5xl
-
           font-black
-
           text-slate-900
-
           dark:text-white
           "
         >
@@ -76,9 +69,7 @@ export default function ProjectGallery({ project }) {
         <p
           className="
           mt-5
-
           text-slate-600
-
           dark:text-slate-400
           "
         >
@@ -94,14 +85,11 @@ export default function ProjectGallery({ project }) {
 
         p-5
 
-
         bg-white/40
 
         dark:bg-white/[0.06]
 
-
         backdrop-blur-xl
-
 
         border
 
@@ -132,9 +120,7 @@ export default function ProjectGallery({ project }) {
 
           object-contain
 
-
           rounded-[30px]
-
 
           shadow-2xl
           "
@@ -184,34 +170,32 @@ export default function ProjectGallery({ project }) {
               y: -6,
             }}
             className={`
-              
-              rounded-3xl
+            
+            rounded-3xl
 
-              overflow-hidden
+            overflow-hidden
 
-              border
+            border
 
-              transition-all
+            transition-all
 
 
-              ${
-                activeImage === img
-                  ? "border-emerald-400 shadow-lg shadow-emerald-500/20"
-                  : "border-black/10 dark:border-white/10"
-              }
+            ${
+              activeImage === img
+                ? "border-emerald-400 shadow-lg shadow-emerald-500/20"
+                : "border-black/10 dark:border-white/10"
+            }
 
-              `}
+            `}
           >
             <img
               src={img}
               alt={`${project.title}-${index}`}
               className="
-                w-full
-
-                h-40
-
-                object-cover
-                "
+              w-full
+              h-40
+              object-cover
+              "
             />
           </motion.button>
         ))}
