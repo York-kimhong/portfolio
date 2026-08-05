@@ -16,7 +16,7 @@ import Background from "./components/Background/Background";
 
 // PROJECT DETAIL
 
-import ProjectDetail from "./components/Projects/ProjectDetail/pages/ProjectDetail";
+import ProjectDetail from "./components/Projects/Projectdetail/Pages/ProjectDetail";
 
 function Home() {
   return (
