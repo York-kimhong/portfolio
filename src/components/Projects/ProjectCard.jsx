@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
+import { FaGithub, FaExternalLinkAlt, FaArrowRight } from "react-icons/fa";
 
 export default function ProjectCard({ project, index }) {
   return (
@@ -20,510 +22,396 @@ export default function ProjectCard({ project, index }) {
         amount: 0.2,
       }}
       transition={{
-        duration: 0.6,
+        duration: 0.7,
         delay: index * 0.1,
-        ease: [0.22, 1, 0.36, 1],
       }}
       whileHover={{
-        y: -10,
-        scale: 1.03,
-        rotateX: 3,
-        rotateY: -3,
-      }}
-      style={{
-        transformStyle: "preserve-3d",
+        y: -8,
       }}
       className="
       group
-
       relative
-
       overflow-hidden
-
-
-
-      rounded-[28px]
-
-
+      rounded-[32px]
 
       bg-white/40
 
-
-      dark:bg-white/[0.05]
-
-
+      dark:bg-white/[0.06]
 
       border
-
-
       border-black/10
-
 
       dark:border-white/10
 
+      backdrop-blur-xl
 
+      shadow-xl
 
-      backdrop-blur-2xl
-
-
-
-      hover:border-cyan-400/40
-
-
-
-      shadow-[0_20px_60px_rgba(16,185,129,0.12)]
-
-
-
-      hover:shadow-[0_25px_70px_rgba(34,211,238,0.2)]
-
-
+      hover:border-emerald-400/40
 
       transition-all
 
       duration-500
       "
     >
-      {/* OLD PREMIUM HOVER GLOW */}
+      {/* GLOW */}
 
       <div
         className="
         absolute
-
         inset-0
-
-
-
-        bg-gradient-to-br
-
-
-        from-cyan-400/15
-
-
-        via-transparent
-
-
-        to-purple-500/15
-
-
-
 
         opacity-0
 
-
-
         group-hover:opacity-100
 
-
-
-        transition-opacity
-
-
+        transition
 
         duration-500
-        "
-      />
-
-      {/* GLASS LIGHT */}
-
-      <div
-        className="
-        absolute
-
-
-        inset-0
-
-
 
         bg-gradient-to-br
 
-
-        from-white/40
-
+        from-emerald-400/20
 
         via-transparent
 
+        to-cyan-400/10
 
-        to-transparent
-
-
-
-        dark:from-white/10
+        blur-2xl
         "
       />
 
-      <div
-        className="
-        relative
-
-        z-10
-        "
-      >
+      <div className="relative z-10">
         {/* IMAGE */}
 
         <div
           className="
-        relative
+          relative
 
-        overflow-hidden
+          h-64
 
-        h-44
-        "
+          overflow-hidden
+          "
         >
           <motion.img
             src={project.image}
             alt={project.title}
             whileHover={{
-              scale: 1.08,
+              scale: 1.05,
             }}
             transition={{
               duration: 0.5,
             }}
             className="
-          w-full
+            w-full
 
-          h-full
+            h-full
 
-          object-cover
-          "
+            object-cover
+            "
           />
 
           <div
             className="
-          absolute
+            absolute
 
+            inset-0
 
-          inset-0
+            bg-gradient-to-t
 
+            from-black/80
 
+            via-black/20
 
-          bg-gradient-to-t
-
-
-          from-black/70
-
-
-          via-transparent
-
-
-          to-transparent
-          "
+            to-transparent
+            "
           />
+
+          <div
+            className="
+            absolute
+
+            bottom-5
+
+            left-5
+
+            px-4
+
+            py-1.5
+
+            rounded-full
+
+            bg-black/30
+
+            backdrop-blur-xl
+
+            border
+
+            border-white/20
+
+            text-white
+
+            text-xs
+
+            font-semibold
+            "
+          >
+            {project.category}
+          </div>
         </div>
 
         {/* CONTENT */}
 
-        <div
-          className="
-        p-6
-        "
-        >
-          <p
-            className="
-        text-[11px]
-
-
-        uppercase
-
-
-        tracking-[0.3em]
-
-
-        font-bold
-
-
-
-        text-cyan-600
-
-
-
-        dark:text-cyan-300
-        "
-          >
-            {project.category}
-          </p>
-
+        <div className="p-7">
           <h3
             className="
-        mt-3
+            text-2xl
 
+            font-black
 
-        text-xl
+            text-slate-900
 
-
-        font-black
-
-
-
-        bg-gradient-to-r
-
-
-        from-slate-900
-
-
-        via-emerald-600
-
-
-        to-green-600
-
-
-
-        dark:from-white
-
-
-        dark:via-cyan-200
-
-
-        dark:to-purple-300
-
-
-
-        bg-clip-text
-
-
-        text-transparent
-        "
+            dark:text-white
+            "
           >
             {project.title}
           </h3>
 
           <p
             className="
-        mt-3
+            mt-4
 
+            text-sm
 
-        text-sm
+            leading-relaxed
 
+            text-slate-600
 
-        leading-relaxed
-
-
-
-        text-slate-600
-
-
-
-        dark:text-slate-400
-
-
-
-        group-hover:text-slate-900
-
-
-
-        dark:group-hover:text-slate-200
-
-
-
-        transition-colors
-        "
+            dark:text-slate-400
+            "
           >
             {project.description}
           </p>
 
-          {/* TECH */}
+          {/* STATUS */}
 
           <div
             className="
-        flex
+            mt-6
 
-        flex-wrap
+            flex
 
-        gap-2
+            justify-between
 
-        mt-5
-        "
+            items-center
+            "
+          >
+            <div
+              className="
+              flex
+              items-center
+              gap-2
+              "
+            >
+              <span
+                className={`
+
+                w-2.5
+                h-2.5
+
+                rounded-full
+
+                ${
+                  project.status === "Completed"
+                    ? "bg-emerald-400"
+                    : "bg-yellow-400"
+                }
+
+                `}
+              />
+
+              <span
+                className="
+                text-xs
+
+                font-semibold
+
+                text-slate-600
+
+                dark:text-slate-300
+                "
+              >
+                {project.status}
+              </span>
+            </div>
+
+            {project.featured && (
+              <span
+                className="
+                px-3
+
+                py-1
+
+                rounded-full
+
+                bg-emerald-500/10
+
+                border
+
+                border-emerald-500/20
+
+                text-emerald-500
+
+                text-xs
+
+                font-semibold
+                "
+              >
+                Featured
+              </span>
+            )}
+          </div>
+
+          {/* TECH STACK */}
+
+          <div
+            className="
+            flex
+
+            flex-wrap
+
+            gap-2
+
+            mt-6
+            "
           >
             {project.tech.map((tech) => (
               <span
                 key={tech}
                 className="
-            px-3
+                  px-3
 
-            py-1
+                  py-1.5
 
+                  rounded-full
 
-            rounded-full
+                  text-xs
 
+                  bg-black/5
 
+                  dark:bg-white/10
 
-            text-[11px]
+                  border
 
+                  border-black/10
 
-
-            bg-white/40
-
-
-
-            dark:bg-white/5
-
-
-
-            border
-
-
-
-            border-black/10
-
-
-
-            dark:border-white/10
-
-
-
-
-            text-slate-700
-
-
-
-            dark:text-slate-300
-            "
+                  dark:border-white/10
+                  "
               >
                 {tech}
               </span>
             ))}
           </div>
 
-          {/* BUTTONS */}
+          {/* ACTIONS */}
 
           <div
             className="
-        flex
+            mt-8
 
-        gap-3
+            flex
 
-        mt-6
-        "
+            gap-3
+            "
           >
-            <motion.a
+            {/* VIEW */}
+
+            <Link to={`/projects/${project.id}`} className="flex-1">
+              <motion.div
+                whileHover={{
+                  scale: 1.03,
+                }}
+                className="
+                flex
+
+                justify-center
+
+                items-center
+
+                gap-2
+
+                py-3
+
+                rounded-xl
+
+                bg-gradient-to-r
+
+                from-emerald-600
+
+                to-green-500
+
+                text-white
+
+                font-bold
+
+                text-sm
+                "
+              >
+                View Project
+                <FaArrowRight />
+              </motion.div>
+            </Link>
+
+            {/* GITHUB */}
+
+            <a
               href={project.github}
-              whileHover={{
-                scale: 1.05,
-              }}
-              whileTap={{
-                scale: 0.95,
-              }}
+              target="_blank"
+              rel="noreferrer"
               className="
-          flex
+              px-5
 
-          items-center
+              py-3
 
-          gap-2
+              rounded-xl
 
+              bg-black/5
 
+              dark:bg-white/10
 
-          px-4
+              flex
 
-          py-2
+              items-center
 
-
-
-          rounded-xl
-
-
-
-          bg-white/40
-
-
-
-          dark:bg-white/5
-
-
-
-          border
-
-
-
-          border-black/10
-
-
-
-          dark:border-white/10
-
-
-
-
-          text-xs
-
-
-
-          text-slate-700
-
-
-
-          dark:text-slate-300
-          "
+              "
             >
               <FaGithub />
-              Code
-            </motion.a>
+            </a>
 
-            {/* DEMO BUTTON */}
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noreferrer"
+                className="
+                px-5
 
-            <motion.a
-              href={project.demo}
-              whileHover={{
-                scale: 1.05,
-              }}
-              whileTap={{
-                scale: 0.95,
-              }}
-              className="
-  flex
+                py-3
 
-  items-center
+                rounded-xl
 
-  gap-2
+                bg-emerald-500/10
 
+                text-emerald-500
 
-  px-4
+                flex
 
-  py-2
-
-
-  rounded-xl
-
-
-  bg-gradient-to-r
-
-
-  from-emerald-600
-
-
-  to-green-500
-
-
-
-  text-white
-
-
-  text-xs
-
-
-  font-semibold
-
-
-
-  shadow-[0_0_25px_rgba(16,185,129,0.35)]
-
-
-
-  hover:from-emerald-500
-
-
-  hover:to-green-400
-
-
-
-  transition-all
-
-
-  duration-300
-  "
-            >
-              <FaExternalLinkAlt />
-              Demo
-            </motion.a>
+                items-center
+                "
+              >
+                <FaExternalLinkAlt />
+              </a>
+            )}
           </div>
         </div>
       </div>

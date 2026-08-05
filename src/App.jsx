@@ -1,3 +1,5 @@
+import { Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/navbar/Navbar";
 
 import Hero from "./components/Hero/Hero";
@@ -12,7 +14,11 @@ import CursorGlow from "./components/CursorGlow";
 
 import Background from "./components/Background/Background";
 
-function App() {
+// PROJECT DETAIL
+
+import ProjectDetail from "./components/Projects/ProjectDetail/pages/ProjectDetail";
+
+function Home() {
   return (
     <div
       className="
@@ -22,11 +28,9 @@ function App() {
 
       overflow-x-hidden
 
-
       text-slate-900
 
       dark:text-white
-
 
       transition-colors
 
@@ -40,8 +44,6 @@ function App() {
       {/* NAVBAR */}
 
       <Navbar />
-
-      {/* CONTENT */}
 
       <main
         className="
@@ -65,6 +67,20 @@ function App() {
 
       <Footer />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      {/* HOME PAGE */}
+
+      <Route path="/" element={<Home />} />
+
+      {/* PROJECT DETAIL PAGE */}
+
+      <Route path="/projects/:id" element={<ProjectDetail />} />
+    </Routes>
   );
 }
 
