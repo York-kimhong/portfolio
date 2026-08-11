@@ -6,16 +6,12 @@ import {
   FaGitAlt,
   FaGithub,
   FaFigma,
-  FaNodeJs,
   FaJava,
-  FaPython,
 } from "react-icons/fa";
 
 import {
-  SiNextdotjs,
   SiTypescript,
   SiTailwindcss,
-  SiPostman,
   SiMysql,
 } from "react-icons/si";
 
@@ -43,12 +39,6 @@ export const skillCategories = [
         name: "JavaScript",
         level: 85,
         icon: <FaJsSquare />,
-      },
-
-      {
-        name: "Next.js",
-        level: 75,
-        icon: <SiNextdotjs />,
       },
 
       {
@@ -111,17 +101,6 @@ export const skillCategories = [
         icon: <FaGithub />,
       },
 
-      {
-        name: "Postman",
-        level: 60,
-        icon: <SiPostman />,
-      },
-
-      {
-        name: "REST API",
-        level: 60,
-        icon: <FaNodeJs />,
-      },
     ],
   },
 
@@ -136,12 +115,6 @@ export const skillCategories = [
         name: "Java",
         level: 75,
         icon: <FaJava />,
-      },
-
-      {
-        name: "Python",
-        level: 70,
-        icon: <FaPython />,
       },
 
       {

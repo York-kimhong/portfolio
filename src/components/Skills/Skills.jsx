@@ -2,254 +2,81 @@ import { motion } from "framer-motion";
 
 import SkillCard from "./SkillCard";
 import { skillCategories } from "./SkillData";
+import { fadeUp } from "../About/aboutAnimations";
 
 export default function Skills() {
   return (
     <section
       id="skills"
-      className="
-      relative
-
-      py-32
-
-      overflow-hidden
-      "
+      className="relative overflow-hidden py-32"
     >
-      {/* PREMIUM GREEN AMBIENT LIGHT */}
-
+      {/* AMBIENT LIGHT */}
       <div
         className="
-        absolute
-
-
-        top-20
-
-
-        left-1/2
-
-
-        -translate-x-1/2
-
-
-
-        w-[650px]
-
-
-        h-[320px]
-
-
-
-        rounded-full
-
-
-
-        bg-emerald-500/15
-
-
-
-        dark:bg-emerald-400/10
-
-
-
-        blur-[150px]
-
-
-
-        pointer-events-none
+          pointer-events-none
+          absolute
+          top-20
+          left-1/2
+          h-[320px]
+          w-[650px]
+          -translate-x-1/2
+          rounded-full
+          bg-emerald-500/15
+          blur-[150px]
+          dark:bg-emerald-400/10
         "
       />
 
-      <div
-        className="
-        max-w-7xl
-
-        mx-auto
-
-
-        px-6
-
-        lg:px-10
-
-
-
-        relative
-
-        z-10
-        "
-      >
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
         {/* HEADER */}
-
         <motion.div
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.7,
-          }}
-          className="
-        text-center
-
-        mb-20
-        "
+          {...fadeUp}
+          className="mb-20 text-center"
         >
-          <p
-            className="
-          text-xs
-
-
-          tracking-[0.4em]
-
-
-          uppercase
-
-
-          font-bold
-
-
-
-          text-emerald-700
-
-
-
-          dark:text-emerald-400
-          "
-          >
+          <p className="section-label">
             MY SKILLS
           </p>
 
           <h2
             className="
-          mt-5
-
-
-          text-4xl
-
-
-          md:text-6xl
-
-
-          font-black
-
-
-
-
-
-
-          bg-gradient-to-r
-
-
-
-          from-emerald-800
-
-
-
-          via-emerald-600
-
-
-
-          to-green-700
-
-
-
-
-
-          dark:from-white
-
-
-
-          dark:via-emerald-200
-
-
-
-          dark:to-green-300
-
-
-
-
-          bg-clip-text
-
-
-          text-transparent
-          "
+              mt-4
+              text-4xl
+              font-black
+              text-slate-900
+              md:text-5xl
+              dark:text-white
+            "
           >
             Technologies & Tools I Work With
           </h2>
 
           <p
             className="
-          max-w-2xl
-
-
-          mx-auto
-
-
-          mt-6
-
-
-
-          text-lg
-
-
-
-          leading-relaxed
-
-
-
-          text-slate-600
-
-
-
-          dark:text-slate-400
-          "
+              mx-auto
+              mt-5
+              max-w-2xl
+              text-lg
+              leading-relaxed
+              text-slate-600
+              dark:text-slate-400
+            "
           >
-            Technologies and tools I have learned and applied through academic
-            and personal projects while continuously improving my frontend
-            development skills.
+            Technologies and tools I have learned and applied through
+            academic and personal projects while continuously improving
+            my frontend development skills.
           </p>
         </motion.div>
 
-        {/* SKILL GRID */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.8,
-          }}
-          className="
-        grid
-
-
-        md:grid-cols-2
-
-
-        lg:grid-cols-3
-
-
-        gap-8
-        "
-        >
+        {/* SKILLS */}
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map((category, index) => (
-            <SkillCard key={category.title} category={category} index={index} />
+            <SkillCard
+              key={category.title}
+              category={category}
+              index={index}
+            />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

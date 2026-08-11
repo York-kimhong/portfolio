@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-
 import { FaExternalLinkAlt, FaDesktop } from "react-icons/fa";
 
 export default function ProjectPreview({ project }) {
@@ -7,289 +6,113 @@ export default function ProjectPreview({ project }) {
 
   return (
     <motion.section
-      initial={{
-        opacity: 0,
-        y: 50,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: true,
-      }}
-      transition={{
-        duration: 0.8,
-      }}
-      className="
-      relative
-      mt-10
-      "
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      className="project-section relative"
     >
       {/* HEADER */}
-
-      <div
-        className="
-        text-center
-        mb-14
-        "
-      >
-        <p
-          className="
-          uppercase
-
-          tracking-[0.35em]
-
-          text-xs
-
-          font-bold
-
-          text-emerald-500
-          "
-        >
+      <div className="text-center mb-14">
+        <p className="section-label">
           LIVE PREVIEW
         </p>
 
-        <h2
-          className="
-          mt-4
-
-          text-4xl
-
-          md:text-5xl
-
-          font-black
-
-          text-slate-900
-
-          dark:text-white
-          "
-        >
+        <h2 className="section-title">
           Project Showcase
         </h2>
 
-        <p
-          className="
-          mt-5
-
-          max-w-xl
-
-          mx-auto
-
-          text-slate-600
-
-          dark:text-slate-400
-          "
-        >
+        <p className="section-description max-w-xl mx-auto">
           Interactive preview of the project interface and user experience.
         </p>
       </div>
 
-      {/* MOCKUP CONTAINER */}
+      {/* MOCKUP */}
+      <div className="relative max-w-6xl mx-auto">
 
-      <div
-        className="
-        relative
-
-        max-w-6xl
-
-        mx-auto
-        "
-      >
         {/* BACK GLOW */}
-
         <div
           className="
-          absolute
-
-          inset-0
-
-          bg-gradient-to-r
-
-          from-emerald-500/30
-
-          to-cyan-500/20
-
-          blur-[130px]
-
-          rounded-full
-
+            absolute
+            inset-0
+            bg-gradient-to-r
+            from-emerald-500/30
+            to-cyan-500/20
+            blur-[130px]
+            rounded-full
+            pointer-events-none
           "
         />
 
         {/* BROWSER CARD */}
-
         <motion.div
-          whileHover={{
-            y: -10,
-          }}
-          transition={{
-            duration: 0.4,
-          }}
+          whileHover={{ y: -10 }}
+          transition={{ duration: 0.4 }}
           className="
-          relative
-
-          rounded-[40px]
-
-          overflow-hidden
-
-
-          bg-white/50
-
-          dark:bg-white/[0.06]
-
-
-          backdrop-blur-2xl
-
-
-          border
-
-          border-black/10
-
-          dark:border-white/10
-
-
-          shadow-2xl
+            relative
+            overflow-hidden
+            glass-card
+            shadow-2xl
           "
         >
           {/* BROWSER HEADER */}
-
           <div
             className="
-            flex
-
-            items-center
-
-            justify-between
-
-
-            px-5
-
-            py-4
-
-
-            bg-black/5
-
-            dark:bg-white/5
-
-
-            border-b
-
-            border-black/10
-
-            dark:border-white/10
+              flex
+              items-center
+              justify-between
+              px-5
+              py-4
+              bg-black/5
+              dark:bg-white/5
+              border-b
+              border-black/10
+              dark:border-white/10
             "
           >
             {/* WINDOW DOTS */}
-
-            <div
-              className="
-              flex
-
-              gap-2
-              "
-            >
-              <span
-                className="
-                w-3
-
-                h-3
-
-                rounded-full
-
-                bg-red-400
-                "
-              />
-
-              <span
-                className="
-                w-3
-
-                h-3
-
-                rounded-full
-
-                bg-yellow-400
-                "
-              />
-
-              <span
-                className="
-                w-3
-
-                h-3
-
-                rounded-full
-
-                bg-green-400
-                "
-              />
+            <div className="flex gap-2">
+              <span className="w-3 h-3 rounded-full bg-red-400" />
+              <span className="w-3 h-3 rounded-full bg-yellow-400" />
+              <span className="w-3 h-3 rounded-full bg-green-400" />
             </div>
 
             {/* TITLE BAR */}
-
             <div
               className="
-              hidden
-
-              sm:flex
-
-              items-center
-
-              gap-2
-
-
-              px-5
-
-              py-2
-
-
-              rounded-full
-
-
-              bg-white/50
-
-              dark:bg-white/10
-
-
-              text-xs
-
-
-              text-slate-600
-
-              dark:text-slate-300
+                hidden
+                sm:flex
+                items-center
+                gap-2
+                px-5
+                py-2
+                rounded-full
+                bg-white/50
+                dark:bg-white/10
+                text-xs
+                text-slate-600
+                dark:text-slate-300
               "
             >
               <FaDesktop />
-
               {project.title}
             </div>
 
             {/* DEMO BUTTON */}
-
             {project.demo && project.demo !== "#" && (
               <a
                 href={project.demo}
                 target="_blank"
                 rel="noreferrer"
                 className="
-                flex
-
-                items-center
-
-                gap-2
-
-
-                text-xs
-
-                font-bold
-
-
-                text-emerald-500
-
-                hover:text-emerald-400
-
-                transition
+                  flex
+                  items-center
+                  gap-2
+                  text-xs
+                  font-bold
+                  accent
+                  hover:text-emerald-400
+                  transition
                 "
               >
                 Open
@@ -298,146 +121,82 @@ export default function ProjectPreview({ project }) {
             )}
           </div>
 
-          {/* IMAGE AREA */}
-
+          {/* IMAGE */}
           <div
             className="
-            p-4
-
-            sm:p-8
-
-            flex
-
-            justify-center
-
-            bg-gradient-to-br
-
-            from-white/20
-
-            to-transparent
+              p-4
+              sm:p-8
+              flex
+              justify-center
+              bg-gradient-to-br
+              from-white/20
+              to-transparent
             "
           >
             <motion.img
               src={project.image}
               alt={project.title}
-              whileHover={{
-                scale: 1.02,
-              }}
-              transition={{
-                duration: 0.5,
-              }}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.5 }}
               className="
-              w-full
-
-              h-auto
-
-              max-h-[700px]
-
-              object-contain
-
-
-              rounded-[30px]
-
-
-              shadow-2xl
+                w-full
+                h-auto
+                max-h-[700px]
+                object-contain
+                rounded-[30px]
+                shadow-2xl
               "
             />
           </div>
 
           {/* REFLECTION */}
-
           <div
             className="
-            absolute
-
-            inset-0
-
-            bg-gradient-to-tr
-
-            from-white/20
-
-            via-transparent
-
-            to-transparent
-
-
-            pointer-events-none
+              absolute
+              inset-0
+              bg-gradient-to-tr
+              from-white/20
+              via-transparent
+              to-transparent
+              pointer-events-none
             "
           />
         </motion.div>
 
         {/* BADGES */}
+        <div className="mt-8 flex justify-center flex-wrap gap-3">
 
-        <div
-          className="
-          mt-8
-
-          flex
-
-          justify-center
-
-          flex-wrap
-
-          gap-3
-          "
-        >
+          {/* STATUS */}
           <span
             className="
-            px-5
-
-            py-2
-
-            rounded-full
-
-
-            bg-emerald-500
-
-
-            text-white
-
-
-            text-sm
-
-            font-bold
-
-
-            shadow-lg
-
-            shadow-emerald-500/30
+              px-5
+              py-2
+              rounded-full
+              bg-emerald-500
+              text-white
+              text-sm
+              font-bold
+              shadow-lg
+              shadow-emerald-500/30
             "
           >
             {project.status}
           </span>
 
+          {/* PLATFORM */}
           <span
             className="
-            px-5
-
-            py-2
-
-
-            rounded-full
-
-
-            bg-white/70
-
-
-            dark:bg-white/10
-
-
-            backdrop-blur-xl
-
-
-            border
-
-            border-black/10
-
-            dark:border-white/10
-
-
-            text-sm
-
-            font-semibold
+              px-5
+              py-2
+              rounded-full
+              bg-white/70
+              dark:bg-white/10
+              backdrop-blur-xl
+              border
+              border-black/10
+              dark:border-white/10
+              text-sm
+              font-semibold
             "
           >
             {project.platform || "Web Application"}

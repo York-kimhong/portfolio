@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 
 import Navbar from "../../navbar/Navbar";
 import Footer from "../../Footer";
-
 import CursorGlow from "../../CursorGlow";
 
 import ProjectHero from "./ProjectHero";
@@ -16,118 +15,207 @@ import ProjectChallenges from "./ProjectChallenges";
 import StickyActions from "./StickyActions";
 
 export default function ProjectDetailLayout({ project }) {
+  /* =====================================================
+     PROJECT NOT FOUND
+  ====================================================== */
+
   if (!project) {
     return (
       <div
         className="
-        min-h-screen
-
-        flex
-
-        items-center
-
-        justify-center
-
-        text-red-500
-
-        font-bold
-
+          min-h-screen
+          flex
+          items-center
+          justify-center
+          px-6
+          bg-white
+          dark:bg-[#020604]
+          text-slate-900
+          dark:text-white
         "
       >
-        Project Not Found
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          className="text-center"
+        >
+          <p
+            className="
+              text-xs
+              uppercase
+              tracking-[0.3em]
+              font-bold
+              text-red-500
+            "
+          >
+            ERROR
+          </p>
+
+          <h1
+            className="
+              mt-4
+              text-3xl
+              sm:text-4xl
+              font-black
+            "
+          >
+            Project Not Found
+          </h1>
+
+          <p
+            className="
+              mt-4
+              text-sm
+              text-slate-500
+              dark:text-slate-400
+            "
+          >
+            The project you're looking for doesn't exist.
+          </p>
+        </motion.div>
       </div>
     );
   }
 
+  /* =====================================================
+     PROJECT INFORMATION
+  ====================================================== */
+
+  const projectInfo = [
+    {
+      title: "Role",
+      value: project.role,
+    },
+    {
+      title: "Platform",
+      value: project.platform,
+    },
+    {
+      title: "Duration",
+      value: project.duration,
+    },
+    {
+      title: "Status",
+      value: project.status,
+    },
+  ];
+
+  /* =====================================================
+     PAGE
+  ====================================================== */
+
   return (
     <div
       className="
-      relative
+        relative
+        min-h-screen
+        overflow-x-clip
 
-      min-h-screen
+        bg-white
+        dark:bg-[#020604]
 
-      overflow-hidden
+        text-slate-900
+        dark:text-white
 
-
-      text-slate-900
-
-      dark:text-white
-
+        transition-colors
+        duration-700
       "
     >
-      {/* AMBIENT BACKGROUND */}
+      {/* =================================================
+          AMBIENT BACKGROUND
+      ================================================== */}
+
+      {/* TOP GREEN GLOW */}
 
       <div
         className="
-        absolute
+          pointer-events-none
+          absolute
+          -top-48
+          left-1/2
+          -translate-x-1/2
 
-        top-[-150px]
+          w-[900px]
+          h-[550px]
 
-        left-1/2
+          rounded-full
 
-        -translate-x-1/2
+          bg-emerald-500/15
+          dark:bg-emerald-400/[0.08]
 
-
-        w-[1000px]
-
-        h-[600px]
-
-
-        rounded-full
-
-
-        bg-emerald-500/15
-
-
-        blur-[180px]
-
-
-        pointer-events-none
+          blur-[180px]
         "
       />
+
+      {/* LEFT GREEN GLOW */}
 
       <div
         className="
-        absolute
+          pointer-events-none
+          absolute
 
-        bottom-[-200px]
+          top-[45%]
+          -left-60
 
-        right-[-150px]
+          w-[500px]
+          h-[500px]
 
+          rounded-full
 
-        w-[500px]
+          bg-emerald-400/10
+          dark:bg-emerald-400/[0.04]
 
-        h-[500px]
-
-
-        rounded-full
-
-
-        bg-cyan-500/10
-
-
-        blur-[150px]
-
-
-        pointer-events-none
+          blur-[170px]
         "
       />
+
+      {/* RIGHT CYAN GLOW */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+
+          bottom-[-200px]
+          -right-48
+
+          w-[550px]
+          h-[550px]
+
+          rounded-full
+
+          bg-cyan-500/10
+          dark:bg-cyan-400/[0.04]
+
+          blur-[170px]
+        "
+      />
+
+      {/* =================================================
+          NAVIGATION
+      ================================================== */}
 
       <Navbar />
 
       <StickyActions />
 
+      {/* =================================================
+          MAIN CONTENT
+      ================================================== */}
+
       <main
         className="
-        relative
+          relative
+          z-10
 
-        z-10
-
-
-        pt-28
-
-        pb-32
-
+          pt-28
+          pb-32
         "
       >
         <CursorGlow />
@@ -143,140 +231,311 @@ export default function ProjectDetailLayout({ project }) {
           }}
           transition={{
             duration: 0.8,
+            ease: "easeOut",
           }}
           className="
-          max-w-6xl
+            max-w-6xl
+            mx-auto
 
-          mx-auto
-
-
-          px-5
-
-          sm:px-8
-
+            px-5
+            sm:px-8
+            lg:px-10
           "
         >
-          {/* HERO */}
+          {/* =================================================
+              HERO
+          ================================================== */}
 
           <section id="hero">
             <ProjectHero project={project} />
           </section>
 
-          {/* PROJECT INFORMATION */}
+          {/* =================================================
+              PROJECT INFORMATION
+          ================================================== */}
 
-          <section
-            className="
-            mt-20
-            "
+          <motion.section
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
+            transition={{
+              duration: 0.7,
+            }}
+            className="mt-20"
           >
             <div
               className="
-              grid
-
-              grid-cols-2
-
-              md:grid-cols-4
-
-              gap-5
+                grid
+                grid-cols-2
+                lg:grid-cols-4
+                gap-3
+                sm:gap-5
               "
             >
-              {[
-                ["Role", project.role],
-
-                ["Platform", project.platform],
-
-                ["Duration", project.duration],
-
-                ["Status", project.status],
-              ].map(([title, value]) => (
-                <div
-                  key={title}
+              {projectInfo.map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{
+                    opacity: 0,
+                    y: 20,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.08,
+                  }}
+                  whileHover={{
+                    y: -6,
+                  }}
                   className="
-                    p-6
+                    group
+                    glass-card
 
-
-                    rounded-3xl
-
-
-                    bg-white/40
-
-
-                    dark:bg-white/[0.05]
-
-
-                    backdrop-blur-xl
-
-
-                    border
-
-
-                    border-black/10
-
-
-                    dark:border-white/10
-
+                    p-5
+                    sm:p-6
 
                     text-center
 
-                    "
+                    hover:border-emerald-500/30
+                  "
                 >
+                  {/* LABEL */}
+
                   <p
                     className="
-                      text-xs
+                      text-[10px]
+                      sm:text-xs
 
                       uppercase
+                      tracking-[0.2em]
 
-                      tracking-widest
+                      font-bold
 
                       text-slate-500
-                      "
+                      dark:text-slate-500
+                    "
                   >
-                    {title}
+                    {item.title}
                   </p>
+
+                  {/* VALUE */}
 
                   <h3
                     className="
                       mt-3
 
+                      text-sm
+                      sm:text-base
+
                       font-bold
 
-                      "
+                      text-slate-800
+                      dark:text-white
+
+                      transition-colors
+                      duration-300
+
+                      group-hover:text-emerald-600
+                      dark:group-hover:text-emerald-400
+                    "
                   >
-                    {value}
+                    {item.value || "N/A"}
                   </h3>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </section>
+          </motion.section>
 
-          {/* PREVIEW */}
-
-          <section className="mt-28">
-            <ProjectPreview project={project} />
-          </section>
-
-          {/* CASE STUDY CONTENT */}
+          {/* =================================================
+              DIVIDER
+          ================================================== */}
 
           <div
             className="
-            mt-32
+              mt-28
+              h-px
 
-            space-y-32
+              bg-gradient-to-r
+              from-transparent
+              via-emerald-500/20
+              to-transparent
+            "
+          />
 
+          {/* =================================================
+              LIVE PREVIEW
+          ================================================== */}
+
+          <section id="preview" className="mt-28">
+            <ProjectPreview project={project} />
+          </section>
+
+          {/* =================================================
+              CASE STUDY
+          ================================================== */}
+
+          <div
+            className="
+              mt-32
+              space-y-32
+              lg:space-y-40
             "
           >
-            <ProjectOverview project={project} />
+            {/* OVERVIEW */}
 
-            <ProjectFeatures project={project} />
+            <section id="overview">
+              <ProjectOverview project={project} />
+            </section>
 
-            <ProjectTech project={project} />
+            {/* FEATURES */}
 
-            <ProjectGallery project={project} />
+            <section id="features">
+              <ProjectFeatures project={project} />
+            </section>
 
-            <ProjectChallenges project={project} />
+            {/* TECHNOLOGY */}
+
+            <section id="technology">
+              <ProjectTech project={project} />
+            </section>
+
+            {/* GALLERY */}
+
+            <section id="gallery">
+              <ProjectGallery project={project} />
+            </section>
+
+            {/* CHALLENGES */}
+
+            <section id="challenges">
+              <ProjectChallenges project={project} />
+            </section>
           </div>
+
+          {/* =================================================
+              END DIVIDER
+          ================================================== */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              scaleX: 0,
+            }}
+            whileInView={{
+              opacity: 1,
+              scaleX: 1,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.8,
+            }}
+            className="
+              mt-32
+              h-px
+
+              bg-gradient-to-r
+              from-transparent
+              via-emerald-500/30
+              to-transparent
+            "
+          />
+
+          {/* =================================================
+              CASE STUDY COMPLETE
+          ================================================== */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 25,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.7,
+            }}
+            className="
+              mt-16
+              text-center
+            "
+          >
+            <p
+              className="
+                text-xs
+
+                uppercase
+                tracking-[0.3em]
+
+                font-bold
+
+                text-emerald-500
+              "
+            >
+              CASE STUDY COMPLETE
+            </p>
+
+            <h2
+              className="
+                mt-4
+
+                text-2xl
+                sm:text-3xl
+
+                font-black
+
+                text-slate-900
+                dark:text-white
+              "
+            >
+              Thanks for exploring this project.
+            </h2>
+
+            <p
+              className="
+                mt-4
+
+                max-w-xl
+                mx-auto
+
+                text-sm
+                leading-relaxed
+
+                text-slate-500
+                dark:text-slate-400
+              "
+            >
+              Explore more projects to see different approaches to frontend
+              development, software engineering, and application design.
+            </p>
+          </motion.div>
         </motion.div>
       </main>
+
+      {/* =================================================
+          FOOTER
+      ================================================== */}
 
       <Footer />
     </div>

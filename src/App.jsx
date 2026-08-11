@@ -9,32 +9,23 @@ import Projects from "./components/Projects/Projects";
 import Contact from "./components/Contact/Contact";
 
 import Footer from "./components/Footer";
-
 import CursorGlow from "./components/CursorGlow";
-
 import Background from "./components/Background/Background";
 
 // PROJECT DETAIL
-
-import ProjectDetail from "./components/Projects/ProjectDetail/Pages/ProjectDetail";
+import ProjectDetail from "./components/Projects/ProjectDetail/ProjectDetail";
 
 function Home() {
   return (
     <div
       className="
-      relative
-
-      min-h-screen
-
-      overflow-x-hidden
-
-      text-slate-900
-
-      dark:text-white
-
-      transition-colors
-
-      duration-700
+        relative
+        min-h-screen
+        overflow-x-hidden
+        text-slate-900
+        dark:text-white
+        transition-colors
+        duration-700
       "
     >
       {/* GLOBAL BACKGROUND */}
@@ -47,21 +38,16 @@ function Home() {
 
       <main
         className="
-        relative
-
-        z-10
+          relative
+          z-10
         "
       >
         <CursorGlow />
 
         <Hero />
-
         <About />
-
         <Skills />
-
         <Projects />
-
         <Contact />
       </main>
 
@@ -73,11 +59,11 @@ function Home() {
 function App() {
   return (
     <Routes>
-      {/* HOME PAGE */}
+      {/* HOME */}
 
       <Route path="/" element={<Home />} />
 
-      {/* PROJECT DETAIL PAGE */}
+      {/* PROJECT DETAIL */}
 
       <Route path="/projects/:id" element={<ProjectDetail />} />
     </Routes>

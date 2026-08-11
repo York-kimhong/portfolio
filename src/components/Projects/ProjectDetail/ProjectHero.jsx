@@ -1,340 +1,94 @@
 import { motion } from "framer-motion";
-
-import {
-  FaGithub,
-  FaExternalLinkAlt,
-  FaStar,
-} from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaStar } from "react-icons/fa";
 
 export default function ProjectHero({ project }) {
   if (!project) return null;
 
   return (
-    <section
-      className="
-      relative
+    <section className="relative grid items-center gap-14 lg:grid-cols-2">
+      {/* Ambient glow */}
+      <div className="pointer-events-none absolute -top-20 left-1/2 h-[350px] w-[600px] -translate-x-1/2 rounded-full bg-emerald-500/20 blur-[140px]" />
 
-      grid
-
-      lg:grid-cols-2
-
-      gap-14
-
-      items-center
-      "
-    >
-      {/* LIGHT EFFECT */}
-
-      <div
-        className="
-        absolute
-
-        -top-20
-
-        left-1/2
-
-        -translate-x-1/2
-
-        w-[600px]
-
-        h-[350px]
-
-        rounded-full
-
-        bg-emerald-500/20
-
-        blur-[140px]
-
-        pointer-events-none
-        "
-      />
-
-      {/* LEFT SIDE */}
-
+      {/* Content */}
       <motion.div
-        initial={{
-          opacity: 0,
-          x: -50,
-        }}
-        animate={{
-          opacity: 1,
-          x: 0,
-        }}
-        transition={{
-          duration: 0.8,
-        }}
-        className="
-        relative
-        z-10
-        "
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        className="relative z-10"
       >
-
-        {/* TITLE */}
-
-        <h1
-          className="
-          mt-8
-
-          text-5xl
-
-          md:text-6xl
-
-          font-black
-
-          leading-tight
-
-          bg-gradient-to-r
-
-          from-emerald-600
-
-          via-green-500
-
-          to-cyan-500
-
-          bg-clip-text
-
-          text-transparent
-          "
-        >
+        <h1 className="text-5xl font-black leading-tight text-transparent bg-gradient-to-r from-emerald-600 via-green-500 to-cyan-500 bg-clip-text md:text-6xl">
           {project.title}
         </h1>
 
-        {/* DESCRIPTION */}
-
-        <p
-          className="
-          mt-6
-
-          text-lg
-
-          leading-relaxed
-
-          text-slate-600
-
-          dark:text-slate-400
-          "
-        >
+        <p className="mt-6 max-w-xl text-lg leading-relaxed muted">
           {project.description}
         </p>
 
-        {/* FEATURED */}
-
         {project.featured && (
-          <div
-            className="
-            mt-5
-
-            flex
-
-            gap-2
-
-            items-center
-
-            text-emerald-500
-            "
-          >
+          <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-emerald-500">
             <FaStar />
             Featured Project
           </div>
         )}
 
-        {/* TECH */}
+        {project.tech?.length > 0 && (
+          <div className="mt-8 flex flex-wrap gap-2">
+            {project.tech.map((tech) => (
+              <span
+                key={tech}
+                className="glass rounded-full px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        )}
 
-        <div
-          className="
-          mt-8
-
-          flex
-
-          flex-wrap
-
-          gap-2
-          "
-        >
-          {project.tech.map((tech) => (
-            <span
-              key={tech}
-              className="
-                px-3
-                py-1.5
-
-                rounded-full
-
-                bg-white/40
-
-                dark:bg-white/10
-
-                border
-
-                border-black/10
-
-                dark:border-white/10
-
-                text-xs
-                "
+        <div className="mt-10 flex flex-wrap gap-4">
+          {project.github && (
+            <motion.a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -3 }}
+              className="glass-card flex items-center gap-2 px-7 py-3 font-semibold hover:border-emerald-400/40"
             >
-              {tech}
-            </span>
-          ))}
-        </div>
-
-        {/* BUTTONS */}
-
-        <div
-          className="
-          mt-10
-
-          flex
-
-          gap-4
-
-          flex-wrap
-          "
-        >
-          <a
-            href={project.github}
-            target="_blank"
-            className="
-            flex
-
-            items-center
-
-            gap-2
-
-            px-7
-
-            py-3
-
-            rounded-xl
-
-            bg-black/5
-
-            dark:bg-white/10
-
-            border
-
-            border-black/10
-
-            font-semibold
-            "
-          >
-            <FaGithub />
-            Github
-          </a>
+              <FaGithub />
+              GitHub
+            </motion.a>
+          )}
 
           {project.demo && (
-            <a
+            <motion.a
               href={project.demo}
               target="_blank"
-              className="
-              flex
-
-              items-center
-
-              gap-2
-
-              px-7
-
-              py-3
-
-              rounded-xl
-
-              bg-gradient-to-r
-
-              from-emerald-600
-
-              to-green-500
-
-              text-white
-
-              font-bold
-              "
+              rel="noopener noreferrer"
+              whileHover={{ y: -3, scale: 1.02 }}
+              className="flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-600 to-green-500 px-7 py-3 font-bold text-white shadow-lg shadow-emerald-500/20"
             >
               <FaExternalLinkAlt />
               Live Demo
-            </a>
+            </motion.a>
           )}
         </div>
       </motion.div>
 
-      {/* RIGHT IMAGE */}
-
+      {/* Project image */}
       <motion.div
-        initial={{
-          opacity: 0,
-          scale: 0.9,
-        }}
-        animate={{
-          opacity: 1,
-          scale: 1,
-        }}
-        transition={{
-          duration: 0.8,
-        }}
-        className="
-        relative
-        "
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8 }}
+        className="relative"
       >
-        {/* GLOW */}
+        <div className="absolute inset-0 rounded-[40px] bg-emerald-500/20 blur-3xl" />
 
-        <div
-          className="
-          absolute
-
-          inset-0
-
-          bg-emerald-500/20
-
-          blur-3xl
-
-          rounded-[40px]
-          "
-        />
-
-        {/* IMAGE CARD */}
-
-        <div
-          className="
-          relative
-
-          rounded-[40px]
-
-          border
-
-          border-white/20
-
-          bg-white/10
-
-          dark:bg-white/5
-
-          backdrop-blur-xl
-
-          shadow-2xl
-
-          p-5
-          "
-        >
+        <div className="relative glass-card p-5">
           <motion.img
             src={project.image}
             alt={project.title}
-            whileHover={{
-              scale: 1.03,
-            }}
-            transition={{
-              duration: 0.4,
-            }}
-            className="
-            w-full
-
-            h-auto
-
-            max-h-[650px]
-
-            object-contain
-
-            rounded-[30px]
-
-            "
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.4 }}
+            className="max-h-[650px] w-full rounded-[24px] object-contain"
           />
         </div>
       </motion.div>

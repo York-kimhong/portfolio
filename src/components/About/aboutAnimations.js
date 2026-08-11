@@ -9,11 +9,13 @@ export const fadeUp = {
     y: 0,
   },
 
-  transition: {
-    duration: 0.7,
-  },
-
   viewport: {
     once: true,
+    amount: 0.2,
+  },
+
+  transition: {
+    duration: 0.7,
+    ease: "easeOut",
   },
 };

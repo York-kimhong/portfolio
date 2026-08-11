@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { projects } from "../../data";
+import { projects } from "../data";
 
-import ProjectDetailLayout from "../ProjectDetailLayout";
+import ProjectDetailLayout from "./ProjectDetailLayout";
 
 export default function ProjectDetail() {
   const { id } = useParams();

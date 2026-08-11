@@ -9,16 +9,9 @@ export default function About() {
   return (
     <section
       id="about"
-      className="
-      relative
-
-      py-28
-
-      overflow-hidden
-      "
+      className="relative overflow-hidden py-28"
     >
       {/* BACKGROUND GLOW */}
-
       <motion.div
         animate={{
           x: [-80, 80, -80],
@@ -31,184 +24,62 @@ export default function About() {
           ease: "easeInOut",
         }}
         className="
-        absolute
-
-        top-20
-
-        left-1/2
-
-        -translate-x-1/2
-
-
-        w-[500px]
-
-        h-[300px]
-
-
-        rounded-full
-
-
-        bg-emerald-500/20
-
-
-        dark:bg-emerald-400/15
-
-
-        blur-[120px]
-
-
-        pointer-events-none
+          pointer-events-none
+          absolute
+          top-20
+          left-1/2
+          h-[300px]
+          w-[500px]
+          -translate-x-1/2
+          rounded-full
+          bg-emerald-500/15
+          blur-[120px]
+          dark:bg-emerald-400/10
         "
       />
 
-      <div
-        className="
-        max-w-7xl
-
-        mx-auto
-
-        px-6
-
-        lg:px-10
-
-        relative
-
-        z-10
-        "
-      >
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
         {/* HEADER */}
-
         <motion.div
           {...fadeUp}
-          className="
-        text-center
-
-        mb-16
-        "
+          className="mb-16 text-center"
         >
-          <motion.p
-            animate={{
-              letterSpacing: ["0.35em", "0.45em", "0.35em"],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="
-          text-emerald-700
-
-          dark:text-emerald-400
-
-
-          text-sm
-
-
-          tracking-[0.35em]
-
-
-          uppercase
-
-
-          font-bold
-          "
-          >
+          <p className="section-label">
             ABOUT ME
-          </motion.p>
+          </p>
 
           <h2
             className="
-          mt-4
-
-
-          text-4xl
-
-
-          md:text-5xl
-
-
-          font-black
-
-
-
-
-          bg-gradient-to-r
-
-
-          from-emerald-800
-
-
-          via-emerald-500
-
-
-          to-green-600
-
-
-
-          dark:from-white
-
-
-          dark:via-emerald-200
-
-
-          dark:to-green-300
-
-
-
-          bg-clip-text
-
-
-          text-transparent
-          "
+              mt-4
+              text-4xl
+              font-black
+              text-slate-900
+              md:text-5xl
+              dark:text-white
+            "
           >
             My Journey Into Frontend Development
           </h2>
 
           <p
             className="
-          mt-5
-
-
-          max-w-xl
-
-
-          mx-auto
-
-
-          leading-relaxed
-
-
-
-          text-slate-600
-
-
-          dark:text-slate-400
-          "
+              mx-auto
+              mt-5
+              max-w-xl
+              leading-relaxed
+              text-slate-600
+              dark:text-slate-400
+            "
           >
             Information Technology Engineering student exploring frontend
-            development and UI design through continuous learning and practical
-            projects.
+            development and UI design through continuous learning and
+            practical projects.
           </p>
         </motion.div>
 
         {/* CONTENT */}
-
-        <div
-          className="
-        grid
-
-
-        lg:grid-cols-5
-
-
-        gap-10
-
-
-        items-start
-        "
-        >
+        <div className="grid items-start gap-10 lg:grid-cols-5">
           <AboutIntro />
-
           <AboutFocus />
         </div>
       </div>
