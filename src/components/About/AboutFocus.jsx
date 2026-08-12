@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import {
   HiCode,
   HiColorSwatch,
@@ -29,20 +30,49 @@ const focus = [
   },
 ];
 
+const smooth = {
+  duration: 0.25,
+  ease: [0.22, 1, 0.36, 1],
+};
+
 export default function AboutFocus() {
+  const ref = useRef(null);
+
+  const isInView = useInView(ref, {
+    amount: 0.15,
+  });
+
   return (
     <motion.div
-      initial={{ opacity: 0, x: 40 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
+      ref={ref}
+      initial={false}
+      animate={{
+        opacity: isInView ? 1 : 0,
+        x: isInView ? 0 : 35,
+      }}
+      transition={{
+        duration: 0.35,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className="grid gap-5 sm:grid-cols-2 lg:col-span-3"
     >
-      {focus.map(({ icon: Icon, title, text }) => (
+      {focus.map(({ icon: Icon, title, text }, index) => (
         <motion.div
           key={title}
-          whileHover={{ y: -6 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          initial={false}
+          animate={{
+            opacity: isInView ? 1 : 0,
+            x: isInView ? 0 : 20,
+          }}
+          transition={{
+            duration: 0.3,
+            delay: isInView ? index * 0.04 : 0,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          whileHover={{
+            y: -3,
+            transition: smooth,
+          }}
           className="
             group
             rounded-3xl
@@ -52,18 +82,27 @@ export default function AboutFocus() {
             p-6
             shadow-[0_20px_60px_rgba(16,185,129,0.08)]
             backdrop-blur-2xl
-            transition-all
-            duration-500
+
+            transition-[border-color,box-shadow,background-color]
+            duration-200
+
             hover:border-emerald-500/30
-            hover:shadow-[0_25px_70px_rgba(16,185,129,0.15)]
+            hover:shadow-[0_20px_55px_rgba(16,185,129,0.12)]
+
             dark:border-white/10
             dark:bg-white/[0.05]
           "
         >
           {/* ICON */}
           <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            transition={{ duration: 0.25 }}
+            whileHover={{
+              scale: 1.06,
+              rotate: 3,
+            }}
+            transition={{
+              duration: 0.2,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             className="
               mb-5
               w-fit
@@ -109,8 +148,9 @@ export default function AboutFocus() {
               w-0
               rounded-full
               bg-emerald-500
-              transition-all
-              duration-500
+              transition-[width]
+              duration-200
+              ease-out
               group-hover:w-12
             "
           />
@@ -119,4 +159,3 @@ export default function AboutFocus() {
     </motion.div>
   );
 }
-

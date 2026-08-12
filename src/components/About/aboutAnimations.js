@@ -1,7 +1,7 @@
 export const fadeUp = {
   initial: {
     opacity: 0,
-    y: 30,
+    y: 8,
   },
 
   whileInView: {
@@ -11,11 +11,11 @@ export const fadeUp = {
 
   viewport: {
     once: true,
-    amount: 0.2,
+    amount: 0,
   },
 
   transition: {
-    duration: 0.7,
+    duration: 0.22,
     ease: "easeOut",
   },
 };

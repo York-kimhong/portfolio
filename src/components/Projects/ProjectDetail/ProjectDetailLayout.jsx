@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 
-import Navbar from "../../navbar/Navbar";
 import Footer from "../../Footer";
 import CursorGlow from "../../CursorGlow";
 
@@ -198,10 +197,8 @@ export default function ProjectDetailLayout({ project }) {
       />
 
       {/* =================================================
-          NAVIGATION
+          STICKY ACTIONS
       ================================================== */}
-
-      <Navbar />
 
       <StickyActions />
 
@@ -214,7 +211,7 @@ export default function ProjectDetailLayout({ project }) {
           relative
           z-10
 
-          pt-28
+          pt-16
           pb-32
         "
       >

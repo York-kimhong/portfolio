@@ -37,21 +37,17 @@ export default function Navbar() {
   return (
     <header
       className="
-      fixed
+        fixed
+        top-5
+        left-1/2
+        -translate-x-1/2
 
-      top-5
+        z-50
 
-      left-1/2
+        w-[92%]
+        max-w-6xl
 
-      -translate-x-1/2
-
-      z-50
-
-      w-[92%]
-
-      max-w-6xl
-
-      isolate
+        isolate
       "
     >
       <motion.div
@@ -67,141 +63,90 @@ export default function Navbar() {
           duration: 0.6,
         }}
         className="
-        relative
+          relative
+          z-20
 
-        z-20
+          flex
+          h-16
+          items-center
+          justify-between
 
-        overflow-visible
+          overflow-visible
 
+          rounded-full
 
-        h-16
+          border
+          border-emerald-700/30
+          dark:border-emerald-400/20
 
+          bg-white/70
+          dark:bg-[#020604]/80
 
-        px-6
+          px-6
+          md:px-8
 
-        md:px-8
+          backdrop-blur-2xl
 
+          shadow-[0_8px_40px_rgba(0,0,0,0.12)]
+          dark:shadow-[0_0_40px_rgba(16,185,129,0.18)]
 
-
-        rounded-full
-
-
-
-        flex
-
-        items-center
-
-        justify-between
-
-
-
-        border
-
-
-
-        backdrop-blur-2xl
-
-
-
-        transition-all
-
-        duration-700
-
-
-
-        bg-white/70
-
-
-        dark:bg-[#020604]/80
-
-
-
-
-        border-emerald-700/30
-
-
-        dark:border-emerald-400/20
-
-
-
-
-
-        shadow-[0_8px_40px_rgba(0,0,0,0.12)]
-
-
-
-        dark:shadow-[0_0_40px_rgba(16,185,129,0.18)]
-
+          transition-all
+          duration-700
         "
       >
-        {/* GREEN GLOW BELOW NAVBAR */}
-
-        {/* GREEN GLOW BELOW NAVBAR */}
+        {/* =========================================
+            GREEN GLOW BELOW NAVBAR
+        ========================================== */}
 
         <div
           className="
-  absolute
+            pointer-events-none
 
-  left-1/2
+            absolute
+            left-1/2
+            bottom-[-20px]
 
-  -translate-x-1/2
+            z-[-1]
 
+            h-1
+            w-[90%]
 
-  -bottom-5
+            -translate-x-1/2
 
+            rounded-full
 
+            bg-emerald-900/90
+            dark:bg-emerald-400/30
 
-  w-[90%]
+            blur-2xl
 
-
-
-  h-1
-
-
-
-  rounded-full
-
-
-
-  bg-emerald-900/90
-
-
-  dark:bg-emerald-400/30
-
-
-
-  blur-2xl
-
-
-
-  z-[-1]
-
-
-
-  transition-all
-
-  duration-1000
-  "
+            transition-all
+            duration-1000
+          "
         />
-        {/* LOGO */}
+
+        {/* =========================================
+            LOGO
+        ========================================== */}
 
         <Logo />
 
-        {/* MENU */}
+        {/* =========================================
+            DESKTOP NAVIGATION
+        ========================================== */}
 
         <DesktopMenu links={navLinks} active={active} navigateTo={navigateTo} />
 
-        {/* ACTIONS */}
+        {/* =========================================
+            DESKTOP ACTIONS
+        ========================================== */}
 
         <div
           className="
-          hidden
-
-          md:flex
-
-          items-center
-
-          gap-4
+            hidden
+            items-center
+            gap-4
+            md:flex
           "
         >
           <SocialLinks />
@@ -211,9 +156,20 @@ export default function Navbar() {
           <LanguageToggle />
         </div>
 
-        {/* MOBILE */}
+        {/* =========================================
+            MOBILE MENU
 
-        <MobileMenu open={open} setOpen={setOpen} links={navLinks} />
+            IMPORTANT:
+            Pass navigateTo here.
+        ========================================== */}
+
+        <MobileMenu
+          open={open}
+          setOpen={setOpen}
+          links={navLinks}
+          active={active}
+          navigateTo={navigateTo}
+        />
       </motion.div>
     </header>
   );

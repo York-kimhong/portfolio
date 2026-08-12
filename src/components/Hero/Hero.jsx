@@ -28,7 +28,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden"
+      className="relative flex min-h-screen items-center "
     >
       <div className="section-container">
         <div className="grid items-center gap-14 lg:grid-cols-[1.3fr_1fr]">

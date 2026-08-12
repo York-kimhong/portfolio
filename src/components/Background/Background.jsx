@@ -4,181 +4,139 @@ export default function Background() {
   return (
     <div
       className="
-      fixed
-      inset-0
-      -z-50
-      overflow-hidden
-      pointer-events-none
+        fixed
+        inset-0
+        z-[-1]
+        overflow-hidden
+        pointer-events-none
 
-      bg-white
-      dark:bg-[#020604]
-
-      transition-colors
-      duration-1000
+        bg-[#f8fafc]
+        dark:bg-[#030303]
       "
     >
-      {/* ===================== */}
-      {/* MAIN BACKGROUND */}
-      {/* ===================== */}
+      {/* ========================================
+          MAIN BACKGROUND
+      ======================================== */}
 
       <motion.div
         animate={{
           backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
         }}
         transition={{
-          duration: 18,
+          duration: 24,
           repeat: Infinity,
           ease: "linear",
         }}
         className="
-        absolute
-        inset-0
+          absolute
+          inset-0
 
-        bg-[length:200%_200%]
+          bg-[length:200%_200%]
 
-        bg-gradient-to-br
+          bg-gradient-to-br
+          from-white
+          via-[#f8fafc]
+          to-white
 
-        from-white
-        via-white
-        to-white
-
-        dark:from-black
-        dark:via-[#020806]
-        dark:to-[#06351f]
-
-        transition-all
-        duration-1000
+          dark:from-[#000000]
+          dark:via-[#030303]
+          dark:to-[#050505]
         "
       />
 
-      {/* ===================== */}
-      {/* TOP LEFT GLOW */}
-      {/* ===================== */}
+      {/* ========================================
+          VERY SUBTLE DARK MODE GREEN GLOW
+      ======================================== */}
 
       <motion.div
         animate={{
-          x: [0, 60, -30, 0],
-          y: [0, -30, 20, 0],
-          scale: [1, 1.05, 1],
+          x: [0, 35, -20, 0],
+          y: [0, -20, 15, 0],
+          scale: [1, 1.03, 1],
         }}
         transition={{
-          duration: 22,
+          duration: 24,
           repeat: Infinity,
           ease: "easeInOut",
         }}
         className="
-        absolute
+          absolute
+          top-[-180px]
+          left-[-180px]
 
-        top-[-120px]
-        left-[-120px]
+          h-[550px]
+          w-[550px]
 
-        dark:top-[-250px]
-        dark:left-[-200px]
+          rounded-full
 
-        w-[500px]
-        h-[500px]
+          bg-transparent
+          dark:bg-emerald-500/[0.07]
 
-        dark:w-[750px]
-        dark:h-[750px]
-
-        rounded-full
-
-        bg-emerald-900/60
-
-        dark:bg-emerald-500/25
-
-        blur-[180px]
-
-        dark:blur-[220px]
-
-        transition-all
-        duration-1000
+          blur-[180px]
         "
       />
 
-      {/* ===================== */}
-      {/* BOTTOM RIGHT GLOW */}
-      {/* ===================== */}
+      {/* ========================================
+          SECOND SUBTLE GLOW
+      ======================================== */}
 
       <motion.div
         animate={{
-          x: [0, -70, 40, 0],
-          y: [0, 50, -30, 0],
-          scale: [1, 1.08, 1],
+          x: [0, -30, 20, 0],
+          y: [0, 25, -15, 0],
+          scale: [1, 1.04, 1],
         }}
         transition={{
-          duration: 26,
+          duration: 28,
           repeat: Infinity,
           ease: "easeInOut",
         }}
         className="
-        absolute
+          absolute
+          bottom-[-220px]
+          right-[-200px]
 
-        bottom-[-160px]
-        right-[-160px]
+          h-[600px]
+          w-[600px]
 
-        dark:bottom-[-300px]
-        dark:right-[-250px]
+          rounded-full
 
-        w-[600px]
-        h-[600px]
+          bg-transparent
+          dark:bg-emerald-400/[0.045]
 
-        dark:w-[900px]
-        dark:h-[900px]
-
-        rounded-full
-
-        bg-green-900/80
-
-        dark:bg-green-400/15
-
-        blur-[220px]
-
-        dark:blur-[260px]
-
-        transition-all
-        duration-1000
+          blur-[200px]
         "
       />
 
-      {/* ===================== */}
-      {/* GRID */}
-      {/* ===================== */}
+      {/* ========================================
+          GLOBAL GRID
+      ======================================== */}
 
       <div
         className="
-        absolute
-        inset-0
+          absolute
+          inset-0
 
-        opacity-[0.08]
-        dark:opacity-[0.04]
+          bg-[linear-gradient(to_right,rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.06)_1px,transparent_1px)]
 
-        bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)]
+          dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)]
 
-        dark:bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)]
-
-        bg-[size:80px_80px]
-
-        transition-all
-        duration-1000
+          bg-[size:80px_80px]
         "
       />
 
-      {/* ===================== */}
-      {/* VIGNETTE */}
-      {/* ===================== */}
+      {/* ========================================
+          VIGNETTE
+      ======================================== */}
 
       <div
         className="
-        absolute
-        inset-0
+          absolute
+          inset-0
 
-        bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.08))]
+          bg-[radial-gradient(circle_at_center,transparent_30%,rgba(15,23,42,0.04))]
 
-        dark:bg-[radial-gradient(circle_at_center,transparent_10%,black)]
-
-        transition-all
-        duration-1000
+          dark:bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.55))]
         "
       />
     </div>

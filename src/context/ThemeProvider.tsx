@@ -12,40 +12,19 @@ const ThemeContext = createContext<ThemeContextType>({
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [dark, setDark] = useState(() => {
-    const saved = localStorage.getItem("theme");
-
-    return saved ? saved === "dark" : true;
+    return localStorage.getItem("theme") !== "light";
   });
 
   useEffect(() => {
     const root = document.documentElement;
 
-    // smooth transition
+    root.classList.toggle("dark", dark);
 
-    root.classList.add("theme-transition");
-
-    if (dark) {
-      root.classList.add("dark");
-
-      localStorage.setItem("theme", "dark");
-    } else {
-      root.classList.remove("dark");
-
-      localStorage.setItem("theme", "light");
-    }
-
-    setTimeout(() => {
-      root.classList.remove("theme-transition");
-    }, 800);
+    localStorage.setItem("theme", dark ? "dark" : "light");
   }, [dark]);
 
   return (
-    <ThemeContext.Provider
-      value={{
-        dark,
-        setDark,
-      }}
-    >
+    <ThemeContext.Provider value={{ dark, setDark }}>
       {children}
     </ThemeContext.Provider>
   );

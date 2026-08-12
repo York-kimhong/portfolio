@@ -1,137 +1,141 @@
 import { useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
 import { FaPaperPlane, FaUser, FaEnvelope } from "react-icons/fa";
 
+const smoothEase = [0.22, 1, 0.36, 1];
+
 export default function ContactForm() {
-  const form = useRef();
+  const form = useRef(null);
 
   const [loading, setLoading] = useState(false);
-
   const [status, setStatus] = useState("");
 
   const sendEmail = (e) => {
     e.preventDefault();
 
-    setLoading(true);
+    if (loading) return;
 
+    setLoading(true);
     setStatus("");
 
     emailjs
-
       .sendForm(
         "service_eqmltlp",
         "template_wh8fh1g",
         form.current,
         "GajH1ydcZF4iCwWne",
       )
-
       .then(() => {
         setStatus("Message sent successfully ✓");
 
-        form.current.reset();
+        form.current?.reset();
       })
-
       .catch((error) => {
-        console.log(error);
+        console.error(error);
 
         setStatus("Failed to send message");
       })
-
       .finally(() => {
         setLoading(false);
       });
   };
 
+  const isSuccess = status.includes("success");
+
   return (
-    <form
+    <motion.form
       ref={form}
       onSubmit={sendEmail}
+      whileHover={{
+        y: -2,
+      }}
+      transition={{
+        duration: 0.25,
+        ease: smoothEase,
+      }}
       className="
-relative
-overflow-hidden
+        relative
+        overflow-hidden
 
-rounded-[32px]
+        rounded-[32px]
 
-p-6
-sm:p-8
+        border
+        border-black/10
+        dark:border-white/10
 
+        bg-white/50
+        dark:bg-white/[0.06]
 
-bg-white/50
+        p-6
+        sm:p-8
 
-dark:bg-white/[0.06]
+        backdrop-blur-2xl
 
-
-border
-
-border-black/10
-
-dark:border-white/10
-
-
-backdrop-blur-2xl
-
-
-shadow-[0_20px_70px_rgba(16,185,129,0.15)]
-
-"
+        shadow-[0_20px_70px_rgba(16,185,129,0.12)]
+      "
     >
-      {/* ambient */}
+      {/* ================================
+          AMBIENT LIGHT
+      ================================= */}
 
       <div
         className="
-absolute
+          pointer-events-none
+          absolute
+          -right-20
+          -top-20
 
--top-20
+          h-60
+          w-60
 
--right-20
+          rounded-full
 
-w-60
+          bg-emerald-400/15
 
-h-60
+          blur-3xl
 
-rounded-full
-
-bg-emerald-400/20
-
-blur-3xl
-
-"
+          dark:bg-emerald-400/10
+        "
       />
 
+      {/* ================================
+          CONTENT
+      ================================= */}
+
       <div className="relative z-10">
+        {/* TITLE */}
+
         <h3
           className="
-text-2xl
+            mb-7
 
-font-black
+            text-2xl
+            font-black
 
-text-slate-900
-
-dark:text-white
-
-mb-7
-"
+            text-slate-900
+            dark:text-white
+          "
         >
           Send a Message
         </h3>
 
-        {/* NAME */}
+        {/* ================================
+            NAME
+        ================================= */}
 
         <div className="relative mb-5">
           <FaUser
             className="
-absolute
+              pointer-events-none
+              absolute
+              left-4
+              top-1/2
+              -translate-y-1/2
 
-left-4
-
-top-1/2
-
--translate-y-1/2
-
-text-emerald-500
-
-"
+              text-emerald-500
+            "
           />
 
           <input
@@ -139,70 +143,59 @@ text-emerald-500
             type="text"
             required
             placeholder="Your Name"
+            autoComplete="name"
             className="
-peer
+              peer
 
-w-full
+              w-full
 
-pl-12
+              rounded-xl
 
-pr-5
+              border
+              border-black/10
+              dark:border-white/10
 
-py-3.5
+              bg-black/5
+              dark:bg-white/5
 
-rounded-xl
+              py-3.5
+              pl-12
+              pr-5
 
+              text-slate-900
+              dark:text-white
 
-bg-black/5
+              outline-none
 
-dark:bg-white/5
+              placeholder:text-slate-400
+              dark:placeholder:text-slate-500
 
+              transition-[border-color,box-shadow]
+              duration-200
 
-border
+              focus:border-emerald-500
 
-border-black/10
-
-dark:border-white/10
-
-
-text-slate-900
-
-dark:text-white
-
-
-outline-none
-
-
-focus:border-emerald-500
-
-
-focus:ring-4
-
-focus:ring-emerald-500/10
-
-
-transition-all
-
-"
+              focus:ring-4
+              focus:ring-emerald-500/10
+            "
           />
         </div>
 
-        {/* EMAIL */}
+        {/* ================================
+            EMAIL
+        ================================= */}
 
         <div className="relative mb-5">
           <FaEnvelope
             className="
-absolute
+              pointer-events-none
+              absolute
+              left-4
+              top-1/2
+              -translate-y-1/2
 
-left-4
-
-top-1/2
-
--translate-y-1/2
-
-text-emerald-500
-
-"
+              text-emerald-500
+            "
           />
 
           <input
@@ -210,54 +203,45 @@ text-emerald-500
             type="email"
             required
             placeholder="Your Email"
+            autoComplete="email"
             className="
-w-full
+              w-full
 
-pl-12
+              rounded-xl
 
-pr-5
+              border
+              border-black/10
+              dark:border-white/10
 
-py-3.5
+              bg-black/5
+              dark:bg-white/5
 
+              py-3.5
+              pl-12
+              pr-5
 
-rounded-xl
+              text-slate-900
+              dark:text-white
 
+              outline-none
 
-bg-black/5
+              placeholder:text-slate-400
+              dark:placeholder:text-slate-500
 
-dark:bg-white/5
+              transition-[border-color,box-shadow]
+              duration-200
 
+              focus:border-emerald-500
 
-border
-
-border-black/10
-
-dark:border-white/10
-
-
-text-slate-900
-
-dark:text-white
-
-
-outline-none
-
-
-focus:border-emerald-500
-
-
-focus:ring-4
-
-focus:ring-emerald-500/10
-
-
-transition-all
-
-"
+              focus:ring-4
+              focus:ring-emerald-500/10
+            "
           />
         </div>
 
-        {/* MESSAGE */}
+        {/* ================================
+            MESSAGE
+        ================================= */}
 
         <textarea
           name="message"
@@ -265,175 +249,168 @@ transition-all
           rows={5}
           placeholder="Your Message"
           className="
-w-full
+            w-full
 
+            resize-none
 
-px-5
+            rounded-xl
 
-py-4
+            border
+            border-black/10
+            dark:border-white/10
 
+            bg-black/5
+            dark:bg-white/5
 
-rounded-xl
+            px-5
+            py-4
 
+            text-slate-900
+            dark:text-white
 
-bg-black/5
+            outline-none
 
-dark:bg-white/5
+            placeholder:text-slate-400
+            dark:placeholder:text-slate-500
 
+            transition-[border-color,box-shadow]
+            duration-200
 
-border
+            focus:border-emerald-500
 
-border-black/10
-
-dark:border-white/10
-
-
-text-slate-900
-
-dark:text-white
-
-
-outline-none
-
-
-resize-none
-
-
-focus:border-emerald-500
-
-
-focus:ring-4
-
-focus:ring-emerald-500/10
-
-
-transition-all
-
-"
+            focus:ring-4
+            focus:ring-emerald-500/10
+          "
         />
 
-        {/* STATUS */}
+        {/* ================================
+            STATUS
+        ================================= */}
 
-        {status && (
-          <p
-            className={`
+        <AnimatePresence mode="wait">
+          {status && (
+            <motion.p
+              key={status}
+              initial={{
+                opacity: 0,
+                y: 6,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              exit={{
+                opacity: 0,
+                y: -6,
+              }}
+              transition={{
+                duration: 0.2,
+                ease: smoothEase,
+              }}
+              className={`
+                mt-4
+                text-sm
+                font-medium
+                ${isSuccess ? "text-emerald-500" : "text-red-500"}
+              `}
+            >
+              {status}
+            </motion.p>
+          )}
+        </AnimatePresence>
 
-text-sm
+        {/* ================================
+            BUTTON
+        ================================= */}
 
-mt-4
-
-font-medium
-
-
-${status.includes("success") ? "text-emerald-500" : "text-red-500"}
-
-`}
-          >
-            {status}
-          </p>
-        )}
-
-        {/* BUTTON */}
-
-        <button
+        <motion.button
+          type="submit"
           disabled={loading}
+          whileHover={!loading ? { scale: 1.015 } : {}}
+          whileTap={!loading ? { scale: 0.985 } : {}}
+          transition={{
+            duration: 0.2,
+            ease: smoothEase,
+          }}
           className="
+            group
 
-group
+            relative
 
-relative
+            mt-6
 
-overflow-hidden
+            flex
+            w-full
+            items-center
+            justify-center
+            gap-3
 
+            overflow-hidden
 
-mt-6
+            rounded-xl
 
+            bg-gradient-to-r
+            from-emerald-600
+            to-green-500
 
-flex
+            py-3.5
 
-items-center
+            font-bold
+            text-white
 
-justify-center
+            shadow-[0_15px_40px_rgba(16,185,129,0.30)]
 
+            transition-[box-shadow,opacity]
+            duration-200
 
-gap-3
+            hover:shadow-[0_18px_45px_rgba(16,185,129,0.40)]
 
-
-w-full
-
-
-py-3.5
-
-
-rounded-xl
-
-
-
-bg-gradient-to-r
-
-
-from-emerald-600
-
-
-to-green-500
-
-
-
-text-white
-
-
-font-bold
-
-
-
-shadow-[0_15px_40px_rgba(16,185,129,0.35)]
-
-
-
-hover:scale-[1.02]
-
-
-
-active:scale-95
-
-
-
-transition-all
-
-
-
-disabled:opacity-60
-
-"
+            disabled:cursor-not-allowed
+            disabled:opacity-60
+          "
         >
-          {/* hover flood */}
+          {/* HOVER LIGHT */}
 
           <span
             className="
-absolute
+              pointer-events-none
+              absolute
+              inset-0
 
-inset-0
+              translate-y-full
 
-bg-gradient-to-t
+              bg-gradient-to-t
+              from-white/20
+              to-transparent
 
-from-white/20
+              transition-transform
+              duration-300
 
-to-transparent
-
-translate-y-full
-
-group-hover:translate-y-0
-
-transition-transform
-
-duration-500
-
-"
+              group-hover:translate-y-0
+            "
           />
+
+          {/* BUTTON CONTENT */}
 
           <span className="relative flex items-center gap-3">
             {loading ? (
-              "Sending..."
+              <>
+                <span
+                  className="
+                    h-4
+                    w-4
+
+                    animate-spin
+
+                    rounded-full
+
+                    border-2
+                    border-white/30
+                    border-t-white
+                  "
+                />
+                Sending...
+              </>
             ) : (
               <>
                 <FaPaperPlane />
@@ -441,8 +418,8 @@ duration-500
               </>
             )}
           </span>
-        </button>
+        </motion.button>
       </div>
-    </form>
+    </motion.form>
   );
 }

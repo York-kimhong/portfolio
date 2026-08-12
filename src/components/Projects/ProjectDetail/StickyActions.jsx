@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { FaArrowUp } from "react-icons/fa";
+import { FaArrowLeft, FaArrowUp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 export default function StickyActions() {
   const navigate = useNavigate();
+
   const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
@@ -20,70 +21,98 @@ export default function StickyActions() {
   }, []);
 
   const handleBack = () => {
-    navigate("/");
+    const saved = sessionStorage.getItem("projectReturnPosition");
 
-    setTimeout(() => {
-      const projectsSection = document.getElementById("projects");
+    let scrollY = 0;
 
-      if (projectsSection) {
-        projectsSection.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+    if (saved) {
+      try {
+        const data = JSON.parse(saved);
+        scrollY = Number(data.scrollY) || 0;
+      } catch {
+        scrollY = Number(saved) || 0;
       }
-    }, 300);
+    }
+
+    navigate("/", {
+      state: {
+        restoreScrollY: scrollY,
+      },
+    });
   };
 
   return (
     <>
-      {/* BACK BUTTON */}
+      {/* BACK TO PROJECTS */}
 
       <motion.button
         onClick={handleBack}
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        whileHover={{ x: 5 }}
+        initial={{
+          opacity: 0,
+          x: -20,
+        }}
+        animate={{
+          opacity: 1,
+          x: 0,
+        }}
+        whileHover={{
+          x: 4,
+        }}
+        whileTap={{
+          scale: 0.96,
+        }}
         className="
-          fixed
-          top-25
-          left-5
-          sm:left-8
-          lg:left-[max(2rem,calc((100vw-1152px)/2))]
-          z-50
+        fixed
+        top-5
+        left-5
+        sm:left-8
+        z-50
 
-          flex
-          items-center
-          gap-2
+        flex
+        items-center
+        gap-2
 
-          px-4
-          py-2
+        rounded-full
 
-          rounded-full
+        px-4
+        py-2.5
 
-          glass-card
+        glass-card
 
-          text-sm
-          font-semibold
+        text-sm
+        font-semibold
 
-          text-slate-700
-          dark:text-slate-200
+        text-slate-700
+        dark:text-slate-200
 
-          hover:text-emerald-500
+        hover:text-emerald-500
 
-          transition-all
-          duration-300
-        "
+        transition-all
+        duration-300
+      "
       >
-        ← Back
+        <FaArrowLeft size={12} />
+        Back
       </motion.button>
 
       {/* BACK TO TOP */}
 
       {showTop && (
         <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          whileHover={{ scale: 1.1 }}
+          initial={{
+            opacity: 0,
+            scale: 0.8,
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+          }}
+          whileHover={{
+            scale: 1.1,
+          }}
+          whileTap={{
+            scale: 0.95,
+          }}
           onClick={() =>
             window.scrollTo({
               top: 0,
@@ -96,14 +125,13 @@ export default function StickyActions() {
             right-8
             z-50
 
-            w-14
-            h-14
-
-            rounded-full
-
             flex
+            h-14
+            w-14
             items-center
             justify-center
+
+            rounded-full
 
             bg-gradient-to-br
             from-emerald-500
@@ -116,6 +144,7 @@ export default function StickyActions() {
 
             transition
           "
+          aria-label="Back to top"
         >
           <FaArrowUp size={18} />
         </motion.button>

@@ -15,19 +15,16 @@ export default function ContactInfo() {
       icon: <FaEnvelope />,
       link: "mailto:kimhong4446@gmail.com",
     },
-
     {
       name: "Telegram",
       icon: <FaTelegramPlane />,
       link: "https://t.me/Yorkkimhong",
     },
-
     {
       name: "GitHub",
       icon: <FaGithub />,
       link: "https://github.com/York-kimhong",
     },
-
     {
       name: "LinkedIn",
       icon: <FaLinkedin />,
@@ -36,227 +33,188 @@ export default function ContactInfo() {
   ];
 
   return (
-    <div
+    <motion.div
+      initial={{
+        opacity: 0,
+        x: -35,
+      }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+      }}
+      viewport={{
+        once: false,
+        amount: 0.15,
+      }}
+      transition={{
+        duration: 0.5,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className="
-      relative
+        relative
+        overflow-hidden
+        rounded-[32px]
+        p-6
+        sm:p-8
 
-      overflow-hidden
+        bg-white/40
+        dark:bg-white/[0.06]
 
+        border
+        border-black/10
+        dark:border-white/10
 
+        backdrop-blur-2xl
 
-      rounded-[32px]
+        shadow-[0_20px_60px_rgba(16,185,129,0.10)]
 
+        transition-all
+        duration-300
 
-
-      p-6
-
-      sm:p-8
-
-
-
-
-
-      bg-white/40
-
-
-
-      dark:bg-white/[0.06]
-
-
-
-
-
-      border
-
-
-
-      border-black/10
-
-
-
-      dark:border-white/10
-
-
-
-
-
-      backdrop-blur-2xl
-
-
-
-
-
-      shadow-[0_20px_60px_rgba(16,185,129,0.12)]
-
+        hover:border-emerald-500/30
+        hover:shadow-[0_25px_70px_rgba(16,185,129,0.15)]
       "
     >
       {/* GREEN GLASS FLOOD */}
 
       <div
         className="
-        absolute
+          pointer-events-none
+          absolute
+          bottom-0
+          left-0
+          h-40
+          w-full
 
+          bg-gradient-to-t
+          from-emerald-500/15
+          via-emerald-400/5
+          to-transparent
 
-        bottom-0
-
-
-        left-0
-
-
-        w-full
-
-
-        h-40
-
-
-
-
-        bg-gradient-to-t
-
-
-
-        from-emerald-500/20
-
-
-
-        to-transparent
-
-
-
-
-
-        blur-3xl
-
-
-
-        opacity-70
-
-
-
-        pointer-events-none
+          blur-3xl
         "
       />
 
+      {/* TOP LIGHT */}
+
       <div
         className="
-        relative
-
-        z-10
+          pointer-events-none
+          absolute
+          -top-24
+          -right-24
+          h-60
+          w-60
+          rounded-full
+          bg-emerald-400/10
+          blur-3xl
         "
-      >
+      />
+
+      <div className="relative z-10">
+        {/* TITLE */}
+
         <h3
           className="
-        text-xl
-
-        sm:text-2xl
-
-
-        font-black
-
-
-        mb-8
-
-
-
-        text-slate-900
-
-
-
-        dark:text-white
-        "
+            mb-8
+            text-xl
+            font-black
+            text-slate-900
+            sm:text-2xl
+            dark:text-white
+          "
         >
           Let's Connect
         </h3>
 
-        <div
-          className="
-        space-y-6
-        "
-        >
+        {/* INFORMATION */}
+
+        <div className="space-y-6">
+          {/* EMAIL */}
+
           <div>
             <p
               className="
-            text-sm
-
-            text-slate-500
-
-            dark:text-slate-400
-            "
+                text-sm
+                text-slate-500
+                dark:text-slate-400
+              "
             >
               Email
             </p>
 
             <p
               className="
-            mt-1
-
-            font-semibold
-
-            text-slate-900
-
-            dark:text-white
-
-            break-all
-            "
+                mt-1
+                break-all
+                font-semibold
+                text-slate-900
+                dark:text-white
+              "
             >
               kimhong4446@gmail.com
             </p>
           </div>
 
+          {/* LOCATION */}
+
           <div>
             <p
               className="
-            text-sm
-
-            text-slate-500
-
-            dark:text-slate-400
-            "
+                text-sm
+                text-slate-500
+                dark:text-slate-400
+              "
             >
               Location
             </p>
 
             <p
               className="
-            mt-1
-
-            font-semibold
-
-            text-slate-900
-
-            dark:text-white
-            "
+                mt-1
+                font-semibold
+                text-slate-900
+                dark:text-white
+              "
             >
               Phnom Penh, Cambodia
             </p>
           </div>
 
+          {/* AVAILABILITY */}
+
           <div>
             <p
               className="
-            text-sm
-
-            text-slate-500
-
-            dark:text-slate-400
-            "
+                text-sm
+                text-slate-500
+                dark:text-slate-400
+              "
             >
               Availability
             </p>
 
-            <p
-              className="
-            mt-1
+            <div className="mt-2 flex items-center gap-2">
+              <span
+                className="
+                  h-2.5
+                  w-2.5
+                  rounded-full
+                  bg-emerald-400
+                  shadow-[0_0_12px_rgba(52,211,153,0.8)]
+                "
+              />
 
-            font-semibold
-
-            text-slate-900
-
-            dark:text-white
-            "
-            >
-              Open to Frontend Internship Opportunities
-            </p>
+              <p
+                className="
+                  font-semibold
+                  text-slate-900
+                  dark:text-white
+                "
+              >
+                Open to Frontend Internship Opportunities
+              </p>
+            </div>
           </div>
         </div>
 
@@ -264,27 +222,24 @@ export default function ContactInfo() {
 
         <div
           className="
-        flex
-
-        flex-wrap
-
-        items-center
-
-
-        gap-3
-
-
-        mt-10
-        "
+            mt-10
+            flex
+            flex-wrap
+            items-center
+            gap-3
+          "
         >
-          {socials.map((item, index) => (
+          {socials.map((item) => (
             <motion.a
-              key={index}
+              key={item.name}
               href={item.link}
               target="_blank"
               rel="noreferrer"
               initial="rest"
               whileHover="hover"
+              whileTap={{
+                scale: 0.95,
+              }}
               variants={{
                 rest: {
                   width: 48,
@@ -296,85 +251,40 @@ export default function ContactInfo() {
               }}
               transition={{
                 duration: 0.25,
-
-                ease: "easeOut",
+                ease: [0.22, 1, 0.36, 1],
               }}
+              aria-label={item.name}
               className="
-            relative
+                relative
+                flex
+                h-12
+                items-center
+                justify-center
 
-            h-12
+                overflow-hidden
 
-            flex
+                rounded-xl
 
-            items-center
+                border
+                border-black/10
+                dark:border-white/10
 
-            justify-center
+                bg-black/5
+                dark:bg-white/5
 
+                text-slate-600
+                dark:text-slate-300
 
+                hover:border-emerald-400/50
+                hover:text-emerald-600
+                dark:hover:text-emerald-300
 
-            rounded-xl
-
-
-
-
-
-            bg-black/5
-
-
-
-            dark:bg-white/5
-
-
-
-
-
-            border
-
-
-
-            border-black/10
-
-
-
-            dark:border-white/10
-
-
-
-
-
-            text-slate-600
-
-
-
-            dark:text-slate-300
-
-
-
-
-
-            hover:text-emerald-600
-
-
-
-            dark:hover:text-emerald-300
-
-
-
-
-
-            hover:border-emerald-400/50
-
-
-
-
-
-            overflow-hidden
-
-
-
-            transition-colors
-            "
+                transition-colors
+                duration-200
+              "
             >
+              {/* ICON */}
+
               <motion.span
                 variants={{
                   rest: {
@@ -387,22 +297,19 @@ export default function ContactInfo() {
                 }}
                 transition={{
                   duration: 0.25,
+                  ease: [0.22, 1, 0.36, 1],
                 }}
                 className="
-              absolute
-
-
-              left-1/2
-
-
-              -translate-x-1/2
-
-
-              text-lg
-              "
+                  absolute
+                  left-1/2
+                  -translate-x-1/2
+                  text-lg
+                "
               >
                 {item.icon}
               </motion.span>
+
+              {/* LABEL */}
 
               <motion.span
                 variants={{
@@ -418,14 +325,13 @@ export default function ContactInfo() {
                 }}
                 transition={{
                   duration: 0.25,
+                  ease: [0.22, 1, 0.36, 1],
                 }}
                 className="
-              text-sm
-
-              font-semibold
-
-              whitespace-nowrap
-              "
+                  text-sm
+                  font-semibold
+                  whitespace-nowrap
+                "
               >
                 {item.name}
               </motion.span>
@@ -439,88 +345,43 @@ export default function ContactInfo() {
             download="York_Kimhong.pdf"
             whileHover={{
               scale: 1.05,
+              y: -2,
             }}
             whileTap={{
               scale: 0.95,
             }}
             className="
-        h-12
+              flex
+              h-12
+              items-center
+              gap-2
+              rounded-xl
+              px-5
 
+              bg-gradient-to-r
+              from-emerald-600
+              to-green-500
 
-        px-5
+              text-sm
+              font-semibold
+              text-white
 
+              shadow-[0_10px_30px_rgba(16,185,129,0.30)]
 
+              transition-all
+              duration-200
 
-        flex
-
-
-        items-center
-
-
-        gap-2
-
-
-
-
-        rounded-xl
-
-
-
-
-
-        bg-gradient-to-r
-
-
-
-        from-emerald-600
-
-
-
-        to-green-500
-
-
-
-
-
-        text-white
-
-
-
-
-
-        text-sm
-
-
-        font-semibold
-
-
-
-
-
-        shadow-[0_10px_30px_rgba(16,185,129,0.35)]
-
-
-
-
-
-        hover:from-emerald-500
-
-
-
-        hover:to-green-400
-
-
-
-
-
-        transition-all
-        "
+              hover:from-emerald-500
+              hover:to-green-400
+              hover:shadow-[0_15px_35px_rgba(16,185,129,0.40)]
+            "
           >
             <FaDownload />
-            Resume
+
+            <span>Resume</span>
           </motion.a>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

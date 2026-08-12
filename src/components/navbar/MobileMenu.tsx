@@ -1,518 +1,659 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaDownload } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 import ThemeToggle from "./ThemeToggle";
 import LanguageToggle from "./LanguageToggle";
 
-export default function MobileMenu({ open, setOpen, links }) {
+type LinkItem = {
+  key: string;
+  href: string;
+};
+
+type MobileMenuProps = {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  links: LinkItem[];
+  active: string;
+  navigateTo: (key: string, href: string) => void;
+};
+
+export default function MobileMenu({
+  open,
+  setOpen,
+  links,
+  active,
+  navigateTo,
+}: MobileMenuProps) {
   const { t } = useTranslation();
+
+  // Prevent background scrolling while menu is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  // Navigation
+  const handleNavigation = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    link: LinkItem,
+  ) => {
+    event.preventDefault();
+
+    setOpen(false);
+
+    setTimeout(() => {
+      navigateTo(link.key, link.href);
+    }, 250);
+  };
 
   return (
     <>
-      {/* MENU BUTTON */}
+      {/* =====================================================
+          MENU BUTTON
+      ====================================================== */}
 
       <motion.button
-        whileTap={{
-          scale: 0.85,
-        }}
-        onClick={() => setOpen(!open)}
-        aria-label="Toggle menu"
+        type="button"
+        onClick={() => setOpen((prev) => !prev)}
+        whileTap={{ scale: 0.9 }}
+        aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+        aria-expanded={open}
         className="
-        md:hidden
+          relative
+          z-[100]
 
-        relative
+          flex
+          h-10
+          w-10
+          items-center
+          justify-center
 
-        z-[60]
+          text-[27px]
+          text-slate-800
 
-        text-3xl
+          transition-colors
+          duration-200
 
-        text-slate-900
+          hover:text-emerald-600
 
-        dark:text-white
+          dark:text-white
+          dark:hover:text-emerald-400
+
+          md:hidden
         "
       >
-        {open ? <HiX /> : <HiMenuAlt3 />}
+        <AnimatePresence mode="wait" initial={false}>
+          {open ? (
+            <motion.span
+              key="close"
+              initial={{
+                opacity: 0,
+                rotate: -90,
+                scale: 0.7,
+              }}
+              animate={{
+                opacity: 1,
+                rotate: 0,
+                scale: 1,
+              }}
+              exit={{
+                opacity: 0,
+                rotate: 90,
+                scale: 0.7,
+              }}
+              transition={{
+                duration: 0.18,
+              }}
+            >
+              <HiX />
+            </motion.span>
+          ) : (
+            <motion.span
+              key="menu"
+              initial={{
+                opacity: 0,
+                rotate: 90,
+                scale: 0.7,
+              }}
+              animate={{
+                opacity: 1,
+                rotate: 0,
+                scale: 1,
+              }}
+              exit={{
+                opacity: 0,
+                rotate: -90,
+                scale: 0.7,
+              }}
+              transition={{
+                duration: 0.18,
+              }}
+            >
+              <HiMenuAlt3 />
+            </motion.span>
+          )}
+        </AnimatePresence>
       </motion.button>
+
+      {/* =====================================================
+          MOBILE MENU
+      ====================================================== */}
 
       <AnimatePresence>
         {open && (
           <>
-            {/* OVERLAY */}
+            {/* =================================================
+                BACKGROUND
+                No blur
+            ================================================== */}
 
             <motion.div
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-              }}
-              exit={{
-                opacity: 0,
-              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
               onClick={() => setOpen(false)}
               className="
-          fixed
+                fixed
+                inset-0
 
-          inset-0
+                z-[80]
 
-          z-40
+                bg-black/20
 
-
-          bg-black/30
-
-
-          backdrop-blur-md
-
-
-          md:hidden
-          "
+                md:hidden
+              "
             />
 
-            {/* DRAWER */}
+            {/* =================================================
+                MOBILE DRAWER
+            ================================================== */}
 
-            <motion.div
+            <motion.aside
               initial={{
                 x: "100%",
+                opacity: 0,
               }}
               animate={{
                 x: 0,
+                opacity: 1,
               }}
               exit={{
                 x: "100%",
+                opacity: 0,
               }}
               transition={{
                 type: "spring",
-
-                stiffness: 220,
-
-                damping: 24,
+                stiffness: 280,
+                damping: 30,
+              }}
+              onClick={(event) => {
+                event.stopPropagation();
               }}
               className="
-          fixed
+                fixed
+                right-3
+                top-3
 
+                z-[90]
 
-          top-0
+                flex
+                h-[calc(100dvh-24px)]
 
+                w-[40vw]
+                max-w-[200px]
 
-          right-0
+                flex-col
+                overflow-hidden
 
+                rounded-2xl
 
-          z-50
+                border
+                border-emerald-500/20
 
+                bg-white/95
 
+                shadow-[-15px_15px_50px_rgba(16,185,129,0.12)]
 
-          h-screen
+                backdrop-blur-2xl
 
+                dark:border-emerald-400/15
+                dark:bg-[#030705]/95
 
-          w-[290px]
-
-
-
-          overflow-hidden
-
-
-
-          border-l
-
-
-          border-emerald-500/20
-
-
-
-          bg-white/80
-
-
-          dark:bg-[#020604]/85
-
-
-
-          backdrop-blur-2xl
-
-
-
-          shadow-[-20px_0_80px_rgba(16,185,129,0.25)]
-
-
-
-          md:hidden
-          "
+                md:hidden
+              "
             >
-              {/* GREEN AMBIENT LIGHT */}
-
-              <motion.div
-                animate={{
-                  y: [80, -80, 80],
-
-                  scale: [1, 1.2, 1],
-                }}
-                transition={{
-                  duration: 10,
-
-                  repeat: Infinity,
-
-                  ease: "easeInOut",
-                }}
-                className="
-          absolute
-
-
-          bottom-[-120px]
-
-
-          left-[-100px]
-
-
-
-          w-[350px]
-
-
-          h-[350px]
-
-
-
-          rounded-full
-
-
-
-          bg-emerald-500/25
-
-
-          dark:bg-emerald-400/20
-
-
-
-          blur-[120px]
-          "
-              />
-
-              {/* CONTENT */}
+              {/* =================================================
+                  BACKGROUND GLOW
+              ================================================== */}
 
               <div
                 className="
-          relative
+                  pointer-events-none
+                  absolute
 
-          z-10
+                  -right-24
+                  -top-24
 
+                  h-56
+                  w-56
 
-          pt-28
+                  rounded-full
 
+                  bg-emerald-400/10
 
-          px-8
-          "
+                  blur-[90px]
+
+                  dark:bg-emerald-400/10
+                "
+              />
+
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+
+                  -bottom-24
+                  -left-24
+
+                  h-60
+                  w-60
+
+                  rounded-full
+
+                  bg-emerald-500/10
+
+                  blur-[100px]
+                "
+              />
+
+              {/* =================================================
+                  HEADER
+                  No "Navigation" text
+              ================================================== */}
+
+              <header
+                className="
+                  relative
+                  z-10
+
+                  border-b
+                  border-black/10
+
+                  px-5
+                  py-5
+
+                  dark:border-white/10
+                "
               >
+                <h2
+                  className="
+                    text-lg
+                    font-black
+                    tracking-tight
+
+                    text-slate-900
+
+                    dark:text-white
+                  "
+                >
+                  York Kimhong
+                </h2>
+              </header>
+
+              {/* =================================================
+                  SCROLLABLE CONTENT
+              ================================================== */}
+
+              <div
+                className="
+                  relative
+                  z-10
+
+                  flex
+                  min-h-0
+                  flex-1
+                  flex-col
+
+                  overflow-y-auto
+
+                  px-4
+                  py-5
+                "
+              >
+                {/* =================================================
+                    NAVIGATION
+                ================================================== */}
+
+                <nav aria-label="Mobile navigation" className="space-y-1">
+                  {links.map((link, index) => {
+                    const isActive = active === link.key;
+
+                    return (
+                      <motion.a
+                        key={link.key}
+                        href={link.href}
+                        onClick={(event) => handleNavigation(event, link)}
+                        initial={{
+                          opacity: 0,
+                          x: 20,
+                        }}
+                        animate={{
+                          opacity: 1,
+                          x: 0,
+                        }}
+                        transition={{
+                          delay: index * 0.05,
+                          duration: 0.25,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        whileTap={{
+                          scale: 0.97,
+                        }}
+                        className={`
+                          group
+                          relative
+
+                          flex
+                          min-h-[48px]
+
+                          items-center
+
+                          rounded-lg
+
+                          px-3
+
+                          transition-all
+                          duration-200
+
+                          ${
+                            isActive
+                              ? `
+                                bg-emerald-500/10
+                                dark:bg-emerald-400/10
+                              `
+                              : `
+                                hover:bg-black/[0.04]
+                                dark:hover:bg-white/[0.05]
+                              `
+                          }
+                        `}
+                      >
+                        {/* ACTIVE LINE */}
+
+                        <span
+                          className={`
+                            absolute
+
+                            left-0
+                            top-1/2
+
+                            h-5
+                            w-[3px]
+
+                            -translate-y-1/2
+
+                            rounded-full
+
+                            bg-emerald-500
+
+                            transition-opacity
+                            duration-200
+
+                            ${isActive ? "opacity-100" : "opacity-0"}
+                          `}
+                        />
+
+                        {/* TEXT */}
+
+                        <span
+                          className={`
+                            text-[15px]
+                            font-semibold
+
+                            transition-colors
+                            duration-200
+
+                            ${
+                              isActive
+                                ? `
+                                  text-emerald-600
+                                  dark:text-emerald-400
+                                `
+                                : `
+                                  text-slate-700
+                                  group-hover:text-emerald-600
+
+                                  dark:text-slate-200
+                                  dark:group-hover:text-emerald-400
+                                `
+                            }
+                          `}
+                        >
+                          {t(`nav.${link.key}`)}
+                        </span>
+                      </motion.a>
+                    );
+                  })}
+                </nav>
+
+                {/* =================================================
+                    DIVIDER
+                ================================================== */}
+
                 <div
                   className="
-          flex
+                    my-5
+                    h-px
 
-          flex-col
+                    bg-gradient-to-r
+                    from-transparent
+                    via-black/10
+                    to-transparent
 
-          gap-7
-          "
-                >
-                  {/* LINKS */}
+                    dark:via-white/10
+                  "
+                />
 
-                  {links.map((link, index) => (
-                    <motion.a
-                      key={link.key}
-                      href={link.href}
-                      onClick={() => {
-                        setOpen(false);
-                      }}
-                      initial={{
-                        opacity: 0,
+                {/* =================================================
+                    BUTTONS
+                    No "Preferences"
+                    No "Appearance"
+                ================================================== */}
 
-                        x: 40,
-                      }}
-                      animate={{
-                        opacity: 1,
-
-                        x: 0,
-                      }}
-                      transition={{
-                        delay: index * 0.08,
-                      }}
-                      whileHover={{
-                        x: 8,
-                      }}
-                      className="
-            group
-
-            relative
-
-
-            text-lg
-
-
-            font-semibold
-
-
-
-            text-slate-800
-
-
-            dark:text-slate-200
-
-
-
-            transition
-            "
-                    >
-                      {t(`nav.${link.key}`)}
-
-                      {/* UNDERLINE */}
-
-                      <span
-                        className="
-              absolute
-
-
-              left-0
-
-
-              -bottom-2
-
-
-
-              w-0
-
-
-              h-[2px]
-
-
-              rounded-full
-
-
-
-              bg-emerald-500
-
-
-
-              shadow-[0_0_15px_rgba(16,185,129,0.8)]
-
-
-
-              group-hover:w-10
-
-
-
-              transition-all
-
-
-              duration-300
-              "
-                      />
-                    </motion.a>
-                  ))}
-
-                  {/* DIVIDER */}
-
+                <section>
                   <div
                     className="
-          h-px
+                      flex
+                      items-center
+                      justify-center
 
-
-          bg-black/10
-
-
-          dark:bg-white/10
-          "
-                  />
-
-                  {/* MODE + LANGUAGE */}
-
-                  <div
-                    className="
-          flex
-
-
-          justify-center
-
-
-          items-center
-
-
-          gap-4
-          "
+                      px-2
+                      py-2
+                    "
                   >
                     <div
                       className="
-            p-2
-
-
-            rounded-full
-
-
-            bg-white/50
-
-
-            dark:bg-white/10
-
-
-
-            border
-
-
-            border-black/10
-
-
-            dark:border-white/20
-
-
-
-            backdrop-blur-xl
-            "
+                        flex
+                        items-center
+                        gap-3
+                      "
                     >
                       <ThemeToggle />
-                    </div>
-
-                    <div
-                      className="
-            p-2
-
-
-            rounded-full
-
-
-            bg-white/50
-
-
-            dark:bg-white/10
-
-
-
-            border
-
-
-            border-black/10
-
-
-            dark:border-white/20
-
-
-
-            backdrop-blur-xl
-            "
-                    >
                       <LanguageToggle />
                     </div>
                   </div>
+                </section>
 
-                  {/* RESUME */}
+                {/* =================================================
+                    RESUME
+                ================================================== */}
 
-                  <motion.a
-                    whileTap={{
-                      scale: 0.95,
-                    }}
-                    href="/York_Kimhong.pdf"
-                    download="York_Kimhong.pdf"
-                    className="
-          text-center
+                <motion.a
+                  href="/York_Kimhong.pdf"
+                  download="York_Kimhong.pdf"
+                  initial={{
+                    opacity: 0,
+                    y: 10,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    delay: 0.3,
+                  }}
+                  whileHover={{
+                    y: -2,
+                  }}
+                  whileTap={{
+                    scale: 0.98,
+                  }}
+                  className="
+                    mt-4
 
+                    flex
+                    min-h-[46px]
 
-          py-3
+                    items-center
+                    justify-center
+                    gap-2
 
+                    rounded-lg
 
-          rounded-full
+                    bg-gradient-to-r
+                    from-emerald-600
+                    to-green-500
 
+                    text-sm
+                    font-bold
+                    text-white
 
+                    shadow-[0_8px_25px_rgba(16,185,129,0.2)]
 
-          bg-gradient-to-r
+                    transition-shadow
 
+                    hover:shadow-[0_12px_30px_rgba(16,185,129,0.3)]
+                  "
+                >
+                  <FaDownload size={12} />
 
-          from-emerald-600
+                  {t("nav.resume")}
+                </motion.a>
 
+                {/* =================================================
+                    SOCIAL
+                ================================================== */}
 
-          via-green-500
-
-
-          to-emerald-600
-
-
-
-          text-white
-
-
-          font-bold
-
-
-
-          shadow-[0_10px_30px_rgba(16,185,129,0.35)]
-          "
-                  >
-                    {t("nav.resume")}
-                  </motion.a>
-
-                  {/* SOCIAL */}
-
+                <div className="mt-auto pt-6">
                   <div
                     className="
-          flex
-
-
-          justify-center
-
-
-          gap-8
-
-
-          mt-5
-          "
+                      flex
+                      justify-center
+                      gap-2
+                    "
                   >
-                    <a
-                      href="https://github.com"
+                    {/* GITHUB */}
+
+                    <motion.a
+                      href="https://github.com/York-kimhong"
                       target="_blank"
                       rel="noreferrer"
+                      aria-label="GitHub"
+                      whileHover={{
+                        y: -3,
+                      }}
+                      whileTap={{
+                        scale: 0.95,
+                      }}
                       className="
-            text-2xl
+                        flex
+                        h-9
+                        w-9
 
+                        items-center
+                        justify-center
 
-            text-slate-500
+                        rounded-lg
 
+                        text-slate-500
 
-            dark:text-slate-400
+                        transition-colors
 
+                        hover:text-emerald-500
 
-
-            hover:text-emerald-500
-
-
-
-            transition
-            "
+                        dark:text-slate-400
+                        dark:hover:text-emerald-400
+                      "
                     >
                       <FaGithub />
-                    </a>
+                    </motion.a>
 
-                    <a
-                      href="https://linkedin.com"
+                    {/* LINKEDIN */}
+
+                    <motion.a
+                      href="https://linkedin.com/in/york-kimhong-90523338a"
                       target="_blank"
                       rel="noreferrer"
+                      aria-label="LinkedIn"
+                      whileHover={{
+                        y: -3,
+                      }}
+                      whileTap={{
+                        scale: 0.95,
+                      }}
                       className="
-            text-2xl
+                        flex
+                        h-9
+                        w-9
 
+                        items-center
+                        justify-center
 
-            text-slate-500
+                        rounded-lg
 
+                        text-slate-500
 
-            dark:text-slate-400
+                        transition-colors
 
+                        hover:text-emerald-500
 
-
-            hover:text-emerald-500
-
-
-
-            transition
-            "
+                        dark:text-slate-400
+                        dark:hover:text-emerald-400
+                      "
                     >
                       <FaLinkedin />
-                    </a>
+                    </motion.a>
                   </div>
+
+                  <p
+                    className="
+                      mt-4
+
+                      text-center
+
+                      text-[9px]
+
+                      text-slate-400
+
+                      dark:text-slate-500
+                    "
+                  >
+                    York Kimhong · Frontend Developer
+                  </p>
                 </div>
               </div>
-            </motion.div>
+            </motion.aside>
           </>
         )}
       </AnimatePresence>

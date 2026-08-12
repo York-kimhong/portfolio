@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import { projects } from "./data";
 
+const smoothEase = [0.22, 1, 0.36, 1];
+
 export default function Projects() {
   return (
     <section
@@ -11,74 +13,8 @@ export default function Projects() {
         relative
         py-32
         md:py-40
-        overflow-hidden
       "
     >
-      {/* ================================
-          AMBIENT BACKGROUND
-      ================================= */}
-
-      <div
-        className="
-          absolute
-          top-[-120px]
-          left-1/2
-          -translate-x-1/2
-
-          w-[700px]
-          h-[400px]
-
-          rounded-full
-
-          bg-emerald-400/15
-          dark:bg-emerald-400/10
-
-          blur-[160px]
-
-          pointer-events-none
-        "
-      />
-
-      <div
-        className="
-          absolute
-          top-[45%]
-          left-[-200px]
-
-          w-[450px]
-          h-[450px]
-
-          rounded-full
-
-          bg-green-400/10
-          dark:bg-green-400/[0.06]
-
-          blur-[150px]
-
-          pointer-events-none
-        "
-      />
-
-      <div
-        className="
-          absolute
-          bottom-[-180px]
-          right-[-150px]
-
-          w-[500px]
-          h-[500px]
-
-          rounded-full
-
-          bg-cyan-400/10
-          dark:bg-cyan-400/[0.06]
-
-          blur-[160px]
-
-          pointer-events-none
-        "
-      />
-
       {/* ================================
           CONTENT
       ================================= */}
@@ -91,25 +27,25 @@ export default function Projects() {
         <motion.div
           initial={{
             opacity: 0,
-            y: 40,
+            y: 20,
           }}
           whileInView={{
             opacity: 1,
             y: 0,
           }}
           viewport={{
-            once: true,
-            amount: 0.3,
+            once: false,
+            amount: 0.15,
           }}
           transition={{
-            duration: 0.8,
-            ease: "easeOut",
+            duration: 0.4,
+            ease: smoothEase,
           }}
           className="
-            max-w-3xl
             mx-auto
-            text-center
             mb-20
+            max-w-3xl
+            text-center
           "
         >
           {/* LABEL */}
@@ -117,21 +53,21 @@ export default function Projects() {
           <motion.p
             initial={{
               opacity: 0,
-              letterSpacing: "0.15em",
+              y: 8,
             }}
             whileInView={{
               opacity: 1,
-              letterSpacing: "0.35em",
+              y: 0,
             }}
             viewport={{
-              once: true,
+              once: false,
+              amount: 0.15,
             }}
             transition={{
-              duration: 0.8,
+              duration: 0.3,
+              ease: smoothEase,
             }}
-            className="
-              section-label
-            "
+            className="section-label"
           >
             MY WORK
           </motion.p>
@@ -163,9 +99,8 @@ export default function Projects() {
           <p
             className="
               section-description
-
-              max-w-2xl
               mx-auto
+              max-w-2xl
             "
           >
             A collection of projects showcasing my experience in frontend
@@ -185,19 +120,19 @@ export default function Projects() {
               opacity: 1,
             }}
             viewport={{
-              once: true,
+              once: false,
+              amount: 0.15,
             }}
             transition={{
-              duration: 0.8,
-              delay: 0.2,
+              duration: 0.35,
+              delay: 0.05,
+              ease: smoothEase,
             }}
             className="
-              h-1
               mx-auto
               mt-8
-
+              h-1
               rounded-full
-
               bg-gradient-to-r
               from-emerald-500
               to-cyan-400
@@ -207,46 +142,28 @@ export default function Projects() {
 
         {/* ================================
             PROJECT GRID
+
+            IMPORTANT:
+            No animation here.
+            ProjectCard handles its own
+            scroll animation.
         ================================= */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 50,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.1,
-          }}
-          transition={{
-            duration: 0.9,
-            ease: "easeOut",
-          }}
+        <div
           className="
-            grid
-
-            grid-cols-1
-            md:grid-cols-2
-
-            gap-7
-            lg:gap-9
-
-            max-w-6xl
             mx-auto
+            grid
+            max-w-6xl
+            grid-cols-1
+            gap-7
+            md:grid-cols-2
+            lg:gap-9
           "
         >
           {projects.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              index={index}
-            />
+            <ProjectCard key={project.id} project={project} index={index} />
           ))}
-        </motion.div>
+        </div>
 
         {/* ================================
             PROJECT COUNT
@@ -255,20 +172,23 @@ export default function Projects() {
         <motion.div
           initial={{
             opacity: 0,
+            y: 10,
           }}
           whileInView={{
             opacity: 1,
+            y: 0,
           }}
           viewport={{
-            once: true,
+            once: false,
+            amount: 0.15,
           }}
           transition={{
-            duration: 0.8,
-            delay: 0.3,
+            duration: 0.3,
+            delay: 0.05,
+            ease: smoothEase,
           }}
           className="
             mt-14
-
             flex
             justify-center
           "
@@ -279,47 +199,47 @@ export default function Projects() {
               items-center
               gap-3
 
-              px-5
-              py-2.5
-
               rounded-full
-
-              bg-white/50
-              dark:bg-white/[0.05]
-
-              backdrop-blur-xl
 
               border
               border-black/10
-              dark:border-white/10
+
+              bg-white/50
+
+              px-5
+              py-2.5
 
               shadow-sm
+
+              backdrop-blur-xl
+
+              dark:border-white/10
+              dark:bg-white/[0.05]
             "
           >
+            {/* STATUS DOT */}
+
             <span
               className="
-                w-2
                 h-2
-
+                w-2
                 rounded-full
-
                 bg-emerald-400
-
                 shadow-[0_0_12px_rgba(52,211,153,0.7)]
               "
             />
+
+            {/* PROJECT COUNT */}
 
             <span
               className="
                 text-sm
                 font-semibold
-
                 text-slate-600
                 dark:text-slate-400
               "
             >
-              {projects.length}{" "}
-              {projects.length === 1 ? "Project" : "Projects"}
+              {projects.length} {projects.length === 1 ? "Project" : "Projects"}
             </span>
           </div>
         </motion.div>

@@ -13,34 +13,64 @@ export default function ProjectCard({ project, index = 0 }) {
 
   const tech = project.tech || [];
 
+  // Alternate cards entering from left and right
+  const direction = index % 2 === 0 ? -35 : 35;
+
+  const smoothEase = [0.22, 1, 0.36, 1];
+
+  /*
+   * Save the exact position of THIS project card
+   * before navigating to the detail page.
+   */
+  const handleViewProject = (event) => {
+    const card = event.currentTarget.closest("article");
+
+    if (!card) return;
+
+    const rect = card.getBoundingClientRect();
+
+    const cardTop = window.scrollY + rect.top;
+
+    sessionStorage.setItem(
+      "projectReturnPosition",
+      JSON.stringify({
+        scrollY: cardTop,
+        projectId: project.id,
+      }),
+    );
+  };
+
   return (
     <motion.article
       initial={{
         opacity: 0,
-        y: 40,
-        scale: 0.96,
+        x: direction,
       }}
       whileInView={{
         opacity: 1,
-        y: 0,
-        scale: 1,
+        x: 0,
       }}
       viewport={{
-        once: true,
+        once: false,
         amount: 0.15,
       }}
       transition={{
-        duration: 0.7,
-        delay: index * 0.1,
-        ease: "easeOut",
+        duration: 0.4,
+        delay: index * 0.04,
+        ease: smoothEase,
       }}
       whileHover={{
-        y: -10,
+        y: -6,
+        transition: {
+          duration: 0.2,
+          ease: smoothEase,
+        },
       }}
       className="
         group
         relative
         overflow-hidden
+        rounded-[28px]
         glass-card-hover
       "
     >
@@ -64,7 +94,7 @@ export default function ProjectCard({ project, index = 0 }) {
           blur-2xl
 
           transition-opacity
-          duration-700
+          duration-300
 
           group-hover:opacity-100
         "
@@ -82,27 +112,43 @@ export default function ProjectCard({ project, index = 0 }) {
         <div
           className="
             relative
-            h-64
-            sm:h-72
+            h-36
             overflow-hidden
+
             bg-slate-100
+
+            sm:h-40
+            md:h-44
+            lg:h-48
+            xl:h-52
+
             dark:bg-slate-900
           "
         >
+          {/* IMAGE */}
+
           <motion.img
             src={project.image}
             alt={`${project.title} project preview`}
             whileHover={{
-              scale: 1.07,
+              scale: 1.035,
             }}
             transition={{
-              duration: 0.7,
-              ease: "easeOut",
+              duration: 0.4,
+              ease: smoothEase,
             }}
             className="
-              w-full
+              absolute
+              inset-0
+
               h-full
+              w-full
+
               object-cover
+              object-center
+
+              transition-transform
+              duration-500
             "
           />
 
@@ -110,111 +156,111 @@ export default function ProjectCard({ project, index = 0 }) {
 
           <div
             className="
+              pointer-events-none
               absolute
               inset-0
 
               bg-gradient-to-t
-              from-black/85
-              via-black/25
+              from-black/75
+              via-black/10
               to-transparent
-
-              pointer-events-none
             "
           />
 
-          {/* =====================================
+          {/* =========================================
               CATEGORY
-          ====================================== */}
+          ========================================== */}
 
           {project.category && (
             <div
               className="
                 absolute
-                bottom-5
-                left-5
-
-                px-4
-                py-1.5
+                bottom-3
+                left-4
 
                 rounded-full
-
-                bg-black/35
-                backdrop-blur-xl
 
                 border
                 border-white/20
 
-                text-white
-                text-xs
+                bg-black/35
+
+                px-3
+                py-1
+
+                text-[10px]
                 font-semibold
+                text-white
 
                 shadow-lg
+                backdrop-blur-xl
               "
             >
               {project.category}
             </div>
           )}
 
-          {/* =====================================
+          {/* =========================================
               FEATURED
-          ====================================== */}
+          ========================================== */}
 
           {project.featured && (
             <div
               className="
                 absolute
-                top-5
-                right-5
+                right-4
+                top-3
 
                 flex
                 items-center
-                gap-2
-
-                px-3.5
-                py-1.5
+                gap-1.5
 
                 rounded-full
-
-                bg-emerald-500/90
-                backdrop-blur-xl
 
                 border
                 border-emerald-300/30
 
-                text-white
-                text-xs
+                bg-emerald-500/90
+
+                px-3
+                py-1
+
+                text-[10px]
                 font-bold
+                text-white
 
                 shadow-lg
                 shadow-emerald-500/20
+
+                backdrop-blur-xl
               "
             >
-              <FaStar size={10} />
-
+              <FaStar size={8} />
               Featured
             </div>
           )}
 
-          {/* IMAGE HOVER SHINE */}
+          {/* =========================================
+              IMAGE SHINE
+          ========================================== */}
 
           <div
             className="
+              pointer-events-none
               absolute
               inset-0
+
+              -translate-x-full
 
               bg-gradient-to-r
               from-transparent
               via-white/10
               to-transparent
 
-              -translate-x-full
+              transition-transform
+              duration-700
 
               group-hover:translate-x-full
-
-              transition-transform
-              duration-1000
-
-              pointer-events-none
             "
           />
         </div>
@@ -223,42 +269,48 @@ export default function ProjectCard({ project, index = 0 }) {
             CONTENT
         ========================================== */}
 
-        <div className="p-7 sm:p-8">
-          {/* TITLE */}
+        <div className="p-5 sm:p-6">
+          {/* =========================================
+              TITLE
+          ========================================== */}
 
           <h3
             className="
-              text-2xl
+              text-xl
               font-black
-
-              text-slate-900
-              dark:text-white
-
               tracking-tight
 
+              text-slate-900
+
               transition-colors
-              duration-300
+              duration-200
 
               group-hover:text-emerald-600
+
+              dark:text-white
               dark:group-hover:text-emerald-400
+
+              sm:text-[22px]
             "
           >
             {project.title}
           </h3>
 
-          {/* DESCRIPTION */}
+          {/* =========================================
+              DESCRIPTION
+          ========================================== */}
 
           <p
             className="
-              mt-4
+              mt-2.5
+
+              line-clamp-2
 
               text-sm
-              leading-7
+              leading-6
 
               text-slate-600
               dark:text-slate-400
-
-              line-clamp-3
             "
           >
             {project.description}
@@ -270,7 +322,7 @@ export default function ProjectCard({ project, index = 0 }) {
 
           <div
             className="
-              mt-6
+              mt-4
 
               flex
               items-center
@@ -279,18 +331,11 @@ export default function ProjectCard({ project, index = 0 }) {
               gap-4
             "
           >
-            <div
-              className="
-                flex
-                items-center
-                gap-2
-              "
-            >
+            <div className="flex items-center gap-2">
               <span
                 className={`
-                  w-2.5
-                  h-2.5
-
+                  h-2
+                  w-2
                   rounded-full
 
                   ${
@@ -317,6 +362,8 @@ export default function ProjectCard({ project, index = 0 }) {
             {project.platform && (
               <span
                 className="
+                  truncate
+
                   text-xs
                   font-medium
 
@@ -336,39 +383,41 @@ export default function ProjectCard({ project, index = 0 }) {
           {tech.length > 0 && (
             <div
               className="
+                mt-4
+
                 flex
                 flex-wrap
-                gap-2
 
-                mt-6
+                gap-1.5
               "
             >
               {tech.slice(0, 5).map((item) => (
                 <span
                   key={item}
                   className="
-                    px-3
-                    py-1.5
-
                     rounded-full
-
-                    bg-slate-900/[0.04]
-                    dark:bg-white/[0.06]
 
                     border
                     border-black/10
-                    dark:border-white/10
 
-                    text-[11px]
+                    bg-slate-900/[0.04]
+
+                    px-2.5
+                    py-1
+
+                    text-[10px]
                     font-semibold
 
                     text-slate-600
-                    dark:text-slate-300
 
                     transition-all
-                    duration-300
+                    duration-200
 
                     group-hover:border-emerald-500/20
+
+                    dark:border-white/10
+                    dark:bg-white/[0.06]
+                    dark:text-slate-300
                   "
                 >
                   {item}
@@ -378,14 +427,14 @@ export default function ProjectCard({ project, index = 0 }) {
               {tech.length > 5 && (
                 <span
                   className="
-                    px-3
-                    py-1.5
-
                     rounded-full
 
                     bg-emerald-500/10
 
-                    text-[11px]
+                    px-2.5
+                    py-1
+
+                    text-[10px]
                     font-semibold
 
                     text-emerald-600
@@ -404,35 +453,42 @@ export default function ProjectCard({ project, index = 0 }) {
 
           <div
             className="
-              mt-8
+              mt-5
 
               flex
               items-center
 
-              gap-3
+              gap-2.5
             "
           >
-            {/* VIEW PROJECT */}
+            {/* =========================================
+                VIEW PROJECT
+            ========================================== */}
 
             <Link
               to={`/projects/${project.id}`}
+              onClick={handleViewProject}
               className="flex-1"
             >
               <motion.div
                 whileHover={{
-                  scale: 1.02,
+                  scale: 1.015,
                 }}
                 whileTap={{
                   scale: 0.98,
                 }}
+                transition={{
+                  duration: 0.15,
+                  ease: smoothEase,
+                }}
                 className="
                   flex
+                  w-full
+
                   items-center
                   justify-center
-                  gap-2
 
-                  w-full
-                  py-3.5
+                  gap-2
 
                   rounded-xl
 
@@ -440,34 +496,39 @@ export default function ProjectCard({ project, index = 0 }) {
                   from-emerald-600
                   to-green-500
 
-                  text-white
+                  py-3
 
                   text-sm
                   font-bold
+                  text-white
 
                   shadow-lg
                   shadow-emerald-500/20
 
-                  transition-all
-                  duration-300
+                  transition-shadow
+                  duration-200
 
                   hover:shadow-xl
                   hover:shadow-emerald-500/30
                 "
               >
                 View Project
-
                 <motion.span
                   whileHover={{
-                    x: 4,
+                    x: 3,
+                  }}
+                  transition={{
+                    duration: 0.15,
                   }}
                 >
-                  <FaArrowRight size={13} />
+                  <FaArrowRight size={12} />
                 </motion.span>
               </motion.div>
             </Link>
 
-            {/* GITHUB */}
+            {/* =========================================
+                GITHUB
+            ========================================== */}
 
             {project.github && (
               <motion.a
@@ -475,45 +536,54 @@ export default function ProjectCard({ project, index = 0 }) {
                 target="_blank"
                 rel="noreferrer"
                 whileHover={{
-                  scale: 1.08,
+                  scale: 1.05,
                   y: -2,
                 }}
                 whileTap={{
-                  scale: 0.95,
+                  scale: 0.96,
+                }}
+                transition={{
+                  duration: 0.15,
+                  ease: smoothEase,
                 }}
                 aria-label={`${project.title} GitHub repository`}
                 className="
-                  w-12
-                  h-12
-
-                  rounded-xl
-
                   flex
+                  h-11
+                  w-11
+                  shrink-0
+
                   items-center
                   justify-center
 
-                  bg-black/[0.04]
-                  dark:bg-white/[0.06]
+                  rounded-xl
 
                   border
                   border-black/10
-                  dark:border-white/10
+
+                  bg-black/[0.04]
 
                   text-slate-700
-                  dark:text-slate-200
-
-                  hover:text-emerald-500
-                  hover:border-emerald-500/30
 
                   transition-all
-                  duration-300
+                  duration-200
+
+                  hover:border-emerald-500/30
+                  hover:bg-emerald-500/5
+                  hover:text-emerald-500
+
+                  dark:border-white/10
+                  dark:bg-white/[0.06]
+                  dark:text-slate-200
                 "
               >
-                <FaGithub size={16} />
+                <FaGithub size={15} />
               </motion.a>
             )}
 
-            {/* LIVE DEMO */}
+            {/* =========================================
+                LIVE DEMO
+            ========================================== */}
 
             {project.demo && project.demo !== "#" && (
               <motion.a
@@ -521,39 +591,45 @@ export default function ProjectCard({ project, index = 0 }) {
                 target="_blank"
                 rel="noreferrer"
                 whileHover={{
-                  scale: 1.08,
+                  scale: 1.05,
                   y: -2,
                 }}
                 whileTap={{
-                  scale: 0.95,
+                  scale: 0.96,
+                }}
+                transition={{
+                  duration: 0.15,
+                  ease: smoothEase,
                 }}
                 aria-label={`${project.title} live demo`}
                 className="
-                  w-12
-                  h-12
-
-                  rounded-xl
-
                   flex
+                  h-11
+                  w-11
+                  shrink-0
+
                   items-center
                   justify-center
 
-                  bg-emerald-500/10
+                  rounded-xl
 
                   border
                   border-emerald-500/20
 
-                  text-emerald-600
-                  dark:text-emerald-400
+                  bg-emerald-500/10
 
-                  hover:bg-emerald-500/20
-                  hover:border-emerald-500/40
+                  text-emerald-600
 
                   transition-all
-                  duration-300
+                  duration-200
+
+                  hover:border-emerald-500/40
+                  hover:bg-emerald-500/20
+
+                  dark:text-emerald-400
                 "
               >
-                <FaExternalLinkAlt size={14} />
+                <FaExternalLinkAlt size={13} />
               </motion.a>
             )}
           </div>
