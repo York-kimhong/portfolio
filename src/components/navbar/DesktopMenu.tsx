@@ -1,7 +1,22 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-export default function DesktopMenu({ links, active, navigateTo }) {
+type LinkItem = {
+  key: string;
+  href: string;
+};
+
+type DesktopMenuProps = {
+  links: LinkItem[];
+  active: string;
+  navigateTo: (key: string, href: string) => void;
+};
+
+export default function DesktopMenu({
+  links,
+  active,
+  navigateTo,
+}: DesktopMenuProps) {
   const { t } = useTranslation();
 
   return (
@@ -11,12 +26,17 @@ export default function DesktopMenu({ links, active, navigateTo }) {
         md:flex
         items-center
         gap-1
+
         rounded-2xl
+
         border
         border-black/5
+
         bg-white/30
+
         px-2
         py-1.5
+
         backdrop-blur-xl
 
         dark:border-white/[0.06]
@@ -37,12 +57,16 @@ export default function DesktopMenu({ links, active, navigateTo }) {
             className="
               group
               relative
+
               flex
               items-center
               justify-center
+
               rounded-xl
+
               px-4
               py-2.5
+
               text-sm
               font-semibold
 
@@ -54,7 +78,10 @@ export default function DesktopMenu({ links, active, navigateTo }) {
               focus-visible:ring-emerald-500/50
             "
           >
-            {/* ACTIVE BACKGROUND */}
+            {/* =====================================================
+                ACTIVE BACKGROUND
+            ====================================================== */}
+
             {isActive && (
               <motion.span
                 layoutId="active-nav-background"
@@ -66,6 +93,7 @@ export default function DesktopMenu({ links, active, navigateTo }) {
                 className="
                   absolute
                   inset-0
+
                   rounded-xl
 
                   bg-emerald-500/10
@@ -75,11 +103,15 @@ export default function DesktopMenu({ links, active, navigateTo }) {
               />
             )}
 
-            {/* TEXT */}
+            {/* =====================================================
+                TEXT
+            ====================================================== */}
+
             <span
               className={`
                 relative
                 z-10
+
                 transition-colors
                 duration-300
 
@@ -92,6 +124,7 @@ export default function DesktopMenu({ links, active, navigateTo }) {
                     : `
                       text-slate-700
                       group-hover:text-emerald-600
+
                       dark:text-slate-300
                       dark:group-hover:text-emerald-400
                     `
@@ -101,14 +134,21 @@ export default function DesktopMenu({ links, active, navigateTo }) {
               {t(`nav.${link.key}`)}
             </span>
 
-            {/* HOVER / ACTIVE LINE */}
+            {/* =====================================================
+                HOVER / ACTIVE LINE
+            ====================================================== */}
+
             <span
               className={`
                 absolute
+
                 bottom-0.5
                 left-1/2
+
                 h-[2px]
+
                 -translate-x-1/2
+
                 rounded-full
 
                 bg-emerald-500
@@ -126,12 +166,17 @@ export default function DesktopMenu({ links, active, navigateTo }) {
               `}
             />
 
-            {/* SUBTLE HOVER GLOW */}
+            {/* =====================================================
+                SUBTLE HOVER GLOW
+            ====================================================== */}
+
             <span
               className="
                 pointer-events-none
+
                 absolute
                 inset-0
+
                 rounded-xl
 
                 bg-gradient-to-r
@@ -140,6 +185,7 @@ export default function DesktopMenu({ links, active, navigateTo }) {
                 to-emerald-400/0
 
                 opacity-0
+
                 transition-opacity
                 duration-300
 
