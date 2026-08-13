@@ -153,7 +153,6 @@ export default function Navbar() {
 
           <ThemeToggle />
 
-          <LanguageToggle />
         </div>
 
         {/* =========================================

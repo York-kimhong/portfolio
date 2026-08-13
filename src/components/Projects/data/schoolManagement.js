@@ -44,10 +44,11 @@ const schoolManagement = {
   tech: ["React", "JavaScript", "Tailwind CSS", "React Router", "Lucide React"],
 
   gallery: [
-    "/projects/SMS/dashboard.png",
-    "/projects/SMS/student.png",
-    "/projects/SMS/faculty.png",
+    
+    "/projects/SMS/adminDb.png",
+    "/projects/SMS/attF.png",
     "/projects/SMS/course.png",
+    "/projects/SMS/user.png",
   ],
 
   challenges: [
@@ -64,7 +65,7 @@ const schoolManagement = {
     "Component reusability.",
   ],
 
-  image: "/projects/SMS.png",
+  image: "/projects/SMS/SMS.png",
 
   github: "#",
 

@@ -50,9 +50,9 @@ const tourTrip = {
   ],
 
   gallery: [
-    "/projects/portfolio/home.png",
-    "/projects/portfolio/project.png",
-    "/projects/portfolio/contact.png",
+    "/projects/portfolio/card.png",
+    "/projects/portfolio/dashBoard.png",
+    "/projects/portfolio/setting.png",
   ],
 
   challenges: [
@@ -70,13 +70,13 @@ const tourTrip = {
     "Performance optimization.",
   ],
 
-  image: "/projects/portfolio.png",
+  image: "/projects/tour/publicSite.png",
 
   github: "#",
 
   demo: "#",
 
-  details: "/projects/portfolio",
+  details: "/projects/tour/publicSite.png",
 };
 
 export default tourTrip;

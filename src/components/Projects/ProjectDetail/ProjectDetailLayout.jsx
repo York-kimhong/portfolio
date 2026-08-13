@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 import Footer from "../../Footer";
-import CursorGlow from "../../CursorGlow";
+// import CursorGlow from "../../CursorGlow";
 
 import ProjectHero from "./ProjectHero";
 import ProjectPreview from "./ProjectPreview";
@@ -215,7 +215,7 @@ export default function ProjectDetailLayout({ project }) {
           pb-32
         "
       >
-        <CursorGlow />
+        {/* <CursorGlow /> */}
 
         <motion.div
           initial={{

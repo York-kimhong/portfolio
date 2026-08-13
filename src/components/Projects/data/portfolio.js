@@ -49,8 +49,9 @@ const portfolio = {
 
   gallery: [
     "/projects/portfolio/home.png",
-    "/projects/portfolio/project.png",
+    "/projects/portfolio/projectFeature.png",
     "/projects/portfolio/contact.png",
+    "/projects/portfolio/projectDetail.png",
   ],
 
   challenges: [
@@ -68,7 +69,7 @@ const portfolio = {
     "Performance optimization.",
   ],
 
-  image: "/projects/portfolio.png",
+  image: "/projects/portfolio/portfolio.png",
 
   github: "#",
 
