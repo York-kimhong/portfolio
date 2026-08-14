@@ -103,7 +103,7 @@ export default function Projects() {
               max-w-2xl
             "
           >
-            A collection of projects showcasing my experience in frontend
+            A collection of projects showcasing my experience in Web
             development, software engineering, backend systems, UI/UX design,
             and modern web application development.
           </p>

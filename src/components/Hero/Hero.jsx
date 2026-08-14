@@ -5,7 +5,7 @@ import { HiArrowRight } from "react-icons/hi";
 import ProfileCard from "./ProfileCard";
 import { fadeUp, fadeScale } from "./heroAnimations";
 
-const ROLE = "Frontend Developer";
+const ROLE = "Web Developer";
 
 export default function Hero() {
   const [text, setText] = useState("");
@@ -69,7 +69,7 @@ export default function Hero() {
                   dark:text-emerald-300
                 "
               >
-                Open to Frontend Internship Opportunities
+                Open to Web Developer Internship Opportunities
               </span>
             </div>
 
@@ -110,7 +110,7 @@ export default function Hero() {
               "
             >
               Information Technology Engineering student passionate about
-              frontend development and UI design. I enjoy creating modern,
+              Web development and UI design. I enjoy creating modern,
               clean and user-friendly digital experiences while continuously
               improving my skills.
             </p>

@@ -116,31 +116,7 @@ export default function Logo() {
           York Kimhong
         </h1>
 
-        {/* ROLE */}
-        <div className="mt-1 flex items-center gap-1.5">
-          <span
-            className="
-              h-1.5
-              w-1.5
-              rounded-full
-              bg-emerald-500
-              shadow-[0_0_8px_rgba(16,185,129,0.7)]
-            "
-          />
 
-          <p
-            className="
-              text-[10px]
-              font-medium
-              tracking-[0.08em]
-              text-slate-500
-              sm:text-[11px]
-              dark:text-slate-400
-            "
-          >
-            FRONTEND DEVELOPER
-          </p>
-        </div>
       </div>
     </a>
   );

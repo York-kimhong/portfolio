@@ -24,7 +24,7 @@ export default function About() {
               dark:text-white
             "
           >
-            My Journey Into Frontend Development
+            My Journey Into Web Development
           </h2>
 
           <p
@@ -37,7 +37,7 @@ export default function About() {
               dark:text-slate-400
             "
           >
-            Information Technology Engineering student exploring frontend
+            Information Technology Engineering student exploring Web
             development and UI design through continuous learning and practical
             projects.
           </p>

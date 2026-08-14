@@ -25,25 +25,25 @@ export const skillCategories = [
     skills: [
       {
         name: "HTML / CSS",
-        level: 95,
+        level: 80,
         icon: <FaHtml5 />,
       },
 
       {
         name: "React.js",
-        level: 85,
+        level: 70,
         icon: <FaReact />,
       },
 
       {
         name: "JavaScript",
-        level: 85,
+        level: 70,
         icon: <FaJsSquare />,
       },
 
       {
         name: "Tailwind CSS",
-        level: 85,
+        level: 80,
         icon: <SiTailwindcss />,
       },
 
@@ -113,13 +113,13 @@ export const skillCategories = [
     skills: [
       {
         name: "Java",
-        level: 75,
+        level: 50,
         icon: <FaJava />,
       },
 
       {
         name: "MySQL",
-        level: 75,
+        level: 50,
         icon: <SiMysql />,
       },
     ],

@@ -70,8 +70,8 @@ export default function AboutIntro() {
             dark:text-slate-300
           "
         >
-          I am a third-year Information Technology Engineering student at Royal
-          University of Phnom Penh with an interest in frontend development and
+          I am a fourth-year Information Technology Engineering student at Royal
+          University of Phnom Penh with an interest in Web development and
           UI design.
         </p>
 
