@@ -500,8 +500,8 @@ export default function MobileMenu({
                 ================================================== */}
 
                 <motion.a
-                  href="/York_Kimhong.pdf"
-                  download="York_Kimhong.pdf"
+                  href="/York_Kimhong_cv_last.pdf"
+                  download="York_Kimhong_cv_last.pdf"
                   initial={{
                     opacity: 0,
                     y: 10,

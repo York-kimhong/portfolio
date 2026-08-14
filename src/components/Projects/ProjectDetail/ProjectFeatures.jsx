@@ -153,10 +153,6 @@ export default function ProjectFeatures({ project }) {
 
                 {/* DESCRIPTION */}
 
-                <p className="mt-4 text-sm leading-relaxed muted">
-                  Built with modern development practices focusing on
-                  usability, performance, scalability, and maintainability.
-                </p>
 
                 {/* STATUS */}
 

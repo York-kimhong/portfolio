@@ -44,7 +44,6 @@ const schoolManagement = {
   tech: ["React", "JavaScript", "Tailwind CSS", "React Router", "Lucide React"],
 
   gallery: [
-    
     "/projects/SMS/adminDb.png",
     "/projects/SMS/attF.png",
     "/projects/SMS/course.png",
@@ -67,7 +66,7 @@ const schoolManagement = {
 
   image: "/projects/SMS/SMS.png",
 
-  github: "#",
+  github: "https://github.com/York-kimhong/school-management-system",
 
   demo: "#",
 

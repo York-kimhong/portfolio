@@ -26,16 +26,11 @@ export default function Hero() {
   }, []);
 
   return (
-    <section
-      id="home"
-      className="relative flex min-h-screen items-center "
-    >
+    <section id="home" className="relative flex min-h-screen items-center ">
       <div className="section-container">
         <div className="grid items-center gap-14 lg:grid-cols-[1.3fr_1fr]">
-
           {/* LEFT CONTENT */}
           <motion.div {...fadeUp}>
-
             {/* STATUS */}
             <div
               className="
@@ -109,15 +104,14 @@ export default function Hero() {
                 dark:text-slate-300
               "
             >
-              Information Technology Engineering student passionate about
-              Web development and UI design. I enjoy creating modern,
-              clean and user-friendly digital experiences while continuously
-              improving my skills.
+              Information Technology Engineering student passionate about Web
+              development and UI design. I enjoy creating modern, clean and
+              user-friendly digital experiences while continuously improving my
+              skills.
             </p>
 
             {/* ACTIONS */}
             <div className="mt-9 flex flex-wrap gap-4">
-
               {/* VIEW PROJECTS */}
               <a
                 href="#projects"
@@ -141,7 +135,6 @@ export default function Hero() {
                 "
               >
                 View Projects
-
                 <HiArrowRight
                   className="
                     transition
@@ -152,7 +145,7 @@ export default function Hero() {
 
               {/* RESUME */}
               <a
-                href="/resume.pdf"
+                href="/York_Kimhong_cv_last.pdf"
                 download
                 className="
                   rounded-xl
@@ -189,7 +182,6 @@ export default function Hero() {
           >
             <ProfileCard />
           </motion.div>
-
         </div>
       </div>
     </section>

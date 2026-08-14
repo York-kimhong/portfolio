@@ -71,7 +71,7 @@ const portfolio = {
 
   image: "/projects/portfolio/portfolio.png",
 
-  github: "#",
+  github: "https://github.com/York-kimhong/portfolio",
 
   demo: "#",
 

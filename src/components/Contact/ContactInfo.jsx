@@ -212,7 +212,7 @@ export default function ContactInfo() {
                   dark:text-white
                 "
               >
-                Open to Frontend Internship Opportunities
+                Open to Web Developer Internship Opportunities
               </p>
             </div>
           </div>
@@ -341,8 +341,8 @@ export default function ContactInfo() {
           {/* RESUME */}
 
           <motion.a
-            href="/York_Kimhong.pdf"
-            download="York_Kimhong.pdf"
+            href="/York_Kimhong_cv_last.pdf"
+            download="York_Kimhong_cv_last.pdf"
             whileHover={{
               scale: 1.05,
               y: -2,
