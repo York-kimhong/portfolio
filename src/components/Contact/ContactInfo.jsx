@@ -341,8 +341,8 @@ export default function ContactInfo() {
           {/* RESUME */}
 
           <motion.a
-            href="/York_Kimhong_cv_last.pdf"
-            download="York_Kimhong_cv_last.pdf"
+            href="/York_Kimhong_Frontend.pdf"
+            download="York_Kimhong_Frontend.pdf"
             whileHover={{
               scale: 1.05,
               y: -2,

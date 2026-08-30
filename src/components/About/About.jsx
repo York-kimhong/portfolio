@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 
 import AboutIntro from "./AboutIntro";
-import AboutFocus from "./AboutFocus";
+// import AboutFocus from "./AboutFocus";
 
 import { fadeUp } from "./aboutAnimations";
+
 
 export default function About() {
   return (
@@ -37,17 +38,48 @@ export default function About() {
               dark:text-slate-400
             "
           >
-            Information Technology Engineering student exploring Web
-            development and UI design through continuous learning and practical
-            projects.
+            Information Technology Engineering student exploring Web development
+            and UI design through continuous learning and practical projects.
           </p>
         </motion.div>
 
         {/* CONTENT */}
 
-        <div className="grid items-start gap-10 lg:grid-cols-5">
-          <AboutIntro />
-          <AboutFocus />
+        <div className="grid items-center gap-14 lg:grid-cols-5">
+          {/* IMAGE */}
+
+          <motion.div
+            {...fadeUp}
+            className="relative flex justify-center lg:col-span-2"
+          >
+            <div
+              className="
+                relative
+                h-[420px]
+                w-full
+                max-w-[340px]
+                overflow-hidden
+                rounded-3xl
+                border
+                border-slate-900/10
+                shadow-2xl
+                dark:border-white/10
+              "
+            >
+              <img
+                src="/profile.png"
+                alt="York Kimhong"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </motion.div>
+
+          {/* TEXT */}
+
+          <div className="space-y-8 lg:col-span-3">
+            <AboutIntro />
+            {/* <AboutFocus /> */}
+          </div>
         </div>
       </div>
     </section>

@@ -56,7 +56,7 @@ const nisset = {
     "/projects/nisset/home.png",
     "/projects/nisset/scholarship.png",
     "/projects/nisset/search.png",
-    "/projects/nisset/profile.png",
+    // "/projects/nisset/profile.png",
   ],
 
   challenges: [

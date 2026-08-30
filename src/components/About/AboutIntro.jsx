@@ -23,28 +23,18 @@ export default function AboutIntro() {
       className="
         group
         rounded-3xl
-        border
-        border-slate-900/10
+        border border-slate-900/10
         bg-white/50
         p-8
-
         shadow-[0_20px_60px_rgba(16,185,129,0.08)]
-
         backdrop-blur-2xl
-
-        transition-all
-        duration-300
-
+        transition-all duration-300
         hover:-translate-y-1.5
         hover:border-emerald-500/30
         hover:shadow-[0_25px_70px_rgba(16,185,129,0.15)]
-
         dark:border-white/10
         dark:bg-white/[0.05]
-
         lg:col-span-2
-
-        will-change-transform
       "
     >
       {/* TITLE */}
@@ -61,31 +51,51 @@ export default function AboutIntro() {
       </h3>
 
       {/* DESCRIPTION */}
-      <div className="space-y-5">
+      <div className="space-y-4">
         <p
           className="
             text-sm
-            leading-relaxed
+            leading-7
             text-slate-600
             dark:text-slate-300
           "
         >
-          I am a fourth-year Information Technology Engineering student at Royal
-          University of Phnom Penh with an interest in Web development and
-          UI design.
+          Hi, I’m{" "}
+          <span className="font-semibold text-slate-900 dark:text-white">
+            York Kimhong
+          </span>
+          , a fourth-year Information Technology Engineering student at the
+          Royal University of Phnom Penh, passionate about{" "}
+          <span className="font-medium text-emerald-600 dark:text-emerald-400">
+            frontend development and UI/UX design.
+          </span>
         </p>
 
         <p
           className="
             text-sm
-            leading-relaxed
+            leading-7
+            text-slate-600
+            dark:text-slate-300
+          "
+        >
+          I enjoy turning ideas and designs into{" "}
+          <span className="font-medium text-slate-900 dark:text-white">
+            clean, responsive, and user-friendly web experiences
+          </span>{" "}
+          using technologies like React, Next.js, TypeScript, and Tailwind CSS.
+        </p>
+
+        <p
+          className="
+            text-sm
+            leading-7
             text-slate-500
             dark:text-slate-400
           "
         >
-          I enjoy creating clean interfaces, learning new development
-          approaches, and improving my skills through academic and personal
-          projects.
+          I’m always learning, building, and looking for opportunities to grow
+          through real-world projects and meaningful collaboration.
         </p>
       </div>
 

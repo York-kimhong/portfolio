@@ -25,21 +25,15 @@ export default function Logo() {
           justify-center
           overflow-hidden
           rounded-xl
-          
           border
           border-black/10
-          dark:border-white/10
-          
           bg-white/60
-          dark:bg-white/[0.06]
-          
           backdrop-blur-xl
-          
           shadow-[0_0_25px_rgba(16,185,129,0.18)]
-          
           transition-all
           duration-300
-          
+          dark:border-white/10
+          dark:bg-white/[0.06]
           group-hover:border-emerald-400/40
           group-hover:shadow-[0_0_30px_rgba(16,185,129,0.30)]
         "
@@ -115,8 +109,6 @@ export default function Logo() {
         >
           York Kimhong
         </h1>
-
-
       </div>
     </a>
   );
