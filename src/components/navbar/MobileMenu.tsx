@@ -490,7 +490,7 @@ export default function MobileMenu({
                       "
                     >
                       <ThemeToggle />
-                      <LanguageToggle />
+                      
                     </div>
                   </div>
                 </section>
@@ -500,8 +500,8 @@ export default function MobileMenu({
                 ================================================== */}
 
                 <motion.a
-                  href="/York_Kimhong_Frontend.pdf"
-                  download="York_Kimhong_Frontend.pdf"
+                  href="/York_Kimhong_Web.pdf"
+                  download="York_Kimhong_Web.pdf"
                   initial={{
                     opacity: 0,
                     y: 10,
@@ -649,7 +649,7 @@ export default function MobileMenu({
                       dark:text-slate-500
                     "
                   >
-                    York Kimhong · Frontend Developer
+                    York Kimhong · Web Developer
                   </p>
                 </div>
               </div>

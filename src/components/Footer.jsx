@@ -256,7 +256,7 @@ export default function Footer() {
                   dark:text-slate-400
                 "
               >
-                Available for frontend opportunities
+                Available for Web opportunities
               </span>
             </div>
           </div>

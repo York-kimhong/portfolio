@@ -91,7 +91,7 @@ export default function Contact() {
               dark:to-green-300
             "
           >
-            Open to Frontend Opportunities
+            Open to Opportunities
           </h2>
 
           {/* DESCRIPTION */}

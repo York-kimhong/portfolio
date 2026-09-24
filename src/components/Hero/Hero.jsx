@@ -454,7 +454,7 @@ export default function Hero() {
               "
             />
 
-            <span>Frontend Developer</span>
+            <span>Web Developer</span>
           </div>
 
           {/* DESCRIPTION */}
@@ -540,7 +540,7 @@ export default function Hero() {
 
             {/* DOWNLOAD RESUME */}
             <a
-              href="/York_Kimhong_Frontend.pdf"
+              href="/York_Kimhong_Web.pdf"
               download
               className="
                 inline-flex
